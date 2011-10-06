@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4207DCAB143D9A9F00FAD4AA /* ChooseHomeNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DC7D143D9A9F00FAD4AA /* ChooseHomeNetworkController.m */; };
+		4207DCAC143D9A9F00FAD4AA /* ChooseHomeNetworkController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC7E143D9A9F00FAD4AA /* ChooseHomeNetworkController.xib */; };
+		4207DCAD143D9A9F00FAD4AA /* ChooseIPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DC80143D9A9F00FAD4AA /* ChooseIPController.m */; };
+		4207DCAE143D9A9F00FAD4AA /* ChooseIPController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC81143D9A9F00FAD4AA /* ChooseIPController.xib */; };
+		4207DCB1143D9A9F00FAD4AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC85143D9A9F00FAD4AA /* InfoPlist.strings */; };
+		4207DCB2143D9A9F00FAD4AA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC87143D9A9F00FAD4AA /* MainWindow.xib */; };
+		4207DCB3143D9A9F00FAD4AA /* btn_controlpanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC8A143D9A9F00FAD4AA /* btn_controlpanel.png */; };
+		4207DCB4143D9A9F00FAD4AA /* btn_widget.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC8B143D9A9F00FAD4AA /* btn_widget.png */; };
+		4207DCB5143D9A9F00FAD4AA /* center.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC8C143D9A9F00FAD4AA /* center.png */; };
+		4207DCB6143D9A9F00FAD4AA /* chumby.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC8D143D9A9F00FAD4AA /* chumby.png */; };
+		4207DCB7143D9A9F00FAD4AA /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC8E143D9A9F00FAD4AA /* down.png */; };
+		4207DCB8143D9A9F00FAD4AA /* grey_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC8F143D9A9F00FAD4AA /* grey_bg.png */; };
+		4207DCB9143D9A9F00FAD4AA /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC90143D9A9F00FAD4AA /* icon.png */; };
+		4207DCBA143D9A9F00FAD4AA /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC91143D9A9F00FAD4AA /* left.png */; };
+		4207DCBB143D9A9F00FAD4AA /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC92143D9A9F00FAD4AA /* right.png */; };
+		4207DCBC143D9A9F00FAD4AA /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC93143D9A9F00FAD4AA /* up.png */; };
+		4207DCBE143D9A9F00FAD4AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DC95143D9A9F00FAD4AA /* main.m */; };
+		4207DCC1143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DC9A143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.m */; };
+		4207DCC2143D9A9F00FAD4AA /* NeTVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DC9C143D9A9F00FAD4AA /* NeTVViewController.m */; };
+		4207DCC3143D9A9F00FAD4AA /* NeTVViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC9D143D9A9F00FAD4AA /* NeTVViewController_iPhone.xib */; };
+		4207DCC5143D9A9F00FAD4AA /* RemoteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DCA1143D9A9F00FAD4AA /* RemoteController.m */; };
+		4207DCC6143D9A9F00FAD4AA /* RemoteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCA2143D9A9F00FAD4AA /* RemoteController.xib */; };
+		4207DCCD143D9B1600FAD4AA /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCCB143D9B1600FAD4AA /* MainWindow-iPad.xib */; };
+		4207DCDD143D9CF300FAD4AA /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DCD0143D9CF300FAD4AA /* AsyncSocket.m */; };
+		4207DCDE143D9CF300FAD4AA /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DCD2143D9CF300FAD4AA /* AsyncUdpSocket.m */; };
+		4207DCDF143D9CF300FAD4AA /* CommService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DCD4143D9CF300FAD4AA /* CommService.m */; };
+		4207DCE0143D9CF300FAD4AA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DCD6143D9CF300FAD4AA /* Reachability.m */; };
+		4207DCE1143D9CF300FAD4AA /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DCD8143D9CF300FAD4AA /* UIDevice-Hardware.m */; };
+		4207DCE2143D9CF300FAD4AA /* VTPG_Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DCDA143D9CF300FAD4AA /* VTPG_Common.m */; };
+		4207DCE3143D9CF300FAD4AA /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DCDC143D9CF300FAD4AA /* XMLReader.m */; };
+		4207DCE5143D9F2A00FAD4AA /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE4143D9F2A00FAD4AA /* Icon.png */; };
+		4207DCE7143D9F2F00FAD4AA /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE6143D9F2F00FAD4AA /* Icon@2x.png */; };
+		4207DCE9143D9F4700FAD4AA /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE8143D9F4700FAD4AA /* Icon-72.png */; };
+		8FF36F4114165AD900A91FC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F4014165AD900A91FC0 /* UIKit.framework */; };
+		8FF36F4314165AD900A91FC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F4214165AD900A91FC0 /* Foundation.framework */; };
+		8FF36F4514165AD900A91FC0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F4414165AD900A91FC0 /* CoreGraphics.framework */; };
+		8FF36FA014165B7700A91FC0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F9F14165B7600A91FC0 /* SystemConfiguration.framework */; };
+		8FF36FA214165B7D00A91FC0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36FA114165B7D00A91FC0 /* CFNetwork.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4207DC7C143D9A9F00FAD4AA /* ChooseHomeNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseHomeNetworkController.h; sourceTree = "<group>"; };
+		4207DC7D143D9A9F00FAD4AA /* ChooseHomeNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseHomeNetworkController.m; sourceTree = "<group>"; };
+		4207DC7E143D9A9F00FAD4AA /* ChooseHomeNetworkController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseHomeNetworkController.xib; sourceTree = "<group>"; };
+		4207DC7F143D9A9F00FAD4AA /* ChooseIPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseIPController.h; sourceTree = "<group>"; };
+		4207DC80143D9A9F00FAD4AA /* ChooseIPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseIPController.m; sourceTree = "<group>"; };
+		4207DC81143D9A9F00FAD4AA /* ChooseIPController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseIPController.xib; sourceTree = "<group>"; };
+		4207DC86143D9A9F00FAD4AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4207DC88143D9A9F00FAD4AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		4207DC8A143D9A9F00FAD4AA /* btn_controlpanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_controlpanel.png; sourceTree = "<group>"; };
+		4207DC8B143D9A9F00FAD4AA /* btn_widget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_widget.png; sourceTree = "<group>"; };
+		4207DC8C143D9A9F00FAD4AA /* center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = center.png; sourceTree = "<group>"; };
+		4207DC8D143D9A9F00FAD4AA /* chumby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chumby.png; sourceTree = "<group>"; };
+		4207DC8E143D9A9F00FAD4AA /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		4207DC8F143D9A9F00FAD4AA /* grey_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grey_bg.png; sourceTree = "<group>"; };
+		4207DC90143D9A9F00FAD4AA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		4207DC91143D9A9F00FAD4AA /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
+		4207DC92143D9A9F00FAD4AA /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
+		4207DC93143D9A9F00FAD4AA /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
+		4207DC95143D9A9F00FAD4AA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4207DC99143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeTV_RemoteAppDelegate.h; sourceTree = "<group>"; };
+		4207DC9A143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeTV_RemoteAppDelegate.m; sourceTree = "<group>"; };
+		4207DC9B143D9A9F00FAD4AA /* NeTVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeTVViewController.h; sourceTree = "<group>"; };
+		4207DC9C143D9A9F00FAD4AA /* NeTVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeTVViewController.m; sourceTree = "<group>"; };
+		4207DC9D143D9A9F00FAD4AA /* NeTVViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeTVViewController_iPhone.xib; sourceTree = "<group>"; };
+		4207DCA0143D9A9F00FAD4AA /* RemoteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteController.h; sourceTree = "<group>"; };
+		4207DCA1143D9A9F00FAD4AA /* RemoteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteController.m; sourceTree = "<group>"; };
+		4207DCA2143D9A9F00FAD4AA /* RemoteController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoteController.xib; sourceTree = "<group>"; };
+		4207DCCC143D9B1600FAD4AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		4207DCCF143D9CF300FAD4AA /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		4207DCD0143D9CF300FAD4AA /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		4207DCD1143D9CF300FAD4AA /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
+		4207DCD2143D9CF300FAD4AA /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
+		4207DCD3143D9CF300FAD4AA /* CommService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommService.h; sourceTree = "<group>"; };
+		4207DCD4143D9CF300FAD4AA /* CommService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommService.m; sourceTree = "<group>"; };
+		4207DCD5143D9CF300FAD4AA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		4207DCD6143D9CF300FAD4AA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4207DCD7143D9CF300FAD4AA /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
+		4207DCD8143D9CF300FAD4AA /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
+		4207DCD9143D9CF300FAD4AA /* VTPG_Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VTPG_Common.h; sourceTree = "<group>"; };
+		4207DCDA143D9CF300FAD4AA /* VTPG_Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VTPG_Common.m; sourceTree = "<group>"; };
+		4207DCDB143D9CF300FAD4AA /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		4207DCDC143D9CF300FAD4AA /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		4207DCE4143D9F2A00FAD4AA /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		4207DCE6143D9F2F00FAD4AA /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		4207DCE8143D9F4700FAD4AA /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		8FF36F3C14165AD900A91FC0 /* netv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = netv.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FF36F4014165AD900A91FC0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8FF36F4214165AD900A91FC0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8FF36F4414165AD900A91FC0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8FF36F9F14165B7600A91FC0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8FF36FA114165B7D00A91FC0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8FF36F3914165AD900A91FC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FF36FA214165B7D00A91FC0 /* CFNetwork.framework in Frameworks */,
+				8FF36FA014165B7700A91FC0 /* SystemConfiguration.framework in Frameworks */,
+				8FF36F4114165AD900A91FC0 /* UIKit.framework in Frameworks */,
+				8FF36F4314165AD900A91FC0 /* Foundation.framework in Frameworks */,
+				8FF36F4514165AD900A91FC0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4207DC77143D9A9F00FAD4AA /* NeTV */ = {
+			isa = PBXGroup;
+			children = (
+				4207DCCE143D9CF300FAD4AA /* SharedClasses */,
+				4207DCCA143D9B1600FAD4AA /* iPad */,
+				4207DC89143D9A9F00FAD4AA /* Images */,
+				4207DC7C143D9A9F00FAD4AA /* ChooseHomeNetworkController.h */,
+				4207DC7D143D9A9F00FAD4AA /* ChooseHomeNetworkController.m */,
+				4207DC7E143D9A9F00FAD4AA /* ChooseHomeNetworkController.xib */,
+				4207DC7F143D9A9F00FAD4AA /* ChooseIPController.h */,
+				4207DC80143D9A9F00FAD4AA /* ChooseIPController.m */,
+				4207DC81143D9A9F00FAD4AA /* ChooseIPController.xib */,
+				4207DC85143D9A9F00FAD4AA /* InfoPlist.strings */,
+				4207DC87143D9A9F00FAD4AA /* MainWindow.xib */,
+				4207DC95143D9A9F00FAD4AA /* main.m */,
+				4207DC99143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.h */,
+				4207DC9A143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.m */,
+				4207DC9B143D9A9F00FAD4AA /* NeTVViewController.h */,
+				4207DC9C143D9A9F00FAD4AA /* NeTVViewController.m */,
+				4207DC9D143D9A9F00FAD4AA /* NeTVViewController_iPhone.xib */,
+				4207DCA0143D9A9F00FAD4AA /* RemoteController.h */,
+				4207DCA1143D9A9F00FAD4AA /* RemoteController.m */,
+				4207DCA2143D9A9F00FAD4AA /* RemoteController.xib */,
+			);
+			path = NeTV;
+			sourceTree = "<group>";
+		};
+		4207DC89143D9A9F00FAD4AA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4207DC8A143D9A9F00FAD4AA /* btn_controlpanel.png */,
+				4207DC8B143D9A9F00FAD4AA /* btn_widget.png */,
+				4207DC8C143D9A9F00FAD4AA /* center.png */,
+				4207DC8D143D9A9F00FAD4AA /* chumby.png */,
+				4207DC8E143D9A9F00FAD4AA /* down.png */,
+				4207DC8F143D9A9F00FAD4AA /* grey_bg.png */,
+				4207DC90143D9A9F00FAD4AA /* icon.png */,
+				4207DC91143D9A9F00FAD4AA /* left.png */,
+				4207DC92143D9A9F00FAD4AA /* right.png */,
+				4207DC93143D9A9F00FAD4AA /* up.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		4207DCCA143D9B1600FAD4AA /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				4207DCCB143D9B1600FAD4AA /* MainWindow-iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		4207DCCE143D9CF300FAD4AA /* SharedClasses */ = {
+			isa = PBXGroup;
+			children = (
+				4207DCCF143D9CF300FAD4AA /* AsyncSocket.h */,
+				4207DCD0143D9CF300FAD4AA /* AsyncSocket.m */,
+				4207DCD1143D9CF300FAD4AA /* AsyncUdpSocket.h */,
+				4207DCD2143D9CF300FAD4AA /* AsyncUdpSocket.m */,
+				4207DCD3143D9CF300FAD4AA /* CommService.h */,
+				4207DCD4143D9CF300FAD4AA /* CommService.m */,
+				4207DCD5143D9CF300FAD4AA /* Reachability.h */,
+				4207DCD6143D9CF300FAD4AA /* Reachability.m */,
+				4207DCD7143D9CF300FAD4AA /* UIDevice-Hardware.h */,
+				4207DCD8143D9CF300FAD4AA /* UIDevice-Hardware.m */,
+				4207DCD9143D9CF300FAD4AA /* VTPG_Common.h */,
+				4207DCDA143D9CF300FAD4AA /* VTPG_Common.m */,
+				4207DCDB143D9CF300FAD4AA /* XMLReader.h */,
+				4207DCDC143D9CF300FAD4AA /* XMLReader.m */,
+			);
+			path = SharedClasses;
+			sourceTree = "<group>";
+		};
+		8FF36F3114165AD900A91FC0 = {
+			isa = PBXGroup;
+			children = (
+				4207DCE8143D9F4700FAD4AA /* Icon-72.png */,
+				4207DCE6143D9F2F00FAD4AA /* Icon@2x.png */,
+				4207DCE4143D9F2A00FAD4AA /* Icon.png */,
+				4207DC77143D9A9F00FAD4AA /* NeTV */,
+				8FF36F3F14165AD900A91FC0 /* Frameworks */,
+				8FF36F3D14165AD900A91FC0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8FF36F3D14165AD900A91FC0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8FF36F3C14165AD900A91FC0 /* netv.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8FF36F3F14165AD900A91FC0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8FF36FA114165B7D00A91FC0 /* CFNetwork.framework */,
+				8FF36F9F14165B7600A91FC0 /* SystemConfiguration.framework */,
+				8FF36F4014165AD900A91FC0 /* UIKit.framework */,
+				8FF36F4214165AD900A91FC0 /* Foundation.framework */,
+				8FF36F4414165AD900A91FC0 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8FF36F3B14165AD900A91FC0 /* NeTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8FF36F5D14165AD900A91FC0 /* Build configuration list for PBXNativeTarget "NeTV" */;
+			buildPhases = (
+				8FF36F3814165AD900A91FC0 /* Sources */,
+				8FF36F3914165AD900A91FC0 /* Frameworks */,
+				8FF36F3A14165AD900A91FC0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NeTV;
+			productName = "NeTV Remote";
+			productReference = 8FF36F3C14165AD900A91FC0 /* netv.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8FF36F3314165AD900A91FC0 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 8FF36F3614165AD900A91FC0 /* Build configuration list for PBXProject "NeTV" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8FF36F3114165AD900A91FC0;
+			productRefGroup = 8FF36F3D14165AD900A91FC0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8FF36F3B14165AD900A91FC0 /* NeTV */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8FF36F3A14165AD900A91FC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4207DCAC143D9A9F00FAD4AA /* ChooseHomeNetworkController.xib in Resources */,
+				4207DCAE143D9A9F00FAD4AA /* ChooseIPController.xib in Resources */,
+				4207DCB1143D9A9F00FAD4AA /* InfoPlist.strings in Resources */,
+				4207DCB2143D9A9F00FAD4AA /* MainWindow.xib in Resources */,
+				4207DCB3143D9A9F00FAD4AA /* btn_controlpanel.png in Resources */,
+				4207DCB4143D9A9F00FAD4AA /* btn_widget.png in Resources */,
+				4207DCB5143D9A9F00FAD4AA /* center.png in Resources */,
+				4207DCB6143D9A9F00FAD4AA /* chumby.png in Resources */,
+				4207DCB7143D9A9F00FAD4AA /* down.png in Resources */,
+				4207DCB8143D9A9F00FAD4AA /* grey_bg.png in Resources */,
+				4207DCB9143D9A9F00FAD4AA /* icon.png in Resources */,
+				4207DCBA143D9A9F00FAD4AA /* left.png in Resources */,
+				4207DCBB143D9A9F00FAD4AA /* right.png in Resources */,
+				4207DCBC143D9A9F00FAD4AA /* up.png in Resources */,
+				4207DCC3143D9A9F00FAD4AA /* NeTVViewController_iPhone.xib in Resources */,
+				4207DCC6143D9A9F00FAD4AA /* RemoteController.xib in Resources */,
+				4207DCCD143D9B1600FAD4AA /* MainWindow-iPad.xib in Resources */,
+				4207DCE5143D9F2A00FAD4AA /* Icon.png in Resources */,
+				4207DCE7143D9F2F00FAD4AA /* Icon@2x.png in Resources */,
+				4207DCE9143D9F4700FAD4AA /* Icon-72.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8FF36F3814165AD900A91FC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4207DCAB143D9A9F00FAD4AA /* ChooseHomeNetworkController.m in Sources */,
+				4207DCAD143D9A9F00FAD4AA /* ChooseIPController.m in Sources */,
+				4207DCBE143D9A9F00FAD4AA /* main.m in Sources */,
+				4207DCC1143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.m in Sources */,
+				4207DCC2143D9A9F00FAD4AA /* NeTVViewController.m in Sources */,
+				4207DCC5143D9A9F00FAD4AA /* RemoteController.m in Sources */,
+				4207DCDD143D9CF300FAD4AA /* AsyncSocket.m in Sources */,
+				4207DCDE143D9CF300FAD4AA /* AsyncUdpSocket.m in Sources */,
+				4207DCDF143D9CF300FAD4AA /* CommService.m in Sources */,
+				4207DCE0143D9CF300FAD4AA /* Reachability.m in Sources */,
+				4207DCE1143D9CF300FAD4AA /* UIDevice-Hardware.m in Sources */,
+				4207DCE2143D9CF300FAD4AA /* VTPG_Common.m in Sources */,
+				4207DCE3143D9CF300FAD4AA /* XMLReader.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4207DC85143D9A9F00FAD4AA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4207DC86143D9A9F00FAD4AA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4207DC87143D9A9F00FAD4AA /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4207DC88143D9A9F00FAD4AA /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		4207DCCB143D9B1600FAD4AA /* MainWindow-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4207DCCC143D9B1600FAD4AA /* en */,
+			);
+			name = "MainWindow-iPad.xib";
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8FF36F5B14165AD900A91FC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8FF36F5C14165AD900A91FC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8FF36F5E14165AD900A91FC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NeTV/NeTV-Prefix.pch";
+				INFOPLIST_FILE = "NeTV/NeTV-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = netv;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8FF36F5F14165AD900A91FC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NeTV/NeTV-Prefix.pch";
+				INFOPLIST_FILE = "NeTV/NeTV-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = netv;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8FF36F3614165AD900A91FC0 /* Build configuration list for PBXProject "NeTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FF36F5B14165AD900A91FC0 /* Debug */,
+				8FF36F5C14165AD900A91FC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8FF36F5D14165AD900A91FC0 /* Build configuration list for PBXNativeTarget "NeTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FF36F5E14165AD900A91FC0 /* Debug */,
+				8FF36F5F14165AD900A91FC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8FF36F3314165AD900A91FC0 /* Project object */;
+}
