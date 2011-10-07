@@ -12,25 +12,46 @@
 #import "ChooseHomeNetworkController.h"
 
 
-@interface NeTVViewController : UIViewController <AsyncUdpSocketDelegate, ChooseHomeNetworkControllerDelegate>{
+@interface NeTVViewController : UIViewController <AsyncUdpSocketDelegate, ChooseHomeNetworkControllerDelegate>
+{
+    //UI
     IBOutlet UITextField *SSIDName;
     IBOutlet UITextField *SSIDPassword;
-    AsyncUdpSocket *asyncSocket;
+    IBOutlet UILabel *lblVersion;
+    IBOutlet UILabel *lblStatus;
+    UIAlertView *alertView;
+
+    //Communication
     CommService *mainComm;
-    NSTimer *mainTimer;
-    NSUInteger numberOfSecondsSoFar;
-    IBOutlet UILabel *statusLabel;
     
-    BOOL sentWifiDetails;
-    BOOL currentlySpammingHello;
+    //Flag
+    int _retryCounter;
+    BOOL _sentHandshake;
+    BOOL _receiveHandshake;
+    BOOL _hasMoreHandshake;
     
-    NSMutableArray *fullIPList;
+    //Multiple device
+    NSMutableDictionary *_deviceList;
+    NSMutableArray *_ipListForUI;
 }
 
-- (void)beginTimer;
-- (IBAction)sendData:(id)sender;
-- (void)helloDone;
-- (void)spamHello;
-- (IBAction)spamHelloIB:(id)sender;
-- (IBAction)wifiScan:(id)sender;
+//UI Events
+//...
+
+//Helpers
+- (void)showDeviceListDialog;
+- (void)setStatusText:(NSString*)text;
+- (void)restartInitSequenceWithDelay:(float)second;
+- (void)showSimpleMessageDialog:(NSString*)message;
+- (void)showSimpleMessageDialog:(NSString*)message withButton:(NSString*)btnName;
+
+//To be moved to a base class
+- (void)sendHandshake;
+- (void)sendNetworkConfig;
+- (void)sendWifiScan;
+
+//Copy from Android app
+- (void)reset;
+- (void)initializeSequence;
+
 @end

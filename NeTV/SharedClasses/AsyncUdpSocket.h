@@ -233,7 +233,7 @@ typedef enum AsyncUdpSocketError AsyncUdpSocketError;
  * If the receive succeeds, the onUdpSocket:didReceiveData:fromHost:port:tag delegate method will be called.
  * Otherwise, a timeout will occur, and the onUdpSocket:didNotReceiveDataWithTag: delegate method will be called.
 **/
-- (void)receiveWithTimeout:(NSTimeInterval)timeout tag:(long)tag;
+- (BOOL)receiveWithTimeout:(NSTimeInterval)timeout tag:(long)tag;
 
 /**
  * Closes the socket immediately. Any pending send or receive operations are dropped.

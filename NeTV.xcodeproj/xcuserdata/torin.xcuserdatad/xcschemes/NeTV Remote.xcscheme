@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8FF36F3B14165AD900A91FC0"
-               BuildableName = "NeTV Remote.app"
+               BuildableName = "netv.app"
                BlueprintName = "NeTV"
                ReferencedContainer = "container:NeTV.xcodeproj">
             </BuildableReference>
@@ -39,7 +39,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8FF36F3B14165AD900A91FC0"
-            BuildableName = "NeTV Remote.app"
+            BuildableName = "netv.app"
             BlueprintName = "NeTV"
             ReferencedContainer = "container:NeTV.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8FF36F3B14165AD900A91FC0"
-            BuildableName = "NeTV Remote.app"
+            BuildableName = "netv.app"
             BlueprintName = "NeTV"
             ReferencedContainer = "container:NeTV.xcodeproj">
          </BuildableReference>

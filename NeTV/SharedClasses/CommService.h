@@ -20,4 +20,7 @@
 - (void)sendUDPCommand:(NSString *)command andParameters:(NSDictionary *)parameterDictionary andTag:(long)theTag;
 - (void)sendUDPCommandWithBroadcast:(NSString *)command andParameters:(NSDictionary *)parameterDictionary andTag:(long)theTag;
 - (void)sendUDPCommand:(NSString *)command andParameters:(NSDictionary *)parameterDictionary andIP:(NSString *)theIP andTag:(long)theTag;
+
++ (NSString*)getLocalIPAddress;
+
 @end

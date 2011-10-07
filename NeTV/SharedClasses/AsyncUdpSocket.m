@@ -1975,10 +1975,10 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 #pragma mark Receiving
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (void)receiveWithTimeout:(NSTimeInterval)timeout tag:(long)tag
+- (BOOL)receiveWithTimeout:(NSTimeInterval)timeout tag:(long)tag
 {
-	if(theFlags & kForbidSendReceive) return;
-	if(theFlags & kDidClose) return;
+	if(theFlags & kForbidSendReceive)   return YES;
+	if(theFlags & kDidClose)            return YES;
 	
 	AsyncReceivePacket *packet = [[AsyncReceivePacket alloc] initWithTimeout:timeout tag:tag];
 	
@@ -1986,6 +1986,7 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 	[self scheduleDequeueReceive];
 	
 	[packet release];
+    return YES;
 }
 
 - (BOOL)hasBytesAvailable:(CFSocketRef)sockRef
