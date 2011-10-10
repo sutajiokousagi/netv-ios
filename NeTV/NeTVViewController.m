@@ -46,7 +46,6 @@
     //Init communication object (should be a singleton class to be correct)
     mainComm = [[CommService alloc] initWithDelegate:self];
     
-    [self reset];
 }
 
 - (void)viewDidUnload
@@ -63,6 +62,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [self reset];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -340,7 +341,7 @@
     if (_hasMoreHandshake)
     {
         _hasMoreHandshake = NO;
-        [self restartInitSequenceWithDelay:0.3];
+        [self restartInitSequenceWithDelay:0.6];
         return;
     }
 

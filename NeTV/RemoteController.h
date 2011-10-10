@@ -13,6 +13,8 @@
 }
 @property (nonatomic, retain) NSString *theMainIP;
 
+@property (nonatomic, retain) IBOutlet UILabel *ipAddr;
+
 - (id)initWithIP:(NSString *)theIP;
 
 - (IBAction)pressChumby:(id)sender;

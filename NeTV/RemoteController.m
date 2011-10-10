@@ -22,6 +22,7 @@
 #import "VTPG_Common.h"
 @implementation RemoteController
 @synthesize theMainIP;
+@synthesize ipAddr;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -54,7 +55,8 @@
     [mainComm sendUDPCommand:@"Hello" andParameters:[NSDictionary dictionaryWithObjectsAndKeys:
                                                      [[UIDevice currentDevice] platformString],@"type",
                                                      [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"], @"version", nil] andIP:self.theMainIP andTag:HELLO_MSG];
-
+        
+    ipAddr.text = theMainIP;
     
 }
 #pragma mark -
@@ -91,7 +93,6 @@
     [mainComm sendUDPCommand:@"RemoteControl" andParameters:[NSDictionary dictionaryWithObjectsAndKeys:@"left",@"value", nil] andIP:self.theMainIP andTag:LEFTBUTTON];
 }
 - (IBAction)pressRight:(id)sender{
-    
     [mainComm sendUDPCommand:@"RemoteControl" andParameters:[NSDictionary dictionaryWithObjectsAndKeys:@"right",@"value", nil] andIP:self.theMainIP andTag:RIGHTBUTTON];
 }
 - (IBAction)pressCenter:(id)sender{
