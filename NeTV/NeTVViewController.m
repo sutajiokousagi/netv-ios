@@ -15,8 +15,8 @@
 #import "Reachability.h"
 
 #define DEFAULTPORT         8082
-#define MULTICASTGROUP     @"225.0.0.37"
-#define DEFAULTIP          @"192.168.100.1"
+#define MULTICASTGROUP      @"225.0.0.37"
+#define DEFAULTIP           @"192.168.100.1"
 
 #define HELLO_MSG           01
 #define HELLOSPAM_MSG       02
@@ -323,6 +323,7 @@
         
         if (_retryCounter < 3)
         {
+            //Send handshake 3 times & then set _sentHandshake flag
             [self sendHandshake];
             [self restartInitSequenceWithDelay: 0.2];
         }
@@ -356,8 +357,8 @@
         return;
     }
     
-    //[self sendHandshake];
-    //[self restartInitSequenceWithDelay: 1.0];
+    [self sendHandshake];
+    [self restartInitSequenceWithDelay: 1.0];
 }
 
 @end

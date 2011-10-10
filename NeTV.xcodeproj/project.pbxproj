@@ -40,8 +40,6 @@
 		4207DCE5143D9F2A00FAD4AA /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE4143D9F2A00FAD4AA /* Icon.png */; };
 		4207DCE7143D9F2F00FAD4AA /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE6143D9F2F00FAD4AA /* Icon@2x.png */; };
 		4207DCE9143D9F4700FAD4AA /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE8143D9F4700FAD4AA /* Icon-72.png */; };
-		421FD089143EC804001CF8E7 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 421FD086143EC804001CF8E7 /* NSDataAdditions.m */; };
-		421FD08A143EC804001CF8E7 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 421FD088143EC804001CF8E7 /* TBXML.m */; };
 		421FD08C143EC819001CF8E7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 421FD08B143EC819001CF8E7 /* libz.dylib */; };
 		8FF36F4114165AD900A91FC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F4014165AD900A91FC0 /* UIKit.framework */; };
 		8FF36F4314165AD900A91FC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F4214165AD900A91FC0 /* Foundation.framework */; };
@@ -96,10 +94,6 @@
 		4207DCE4143D9F2A00FAD4AA /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4207DCE6143D9F2F00FAD4AA /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4207DCE8143D9F4700FAD4AA /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		421FD085143EC804001CF8E7 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
-		421FD086143EC804001CF8E7 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
-		421FD087143EC804001CF8E7 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
-		421FD088143EC804001CF8E7 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
 		421FD08B143EC819001CF8E7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		8FF36F3C14165AD900A91FC0 /* netv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = netv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF36F4014165AD900A91FC0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -181,7 +175,6 @@
 		4207DCCE143D9CF300FAD4AA /* SharedClasses */ = {
 			isa = PBXGroup;
 			children = (
-				421FD084143EC804001CF8E7 /* TBXML */,
 				4207DCCF143D9CF300FAD4AA /* AsyncSocket.h */,
 				4207DCD0143D9CF300FAD4AA /* AsyncSocket.m */,
 				4207DCD1143D9CF300FAD4AA /* AsyncUdpSocket.h */,
@@ -198,18 +191,6 @@
 				4207DCDC143D9CF300FAD4AA /* XMLReader.m */,
 			);
 			path = SharedClasses;
-			sourceTree = "<group>";
-		};
-		421FD084143EC804001CF8E7 /* TBXML */ = {
-			isa = PBXGroup;
-			children = (
-				421FD085143EC804001CF8E7 /* NSDataAdditions.h */,
-				421FD086143EC804001CF8E7 /* NSDataAdditions.m */,
-				421FD087143EC804001CF8E7 /* TBXML.h */,
-				421FD088143EC804001CF8E7 /* TBXML.m */,
-			);
-			name = TBXML;
-			path = "../../../../Dropbox/iOS/netv-ios/NeTV/SharedClasses/TBXML";
 			sourceTree = "<group>";
 		};
 		8FF36F3114165AD900A91FC0 = {
@@ -335,8 +316,6 @@
 				4207DCE1143D9CF300FAD4AA /* UIDevice-Hardware.m in Sources */,
 				4207DCE2143D9CF300FAD4AA /* VTPG_Common.m in Sources */,
 				4207DCE3143D9CF300FAD4AA /* XMLReader.m in Sources */,
-				421FD089143EC804001CF8E7 /* NSDataAdditions.m in Sources */,
-				421FD08A143EC804001CF8E7 /* TBXML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
