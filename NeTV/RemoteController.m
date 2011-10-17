@@ -20,6 +20,7 @@
 #import "UIDevice-Hardware.h"
 #import "XMLReader.h"
 #import "VTPG_Common.h"
+#import "SVWebViewController.h"
 @implementation RemoteController
 @synthesize theMainIP;
 @synthesize ipAddr;
@@ -55,8 +56,8 @@
     [mainComm sendUDPCommand:@"Hello" andParameters:[NSDictionary dictionaryWithObjectsAndKeys:
                                                      [[UIDevice currentDevice] platformString],@"type",
                                                      [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"], @"version", nil] andIP:self.theMainIP andTag:HELLO_MSG];
-        
-    ipAddr.text = theMainIP;
+    
+    ipAddr.text = [@"Controlling " stringByAppendingString:theMainIP];
     
 }
 #pragma mark -
@@ -98,6 +99,13 @@
 - (IBAction)pressCenter:(id)sender{
     [mainComm sendUDPCommand:@"RemoteControl" andParameters:[NSDictionary dictionaryWithObjectsAndKeys:@"center",@"value", nil] andIP:self.theMainIP andTag:CENTERBUTTON];
 }
+
+//Open a browser view to use iPhone controll NeTV
+- (IBAction)pressBrowser:(id)sender{
+    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
+    [self.navigationController pushViewController:webViewController animated:YES];
+    [webViewController release];        
+   }
 
 //Listening timeout
 - (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error{

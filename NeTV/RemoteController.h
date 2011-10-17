@@ -25,4 +25,6 @@
 - (IBAction)pressRight:(id)sender;
 - (IBAction)pressCenter:(id)sender;
 
+- (IBAction)pressBrowser:(id)sender;
+
 @end
