@@ -326,12 +326,12 @@
         {
             //Send handshake 3 times & then set _sentHandshake flag
             [self sendHandshake];
-            [self restartInitSequenceWithDelay: 0.2];
+            [self restartInitSequenceWithDelay: 0.5];
         }
         else
         {
             _sentHandshake = YES;
-            [self restartInitSequenceWithDelay:0.6];
+            [self restartInitSequenceWithDelay:1.0];
         }
         return;
     }
@@ -341,7 +341,7 @@
     if (_hasMoreHandshake)
     {
         _hasMoreHandshake = NO;
-        [self restartInitSequenceWithDelay:0.6];
+        [self restartInitSequenceWithDelay:1.3];
         return;
     }
 
