@@ -25,6 +25,7 @@
     CommService *mainComm;
     
     //Flag
+    BOOL _checkedReachability;
     int _retryCounter;
     BOOL _sentHandshake;
     BOOL _receiveHandshake;

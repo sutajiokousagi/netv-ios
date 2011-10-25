@@ -93,6 +93,7 @@
 
 - (void)reset
 {
+    _checkedReachability = NO;
     _retryCounter = 0;
     _sentHandshake = NO;
     _receiveHandshake = NO;
@@ -303,16 +304,19 @@
 
 - (void)initializeSequence
 {
-    //Stage 0
+    //Stage 1
     //If Wifi is disabled, show a message and stop here
-    if ([[Reachability reachabilityForLocalWiFi] currentReachabilityStatus] != ReachableViaWiFi)
+    if (!_checkedReachability)
     {
-        [self setStatusText:@"Please turn on WiFi"];
+        _checkedReachability = YES;
+        if ([[Reachability reachabilityForLocalWiFi] currentReachabilityStatus] != ReachableViaWiFi)
+        {
+            [self setStatusText:@"Please turn on WiFi"];
+            return;
+        }
+        [self restartInitSequenceWithDelay:0.3];
         return;
     }
-    
-    //Stage 1
-    //Setup communication service
     
     //Stage 2
     //Send handshake and wait a bit longer to receive all handshakes
@@ -326,12 +330,12 @@
         {
             //Send handshake 3 times & then set _sentHandshake flag
             [self sendHandshake];
-            [self restartInitSequenceWithDelay: 0.5];
+            [self restartInitSequenceWithDelay: 0.3];
         }
         else
         {
             _sentHandshake = YES;
-            [self restartInitSequenceWithDelay:1.0];
+            [self restartInitSequenceWithDelay:0.6];
         }
         return;
     }
@@ -341,7 +345,7 @@
     if (_hasMoreHandshake)
     {
         _hasMoreHandshake = NO;
-        [self restartInitSequenceWithDelay:1.3];
+        [self restartInitSequenceWithDelay:0.6];
         return;
     }
 
@@ -349,7 +353,7 @@
     //If received some handshake messages already
     if (_receiveHandshake)
     {
-        //Hide the current promt (if any)
+        //Hide the current prompt (if any)
         if (alertView != nil)
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
         
