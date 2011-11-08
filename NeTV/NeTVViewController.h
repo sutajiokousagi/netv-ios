@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/NSNetServices.h>
 #import "AsyncUdpSocket.h"
 #import "CommService.h"
 #import "ChooseHomeNetworkController.h"
 
 
-@interface NeTVViewController : UIViewController <AsyncUdpSocketDelegate, ChooseHomeNetworkControllerDelegate>
+@interface NeTVViewController : UIViewController <AsyncUdpSocketDelegate, ChooseHomeNetworkControllerDelegate, NSNetServiceBrowserDelegate, NSNetServiceDelegate>
 {
     //UI
     IBOutlet UITextField *SSIDName;
@@ -23,6 +24,11 @@
 
     //Communication
     CommService *mainComm;
+	
+	//Bonjour stuff
+	NSMutableArray *_services;
+	NSNetServiceBrowser *_netServiceBrowser;
+	NSNetService *_currentResolve;
     
     //Flag
     BOOL _checkedReachability;
@@ -50,6 +56,9 @@
 - (void)sendHandshake;
 - (void)sendNetworkConfig;
 - (void)sendWifiScan;
+
+//Bonjour helper functions
+- (BOOL)searchForServicesOfType:(NSString *)type inDomain:(NSString *)domain;
 
 //Copy from Android app
 - (void)reset;

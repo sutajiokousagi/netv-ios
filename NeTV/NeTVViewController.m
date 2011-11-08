@@ -13,6 +13,12 @@
 #import "VTPG_Common.h"
 #import "XMLReader.h"
 #import "Reachability.h"
+#import <sys/socket.h>
+#import <netinet/in.h>
+#import <arpa/inet.h>
+#import <sys/ioctl.h>
+#import <net/if.h>
+#import <netdb.h>
 
 #define DEFAULTPORT         8082
 #define MULTICASTGROUP      @"225.0.0.37"
@@ -23,6 +29,13 @@
 
 #define SETWIFI_MSG         11
 #define GETWIFI_MSG         12
+
+// Private extension
+@interface NeTVViewController()
+- (NSString *)addressHost4:(struct sockaddr_in *)pSockaddr4;
+- (NSString *)addressHost6:(struct sockaddr_in6 *)pSockaddr6;
+- (NSString *)addressHost:(struct sockaddr *)pSockaddr;
+@end
 
 @implementation NeTVViewController
 
@@ -45,7 +58,10 @@
     
     //Init communication object (should be a singleton class to be correct)
     mainComm = [[CommService alloc] initWithDelegate:self];
-    
+	
+	//Bonjour stuff
+	_services = [[NSMutableArray alloc] init];
+    [self searchForServicesOfType:@"_netv._tcp." inDomain:@""];
 }
 
 - (void)viewDidUnload
@@ -191,6 +207,63 @@
 }
 
 
+#pragma mark - Bonjour helper functions
+
+// Creates an NSNetServiceBrowser that searches for services of a particular type in a particular domain.
+// If a service is currently being resolved, stop resolving it and stop the service browser from
+// discovering other services.
+- (BOOL)searchForServicesOfType:(NSString *)type inDomain:(NSString *)domain
+{
+	[_netServiceBrowser stop];
+	[_services removeAllObjects];
+
+    if (_netServiceBrowser != nil)
+        [_netServiceBrowser release];
+    
+	_netServiceBrowser = [[NSNetServiceBrowser alloc] init];
+	if(!_netServiceBrowser)
+		return NO;
+
+	_netServiceBrowser.delegate = self;
+	[_netServiceBrowser searchForServicesOfType:type inDomain:domain];
+	return YES;
+}
+
+- (NSString *)addressHost4:(struct sockaddr_in *)pSockaddr4
+{
+    char addrBuf[INET_ADDRSTRLEN];
+    
+    if(inet_ntop(AF_INET, &pSockaddr4->sin_addr, addrBuf, sizeof(addrBuf)) == NULL)
+    {
+        [NSException raise:NSInternalInconsistencyException format:@"Cannot convert address to string."];
+    }
+    
+    return [NSString stringWithCString:addrBuf encoding:NSASCIIStringEncoding];
+}
+
+- (NSString *)addressHost6:(struct sockaddr_in6 *)pSockaddr6
+{
+    char addrBuf[INET6_ADDRSTRLEN];
+    
+    if(inet_ntop(AF_INET6, &pSockaddr6->sin6_addr, addrBuf, sizeof(addrBuf)) == NULL)
+    {
+        [NSException raise:NSInternalInconsistencyException format:@"Cannot convert address to string."];
+    }
+    
+    return [NSString stringWithCString:addrBuf encoding:NSASCIIStringEncoding];
+}
+
+- (NSString *)addressHost:(struct sockaddr *)pSockaddr
+{
+    if(pSockaddr->sa_family == AF_INET)
+    {
+        return [self addressHost4:(struct sockaddr_in *)pSockaddr];
+    }
+    else
+    {
+        return [self addressHost6:(struct sockaddr_in6 *)pSockaddr];
+    }
+}
 
 #pragma mark - AsyncUdpSocket delegate
 
@@ -220,7 +293,6 @@
         return [sock receiveWithTimeout:-1 tag:1];
     commandString = [commandString uppercaseString];
 
-    //LOG_EXPR(tempParsedDict);
     //------------------------------------------------------
         
     if ([commandString isEqualToString:@"HELLO"])
@@ -300,6 +372,56 @@
 }
 
 
+#pragma mark - NSNetServiceBrowser delegate
+
+- (void)netServiceBrowser:(NSNetServiceBrowser *)netServiceBrowser didRemoveService:(NSNetService *)service moreComing:(BOOL)moreComing
+{
+	if (_currentResolve && [service isEqual:_currentResolve])
+		[self stopCurrentResolve];
+    [service setDelegate:nil];
+	[_services removeObject:service];
+	
+	//if (moreComing)
+	//	_hasMoreHandshake = YES;
+}	
+
+- (void)netServiceBrowser:(NSNetServiceBrowser *)netServiceBrowser didFindService:(NSNetService *)service moreComing:(BOOL)moreComing
+{
+	[_services addObject:service];
+    [service setDelegate: self];
+    [service resolveWithTimeout: 5];
+
+	if (!moreComing)
+		_hasMoreHandshake = YES;
+}	
+
+
+#pragma mark - NSNetService delegate
+
+- (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict
+{
+    
+}
+
+- (void)netServiceDidResolveAddress:(NSNetService *)service
+{
+    NSArray *addresses = [service addresses];
+    if ([addresses count] <= 0) {
+        [_services removeObject:service];
+        return;
+    }
+    for (id object in addresses)
+    {
+        NSString * address = [self addressHost:object];
+        if (address == nil)
+            continue;
+        NSLog(@"Bonjour a device: %@", address);
+    }
+        
+    //NSLog(@"Bonjour a device: %@", [service addresses]);
+}
+
+
 #pragma mark - Application Logic
 
 - (void)initializeSequence
@@ -314,29 +436,18 @@
             [self setStatusText:@"Please turn on WiFi"];
             return;
         }
-        [self restartInitSequenceWithDelay:0.3];
-        return;
     }
     
     //Stage 2
-    //Send handshake and wait a bit longer to receive all handshakes
+    //Send handshake and wait to receive all handshakes
     if (!_sentHandshake)
     {
         [self sendHandshake];
+        [self sendHandshake];
+        [self sendHandshake];
         [self setStatusText:@"Searching for NeTV..."];
-        _retryCounter++;
-        
-        if (_retryCounter < 3)
-        {
-            //Send handshake 3 times & then set _sentHandshake flag
-            [self sendHandshake];
-            [self restartInitSequenceWithDelay: 0.3];
-        }
-        else
-        {
-            _sentHandshake = YES;
-            [self restartInitSequenceWithDelay:0.6];
-        }
+        _sentHandshake = YES;
+        [self restartInitSequenceWithDelay: 1.5];
         return;
     }
     
@@ -357,7 +468,7 @@
         if (alertView != nil)
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
         
-        //Display a list, stop sending handshake
+        //Display a list, stop device discovery
         [self showDeviceListDialog];
         return;
     }
