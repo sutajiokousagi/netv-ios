@@ -24,7 +24,9 @@
 - (IBAction)pressLeft:(id)sender;
 - (IBAction)pressRight:(id)sender;
 - (IBAction)pressCenter:(id)sender;
-
 - (IBAction)pressBrowser:(id)sender;
+- (IBAction)pressPhoto:(id)sender;
+
+- (void)sendRemoteControlCommand:(NSString*) buttonName;
 
 @end
