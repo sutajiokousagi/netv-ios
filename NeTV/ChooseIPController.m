@@ -2,16 +2,24 @@
 //  ChooseIPController.m
 //  NeTV
 //
-//  Created by Sidwyn Koh on 16/8/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import "ChooseIPController.h"
-#import "RemoteController.h"
+
+// Private implementation
+@interface ChooseIPController()
+    @property (nonatomic, retain) NSMutableDictionary *tableData;
+    @property (nonatomic, assign) id delegate;
+
+    -(NSMutableDictionary*)getDataAtIndex:(int)index;
+
+@end
 
 @implementation ChooseIPController
 
-@synthesize ipArray;
+@synthesize tableData;
+@synthesize delegate;
+NSString * const myUniqueChooseIPControllerKey = @"NeTV??????";
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -21,10 +29,12 @@
     return self;
 }
 
-- (id)initWithArray:(NSMutableArray *)theArray{
+- (id)initWithDelegate:(id)theDelegate;
+{
     self = [super init];
-    if (self){
-        self.ipArray = theArray;
+    if (self)
+    {
+        self.delegate = theDelegate;
     }
     return self;
 }
@@ -33,8 +43,6 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
@@ -43,6 +51,8 @@
 {
     [super viewDidLoad];
     
+    if (self.tableData == nil)
+        self.tableData = [[NSMutableDictionary alloc] initWithCapacity:1];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -55,7 +65,6 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -75,6 +84,10 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [self clearData];
+    self.tableData = nil;
+    self.delegate = nil;
+    
     [super viewDidDisappear:animated];
 }
 
@@ -84,32 +97,93 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - Table view data get/set
+
+-(NSMutableDictionary*)getDataAtIndex:(int)index
+{
+    if (self.tableData == nil)
+        return nil;
+    
+    int counter = 0;
+    for (NSString *key in self.tableData)
+    {
+        if (counter != index) {
+            counter++;
+            continue;
+        }
+        
+        NSMutableDictionary *dataObject = [self.tableData objectForKey:key];
+        if (dataObject == nil)
+            return nil;
+        
+        //Insert the key into dictionary
+        //[dataObject setObject:key forKey:myUniqueChooseIPControllerKey];
+        return dataObject;
+    }
+    return nil;
+}
+
+- (void)setData:(NSMutableDictionary *)dict
+{
+    if (self.tableData != nil)
+        [self clearData];
+    self.tableData = dict;
+    [self.tableView reloadData];
+}
+
+- (void)clearData
+{
+    if (self.tableData == nil)
+        return;
+    [self.tableData removeAllObjects];
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
+    if (self.tableData == nil)
+        return 0;
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return ipArray.count;
+    
+    if (self.tableData == nil)
+        return 0;
+    return [self.tableData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"ChooseIPControllerCellIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+    if (cell == nil)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [ipArray objectAtIndex:indexPath.row];
-    // Configure the cell...
+    //Retrieve data for this cell
+    NSMutableDictionary * cellData = [self getDataAtIndex:[indexPath row]];
+    if (cellData == nil)
+        return cell;
     
+    //Assign data to UI
+    NSString *ip = [cellData objectForKey:@"ip"];
+    NSString *guid = [cellData objectForKey:@"guid"];
+    NSString *devicename = [cellData objectForKey:@"devicename"];
+    
+    if (devicename != nil)      cell.textLabel.text = devicename;
+    else if (ip != nil)         cell.textLabel.text = ip;
+    else if (guid != nil)       cell.textLabel.text = guid;
+    else                        cell.textLabel.text = @"Unconfigured device";
+    
+    cell.textLabel.text = [cell.textLabel.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     return cell;
 }
 
@@ -156,8 +230,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RemoteController *rc = [[RemoteController alloc]initWithIP:[ipArray objectAtIndex:indexPath.row]];
-    [self.navigationController pushViewController:rc animated:YES];
+    if (self.delegate == nil || [self.delegate respondsToSelector:@selector(chooseIPController: didSelectIP:)])
+        return;
+    
+    NSMutableDictionary * selectedData = [self getDataAtIndex:[indexPath row]];
+    if (selectedData == nil)
+        return;
+    [self.delegate chooseIPController:self didSelect:selectedData];
 }
 
 @end

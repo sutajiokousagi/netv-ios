@@ -2,15 +2,22 @@
 //  ChooseIPController.h
 //  NeTV
 //
-//  Created by Sidwyn Koh on 16/8/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
-#import "CommService.h"
+
+@class ChooseIPController;
+
+////////////////////////////////////////////////////////////////////////
+
+@protocol ChooseIPControllerDelegate <NSObject>
+@optional
+- (void) chooseIPController:(ChooseIPController *)chooseIPController didSelect:(NSMutableDictionary*)selectedData;
+@end
+
 @interface ChooseIPController : UITableViewController
 
-@property (nonatomic, retain) NSMutableArray *ipArray;
-- (id)initWithArray:(NSMutableArray *)theArray;
+- (id)initWithDelegate:(id)theDelegate;
+- (void)setData:(NSMutableDictionary *)dict;
+- (void)clearData;
 
 @end
