@@ -206,6 +206,29 @@
     [mainComm sendUDPCommand:@"WifiScan" andParameters:nil andTag:5];
 }
 
+- (NSString*)getGUIDDeviceName:(NSString*)guid
+{
+    NSString * urlString = [NSString stringWithFormat:@"http://www.chumby.com/xapis/device/authorize/%@", guid];
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDelegate:self];
+    [request startSynchronous];
+    
+    NSError * error = [request error];
+    if (error)
+        return nil;
+    NSString * responseString = [request responseString];
+    NSRange unauthRange = [responseString rangeOfString:@"unauthorized" options: NSCaseInsensitiveSearch];
+    if (unauthRange.location > 0 && unauthRange.length > 0)
+        return nil;
+    
+    NSRange range1 = [responseString rangeOfString:@"<name>" options: NSCaseInsensitiveSearch];
+    NSRange range2 = [responseString rangeOfString:@"</name>" options: NSCaseInsensitiveSearch];
+    if (range1.location <= 0 || range2.location <= 0)
+        return nil;
+    return [responseString substringWithRange:NSMakeRange(range1.location+6, range2.location-range1.location-6)];
+}
+
 
 #pragma mark - Bonjour helper functions
 
@@ -297,17 +320,41 @@
         
     if ([commandString isEqualToString:@"HELLO"])
     {
-        _hasMoreHandshake = YES;
-        _receiveHandshake = YES;
-        
-        //Should also add device data dictionary to _deviceList as well
-        [_deviceList setObject:rootDictionary forKey:addressString];
-        
-        //Status text
-        NSString *statusString = [NSString stringWithFormat:@"%d device(s) found", [_deviceList count]];
-        [self setStatusText:statusString];
-        
-        NSLog(@"Rx handshake: %@", addressString);
+        if ([_deviceList objectForKey:addressString] == nil)
+        {
+            _hasMoreHandshake = YES;
+            _receiveHandshake = YES;
+                        
+            //Status text on UI
+            NSString *statusString = [NSString stringWithFormat:@"%d device(s) found", [_deviceList count]];
+            [self setStatusText:statusString];
+            
+            //Clean up received data into a nice dictionary
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] initWithCapacity:10];
+            for (NSString *key in [rootDictionary objectForKey:@"data"])
+            {
+                id value = [[rootDictionary objectForKey:@"data"] objectForKey:key];
+                if (![value isKindOfClass:[NSDictionary class]])
+                    continue;
+                id text = [(NSDictionary*)value objectForKey:@"text"];
+                if (text == nil)
+                    continue;
+                [dict setObject:text forKey:key];
+            }
+            
+            //Check valid hello command
+            NSString *guid = [dict objectForKey:@"guid"];
+            if (guid != nil)
+            {
+                //Get device name (from Internet)
+                NSString * deviceName = [self getGUIDDeviceName:guid];
+                if (deviceName != nil)
+                    [dict setObject:deviceName forKey:@"devicename"];
+                [_deviceList setObject:dict forKey:addressString];
+                
+                NSLog(@"Found %@ %@", addressString, deviceName);
+            }
+        }
     }
     else if ([commandString isEqualToString:@"WIFISCAN"])
     {
@@ -421,6 +468,21 @@
     //NSLog(@"Bonjour a device: %@", [service addresses]);
 }
 
+#pragma mark - ASIHTTPRequest delegate
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    // Use when fetching text data
+    NSString *responseString = [request responseString];
+    
+    // Use when fetching binary data
+    NSData *responseData = [request responseData];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSError *error = [request error];
+}
 
 #pragma mark - Application Logic
 
