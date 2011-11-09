@@ -55,13 +55,6 @@
     NSString *versionStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     NSLog(@"Version %@", versionStr);
     lblVersion.text = versionStr;
-    
-    //Init communication object (should be a singleton class to be correct)
-    mainComm = [[CommService alloc] initWithDelegate:self];
-	
-	//Bonjour stuff
-	_services = [[NSMutableArray alloc] init];
-    [self searchForServicesOfType:@"_netv._tcp." inDomain:@""];
 }
 
 - (void)viewDidUnload
@@ -71,19 +64,34 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    //Init communication object (should be a singleton class to be correct)
+    if (mainComm == nil)
+        mainComm = [[CommService alloc] initWithDelegate:self];
+	
+	//Bonjour stuff
+    if (_services == nil)
+        _services = [[NSMutableArray alloc] init];
+    [self searchForServicesOfType:@"_netv._tcp." inDomain:@""];
+    
+    //Rescan
+    [self reset];
+    
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
-{
+{   
     [super viewDidAppear:animated];
-    
-    [self reset];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    NSLog(@"mainComm object for NeTVViewController released");
+    if (mainComm != nil)
+        [mainComm release];
+    mainComm = nil;
+
 	[super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
     
@@ -137,11 +145,10 @@
 {
     [self setStatusText:@"Select a device to control"];
     
-    NSArray *keyArray = [_deviceList allKeys];
-    for (int i=0; i< [keyArray count]; i++)
-        [_ipListForUI addObject:[keyArray objectAtIndex:i]];
+    //Create the UI for selecting a device
+    ChooseIPController *listIP = [[ChooseIPController alloc] initWithDelegate:self];
+    [listIP setData:_deviceList];
     
-    ChooseIPController *listIP = [[ChooseIPController alloc] initWithArray:_ipListForUI];
     [self.navigationController pushViewController:listIP animated:YES];
 }
 
@@ -320,15 +327,15 @@
         
     if ([commandString isEqualToString:@"HELLO"])
     {
+        _hasMoreHandshake = YES;
+        _receiveHandshake = YES;
+        
+        //Status text on UI
+        NSString *statusString = [NSString stringWithFormat:@"%d device(s) found", [_deviceList count]];
+        [self setStatusText:statusString];
+        
         if ([_deviceList objectForKey:addressString] == nil)
-        {
-            _hasMoreHandshake = YES;
-            _receiveHandshake = YES;
-                        
-            //Status text on UI
-            NSString *statusString = [NSString stringWithFormat:@"%d device(s) found", [_deviceList count]];
-            [self setStatusText:statusString];
-            
+        {                       
             //Clean up received data into a nice dictionary
             NSMutableDictionary * dict = [[NSMutableDictionary alloc] initWithCapacity:10];
             for (NSString *key in [rootDictionary objectForKey:@"data"])
@@ -342,9 +349,9 @@
                 [dict setObject:text forKey:key];
             }
             
-            //Check valid hello command
+            //Check valid Hello return data
             NSString *guid = [dict objectForKey:@"guid"];
-            if (guid != nil)
+            if (guid != nil && [guid length] > 10)
             {
                 //Get device name (from Internet)
                 NSString * deviceName = [self getGUIDDeviceName:guid];
@@ -352,7 +359,7 @@
                     [dict setObject:deviceName forKey:@"devicename"];
                 [_deviceList setObject:dict forKey:addressString];
                 
-                NSLog(@"Found %@ %@", addressString, deviceName);
+                NSLog(@"Found %@ %@, %@", addressString, deviceName, guid);
             }
         }
     }
@@ -404,6 +411,24 @@
 }
 
 
+#pragma mark - ChooseIPController delegate
+
+- (void) chooseIPController:(ChooseIPController *)chooseIPController didSelect:(NSMutableDictionary*)selectedData
+{   
+    [self dismissModalViewControllerAnimated:YES];
+    
+    NSString *ipString = [selectedData objectForKey:@"ip"];
+    if (ipString == nil || [ipString length] < 7)
+        return;
+    
+    //Not sure why there is a leading space character (due to XML parser?)
+    ipString = [ipString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    RemoteController *remoteController = [[RemoteController alloc] initWithIP:ipString];
+    [self.navigationController pushViewController:remoteController animated:YES];
+}
+
+
 #pragma mark - ChooseHomeNetworkController delegate
 
 - (void)userFinish
@@ -423,8 +448,8 @@
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)netServiceBrowser didRemoveService:(NSNetService *)service moreComing:(BOOL)moreComing
 {
-	if (_currentResolve && [service isEqual:_currentResolve])
-		[self stopCurrentResolve];
+	//if (_currentResolve && [service isEqual:_currentResolve])
+	//	[self stopCurrentResolve];
     [service setDelegate:nil];
 	[_services removeObject:service];
 	
@@ -459,29 +484,15 @@
     }
     for (id object in addresses)
     {
+        /*
         NSString * address = [self addressHost:object];
         if (address == nil)
             continue;
         NSLog(@"Bonjour a device: %@", address);
+         */
     }
         
     //NSLog(@"Bonjour a device: %@", [service addresses]);
-}
-
-#pragma mark - ASIHTTPRequest delegate
-
-- (void)requestFinished:(ASIHTTPRequest *)request
-{
-    // Use when fetching text data
-    NSString *responseString = [request responseString];
-    
-    // Use when fetching binary data
-    NSData *responseData = [request responseData];
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request
-{
-    NSError *error = [request error];
 }
 
 #pragma mark - Application Logic
@@ -509,7 +520,7 @@
         [self sendHandshake];
         [self setStatusText:@"Searching for NeTV..."];
         _sentHandshake = YES;
-        [self restartInitSequenceWithDelay: 1.5];
+        [self restartInitSequenceWithDelay: 2.0];
         return;
     }
     

@@ -10,11 +10,12 @@
 #import <Foundation/NSNetServices.h>
 #import "AsyncUdpSocket.h"
 #import "CommService.h"
+#import "ChooseIPController.h"
 #import "ChooseHomeNetworkController.h"
 #import "ASIHTTPRequest.h"
 
 
-@interface NeTVViewController : UIViewController <AsyncUdpSocketDelegate, ChooseHomeNetworkControllerDelegate, NSNetServiceBrowserDelegate, NSNetServiceDelegate, ASIHTTPRequestDelegate>
+@interface NeTVViewController : UIViewController <AsyncUdpSocketDelegate, ChooseHomeNetworkControllerDelegate, NSNetServiceBrowserDelegate, NSNetServiceDelegate, ChooseIPControllerDelegate>
 {
     //UI
     IBOutlet UITextField *SSIDName;
@@ -57,7 +58,7 @@
 - (void)sendHandshake;
 - (void)sendNetworkConfig;
 - (void)sendWifiScan;
-- (void)getGUIDProfile:(NSString*)guid;
+- (NSString*)getGUIDDeviceName:(NSString*)guid;
 
 //Bonjour helper functions
 - (BOOL)searchForServicesOfType:(NSString *)type inDomain:(NSString *)domain;
