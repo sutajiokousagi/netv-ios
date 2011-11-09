@@ -2,9 +2,6 @@
 //  CommService.m
 //  NeTV
 //
-//  Created by Sidwyn Koh on 8/8/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import "CommService.h"
 #import "VTPG_Common.h"
@@ -39,7 +36,6 @@
         asyncSocket = [[AsyncUdpSocket alloc]initWithDelegate:theClass];
         NSError *e;
         [asyncSocket bindToPort:8082 error:&e];
-        //[asyncSocket connectToHost:@"192.168.100.1" onPort:8082 error:&e];
     }
     
     return self;
@@ -51,11 +47,18 @@
         asyncSocket = [[AsyncUdpSocket alloc]initWithDelegate:theClass];
         NSError *e;
         [asyncSocket bindToPort:8082 error:&e];
-//      [asyncSocket connectToHost:@"192.168.100.1" onPort:8082 error:&e];   
 //      [asyncSocket bindToAddress:theIP port:8082 error:&e];
     }
     
     return self;
+}
+
+- (void)dealloc
+{
+    //Important!!
+    asyncSocket.delegate = nil;
+    
+    [super dealloc];
 }
 
 - (void)sendUDPCommand:(NSString *)command andParameters:(NSDictionary *)parameterDictionary andTag:(long)theTag

@@ -2,9 +2,6 @@
 //  CommService.h
 //  NeTV
 //
-//  Created by Sidwyn Koh on 8/8/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import <Foundation/Foundation.h>
 #import "AsyncUdpSocket.h"
