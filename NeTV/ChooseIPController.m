@@ -10,13 +10,11 @@
 @interface ChooseIPController()
 
     @property (nonatomic, retain) NSMutableDictionary *tableData;
-    @property (nonatomic, assign) id delegate;
     @property (nonatomic, assign) IBOutlet ChooseIPCellView *customCell;
 
     -(NSMutableDictionary*)getDataAtIndex:(int)index;
     
 @end
-
 
 
 @implementation ChooseIPController
@@ -58,10 +56,13 @@ NSString * const myUniqueChooseIPControllerKey = @"NeTV??????";
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"NeTV";
-    self.navigationItem.leftBarButtonItem.title = @"Back";
-    
+    //Clear background color
     self.view.backgroundColor = [UIColor clearColor];
+    
+    //Hide the default navbar
+    self.navigationController.navigationBarHidden = YES;
+    
+    //No seperator line
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
     if (self.tableData == nil)

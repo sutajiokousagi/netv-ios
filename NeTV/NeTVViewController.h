@@ -22,7 +22,12 @@
     IBOutlet UITextField *SSIDPassword;
     IBOutlet UILabel *lblVersion;
     IBOutlet UILabel *lblStatus;
+    IBOutlet UILabel *lblInstruction;
+    IBOutlet UIImageView *imgLogo;
+    IBOutlet UIImageView *imgNavbar;
+    IBOutlet UIButton *btnNavbarBack;
     UIAlertView *alertView;
+    ChooseIPController *chooseIPController;
 
     //Communication
     CommService *mainComm;
@@ -45,10 +50,13 @@
 }
 
 //UI Events
-//...
+-(IBAction)onNavbarBack:(id)sender;
 
 //Helpers
 - (void)showDeviceListDialog;
+- (void)showDeviceList;
+- (void)hideDeviceList;
+- (void)clearDeviceList;
 - (void)setStatusText:(NSString*)text;
 - (void)restartInitSequenceWithDelay:(float)second;
 - (void)showSimpleMessageDialog:(NSString*)message;

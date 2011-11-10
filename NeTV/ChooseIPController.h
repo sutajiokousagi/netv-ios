@@ -15,6 +15,7 @@
 @end
 
 @interface ChooseIPController : UITableViewController
+@property (nonatomic, assign) id delegate;
 
 - (id)initWithDelegate:(id)theDelegate;
 - (void)setData:(NSMutableDictionary *)dict;

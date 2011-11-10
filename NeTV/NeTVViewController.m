@@ -9,7 +9,6 @@
 #import "NeTVViewController.h"
 #import "RemoteController.h"
 #import "UIDevice-Hardware.h"
-#import "ChooseIPController.h"
 #import "VTPG_Common.h"
 #import "XMLReader.h"
 #import "Reachability.h"
@@ -29,20 +28,6 @@
 
 #define SETWIFI_MSG         11
 #define GETWIFI_MSG         12
-
-//Custom navigation bar
-@implementation UINavigationBar (CustomImage)
--(void)drawRect:(CGRect)rect
-{
-    UIImage *image = [UIImage imageNamed:@"navbar_bg.png"];
-    [image drawInRect:CGRectMake(0,0, self.frame.size.width, self.frame.size.height)];
-    
-#ifdef __IPHONE_5_0
-    if ([self respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
-        [self setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-#endif    
-}
-@end
 
 // Private extension
 @interface NeTVViewController()
@@ -65,12 +50,36 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"NeTV";
-    
     //Get the version number
     NSString *versionStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     NSLog(@"Version %@", versionStr);
     lblVersion.text = versionStr;
+    
+    //Clear background color
+    self.view.backgroundColor = [UIColor clearColor];
+    
+    //Hide the default navbar
+    self.navigationController.navigationBarHidden = YES;
+    
+    //Hide the custom navbar
+    btnNavbarBack.alpha = 0;
+        
+    //Setup SearchResultTableView
+    if (chooseIPController == nil)
+    {      
+        CGRect chooseIPRect;
+        chooseIPRect.origin.x = 0;
+        chooseIPRect.origin.y = - self.view.frame.size.height;
+        chooseIPRect.size.width = self.view.frame.size.width;
+        chooseIPRect.size.height = self.view.frame.size.height - imgNavbar.frame.size.height;
+        
+        //Add to current view, hidden away
+        chooseIPController = [[ChooseIPController alloc] initWithNibName:@"ChooseIPController" bundle:[NSBundle mainBundle]];
+        [chooseIPController.view setFrame:chooseIPRect];
+        [self.view insertSubview:chooseIPController.view belowSubview:imgNavbar];
+        chooseIPController.delegate = self;
+    }
+
 }
 
 - (void)viewDidUnload
@@ -81,6 +90,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     //Init communication object (should be a singleton class to be correct)
+    NSLog(@"mainComm object for NeTVViewController created");
     if (mainComm == nil)
         mainComm = [[CommService alloc] initWithDelegate:self];
 	
@@ -153,6 +163,11 @@
 
 #pragma mark - UI Events
 
+-(IBAction)onNavbarBack:(id)sender
+{
+    [self hideDeviceList];
+}
+
 
 #pragma mark - Helpers
 
@@ -165,6 +180,63 @@
     [listIP setData:_deviceList];
     
     [self.navigationController pushViewController:listIP animated:YES];
+}
+
+- (void)showDeviceList
+{
+    [chooseIPController setData:_deviceList];
+    
+    CGRect chooseIPRect;
+    chooseIPRect.origin.x = 0;
+    chooseIPRect.origin.y = imgNavbar.frame.size.height;
+    chooseIPRect.size.width = self.view.frame.size.width;
+    chooseIPRect.size.height = self.view.frame.size.height - imgNavbar.frame.size.height;
+    
+    [UIView beginAnimations:nil context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:0.6];
+    lblVersion.alpha = 0;
+    lblStatus.alpha = 0;
+    imgLogo.alpha = 0;
+	[UIView commitAnimations];
+    
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDelay:0.2];
+	[UIView setAnimationDuration:0.6];
+    btnNavbarBack.alpha = 1;
+	chooseIPController.view.frame = chooseIPRect;
+	[UIView commitAnimations]; 
+}
+
+- (void)hideDeviceList
+{
+    CGRect chooseIPRect;
+    chooseIPRect.origin.x = 0;
+    chooseIPRect.origin.y = - self.view.frame.size.height;
+    chooseIPRect.size.width = self.view.frame.size.width;
+
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:0.6];
+    btnNavbarBack.alpha = 0;
+	chooseIPController.view.frame = chooseIPRect;
+	[UIView commitAnimations];
+    
+    [UIView beginAnimations:nil context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:0.6];
+    [UIView setAnimationDelay:0.2];
+    [UIView setAnimationDidStopSelector: @selector(clearDeviceList)];
+    lblVersion.alpha = 1;
+    lblStatus.alpha = 1;
+    imgLogo.alpha = 1;
+	[UIView commitAnimations];
+}
+
+- (void)clearDeviceList
+{
+    [chooseIPController clearData];
 }
 
 - (void)setStatusText:(NSString *)text
@@ -439,6 +511,8 @@
     //Not sure why there is a leading space character (due to XML parser?)
     ipString = [ipString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
+    [self hideDeviceList];
+    
     RemoteController *remoteController = [[RemoteController alloc] initWithIP:ipString];
     [self.navigationController pushViewController:remoteController animated:YES];
 }
@@ -557,7 +631,8 @@
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
         
         //Display a list, stop device discovery
-        [self showDeviceListDialog];
+        //[self showDeviceListDialog];
+        [self showDeviceList];
         return;
     }
     
