@@ -30,6 +30,15 @@
 #define SETWIFI_MSG         11
 #define GETWIFI_MSG         12
 
+//Custom navigation bar
+@implementation UINavigationBar (CustomImage)
+-(void)drawRect:(CGRect)rect
+{
+    UIImage *image = [UIImage imageNamed:@"navbar_bg.png"];
+    [image drawInRect:CGRectMake(0,0, self.frame.size.width, self.frame.size.height)];
+}
+@end
+
 // Private extension
 @interface NeTVViewController()
 - (NSString *)addressHost4:(struct sockaddr_in *)pSockaddr4;
@@ -50,6 +59,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.title = @"NeTV";
     
     //Get the version number
     NSString *versionStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
@@ -77,7 +88,6 @@
     [self reset];
     
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated

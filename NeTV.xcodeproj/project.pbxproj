@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4201DD63146B8EFF0080FF33 /* navbar_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4201DD61146B8EFF0080FF33 /* navbar_back.png */; };
+		4201DD64146B8EFF0080FF33 /* navbar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4201DD62146B8EFF0080FF33 /* navbar_bg.png */; };
+		4201DD67146B95B90080FF33 /* device_list_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4201DD66146B95B90080FF33 /* device_list_bg.png */; };
+		4201DD6A146B9A0B0080FF33 /* ChooseIPCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4201DD69146B9A0B0080FF33 /* ChooseIPCellView.m */; };
+		4201DD6C146B9EEC0080FF33 /* ChooseIPCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4201DD6B146B9EEC0080FF33 /* ChooseIPCellView.xib */; };
+		4201DD70146BA1680080FF33 /* device_list_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4201DD6D146BA1680080FF33 /* device_list_bg@2x.png */; };
+		4201DD71146BA1680080FF33 /* device_list_cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4201DD6E146BA1680080FF33 /* device_list_cell_bg.png */; };
+		4201DD72146BA1680080FF33 /* device_list_cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4201DD6F146BA1680080FF33 /* device_list_cell_bg@2x.png */; };
+		4201DD75146BA1780080FF33 /* navbar_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4201DD73146BA1780080FF33 /* navbar_back@2x.png */; };
+		4201DD76146BA1780080FF33 /* navbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4201DD74146BA1780080FF33 /* navbar_bg@2x.png */; };
+		4201DD79146BB23A0080FF33 /* device_list_cell_bg_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4201DD77146BB23A0080FF33 /* device_list_cell_bg_selected.png */; };
+		4201DD7A146BB23A0080FF33 /* device_list_cell_bg_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4201DD78146BB23A0080FF33 /* device_list_cell_bg_selected@2x.png */; };
 		4207DCAB143D9A9F00FAD4AA /* ChooseHomeNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DC7D143D9A9F00FAD4AA /* ChooseHomeNetworkController.m */; };
 		4207DCAC143D9A9F00FAD4AA /* ChooseHomeNetworkController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC7E143D9A9F00FAD4AA /* ChooseHomeNetworkController.xib */; };
 		4207DCAD143D9A9F00FAD4AA /* ChooseIPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DC80143D9A9F00FAD4AA /* ChooseIPController.m */; };
@@ -61,6 +73,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4201DD61146B8EFF0080FF33 /* navbar_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar_back.png; sourceTree = "<group>"; };
+		4201DD62146B8EFF0080FF33 /* navbar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar_bg.png; sourceTree = "<group>"; };
+		4201DD66146B95B90080FF33 /* device_list_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = device_list_bg.png; sourceTree = "<group>"; };
+		4201DD68146B9A0B0080FF33 /* ChooseIPCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseIPCellView.h; sourceTree = "<group>"; };
+		4201DD69146B9A0B0080FF33 /* ChooseIPCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseIPCellView.m; sourceTree = "<group>"; };
+		4201DD6B146B9EEC0080FF33 /* ChooseIPCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseIPCellView.xib; sourceTree = "<group>"; };
+		4201DD6D146BA1680080FF33 /* device_list_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "device_list_bg@2x.png"; sourceTree = "<group>"; };
+		4201DD6E146BA1680080FF33 /* device_list_cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = device_list_cell_bg.png; sourceTree = "<group>"; };
+		4201DD6F146BA1680080FF33 /* device_list_cell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "device_list_cell_bg@2x.png"; sourceTree = "<group>"; };
+		4201DD73146BA1780080FF33 /* navbar_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar_back@2x.png"; sourceTree = "<group>"; };
+		4201DD74146BA1780080FF33 /* navbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar_bg@2x.png"; sourceTree = "<group>"; };
+		4201DD77146BB23A0080FF33 /* device_list_cell_bg_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = device_list_cell_bg_selected.png; sourceTree = "<group>"; };
+		4201DD78146BB23A0080FF33 /* device_list_cell_bg_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "device_list_cell_bg_selected@2x.png"; sourceTree = "<group>"; };
 		4207DC7C143D9A9F00FAD4AA /* ChooseHomeNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseHomeNetworkController.h; sourceTree = "<group>"; };
 		4207DC7D143D9A9F00FAD4AA /* ChooseHomeNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseHomeNetworkController.m; sourceTree = "<group>"; };
 		4207DC7E143D9A9F00FAD4AA /* ChooseHomeNetworkController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseHomeNetworkController.xib; sourceTree = "<group>"; };
@@ -169,6 +194,9 @@
 				4207DC7C143D9A9F00FAD4AA /* ChooseHomeNetworkController.h */,
 				4207DC7D143D9A9F00FAD4AA /* ChooseHomeNetworkController.m */,
 				4207DC7E143D9A9F00FAD4AA /* ChooseHomeNetworkController.xib */,
+				4201DD68146B9A0B0080FF33 /* ChooseIPCellView.h */,
+				4201DD69146B9A0B0080FF33 /* ChooseIPCellView.m */,
+				4201DD6B146B9EEC0080FF33 /* ChooseIPCellView.xib */,
 				4207DC7F143D9A9F00FAD4AA /* ChooseIPController.h */,
 				4207DC80143D9A9F00FAD4AA /* ChooseIPController.m */,
 				4207DC81143D9A9F00FAD4AA /* ChooseIPController.xib */,
@@ -190,6 +218,16 @@
 		4207DC89143D9A9F00FAD4AA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4201DD66146B95B90080FF33 /* device_list_bg.png */,
+				4201DD6D146BA1680080FF33 /* device_list_bg@2x.png */,
+				4201DD6E146BA1680080FF33 /* device_list_cell_bg.png */,
+				4201DD6F146BA1680080FF33 /* device_list_cell_bg@2x.png */,
+				4201DD77146BB23A0080FF33 /* device_list_cell_bg_selected.png */,
+				4201DD78146BB23A0080FF33 /* device_list_cell_bg_selected@2x.png */,
+				4201DD61146B8EFF0080FF33 /* navbar_back.png */,
+				4201DD73146BA1780080FF33 /* navbar_back@2x.png */,
+				4201DD62146B8EFF0080FF33 /* navbar_bg.png */,
+				4201DD74146BA1780080FF33 /* navbar_bg@2x.png */,
 				4207DC8A143D9A9F00FAD4AA /* btn_controlpanel.png */,
 				4207DC8B143D9A9F00FAD4AA /* btn_widget.png */,
 				4207DC8C143D9A9F00FAD4AA /* center.png */,
@@ -374,6 +412,17 @@
 				4207DCE7143D9F2F00FAD4AA /* Icon@2x.png in Resources */,
 				4207DCE9143D9F4700FAD4AA /* Icon-72.png in Resources */,
 				F24DC78B144C516200AB3BA1 /* SVWebViewController.bundle in Resources */,
+				4201DD63146B8EFF0080FF33 /* navbar_back.png in Resources */,
+				4201DD64146B8EFF0080FF33 /* navbar_bg.png in Resources */,
+				4201DD67146B95B90080FF33 /* device_list_bg.png in Resources */,
+				4201DD6C146B9EEC0080FF33 /* ChooseIPCellView.xib in Resources */,
+				4201DD70146BA1680080FF33 /* device_list_bg@2x.png in Resources */,
+				4201DD71146BA1680080FF33 /* device_list_cell_bg.png in Resources */,
+				4201DD72146BA1680080FF33 /* device_list_cell_bg@2x.png in Resources */,
+				4201DD75146BA1780080FF33 /* navbar_back@2x.png in Resources */,
+				4201DD76146BA1780080FF33 /* navbar_bg@2x.png in Resources */,
+				4201DD79146BB23A0080FF33 /* device_list_cell_bg_selected.png in Resources */,
+				4201DD7A146BB23A0080FF33 /* device_list_cell_bg_selected@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +455,7 @@
 				4266901A146A613B00E91493 /* ASIHTTPRequest.m in Sources */,
 				4266901B146A613B00E91493 /* ASIInputStream.m in Sources */,
 				4266901C146A613B00E91493 /* ASINetworkQueue.m in Sources */,
+				4201DD6A146B9A0B0080FF33 /* ChooseIPCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

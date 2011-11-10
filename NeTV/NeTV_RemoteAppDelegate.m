@@ -18,9 +18,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    //Custom background image
+    UIView *backgroundView = [[UIView alloc] initWithFrame: self.window.frame];
+    backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"device_list_bg.png"]];
+    [self.window addSubview:backgroundView];
+    [backgroundView release];
      
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = nc;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

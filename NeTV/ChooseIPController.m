@@ -4,20 +4,27 @@
 //
 
 #import "ChooseIPController.h"
+#import "ChooseIPCellView.h"
 
 // Private implementation
 @interface ChooseIPController()
+
     @property (nonatomic, retain) NSMutableDictionary *tableData;
     @property (nonatomic, assign) id delegate;
+    @property (nonatomic, assign) IBOutlet ChooseIPCellView *customCell;
 
     -(NSMutableDictionary*)getDataAtIndex:(int)index;
-
+    
 @end
+
+
 
 @implementation ChooseIPController
 
 @synthesize tableData;
 @synthesize delegate;
+@synthesize customCell;
+
 NSString * const myUniqueChooseIPControllerKey = @"NeTV??????";
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -51,14 +58,17 @@ NSString * const myUniqueChooseIPControllerKey = @"NeTV??????";
 {
     [super viewDidLoad];
     
+    self.navigationItem.title = @"NeTV";
+    self.navigationItem.leftBarButtonItem.title = @"Back";
+    
+    self.view.backgroundColor = [UIColor clearColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
     if (self.tableData == nil)
         self.tableData = [[NSMutableDictionary alloc] initWithCapacity:1];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -158,15 +168,29 @@ NSString * const myUniqueChooseIPControllerKey = @"NeTV??????";
     return [self.tableData count];
 }
 
+//
+// Height for each row
+//
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (customCell != nil)
+        return customCell.frame.size.height;
+    
+    //This is bad
+	return 70;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ChooseIPControllerCellIdentifier";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //Reuse or load from Nib
+    ChooseIPCellView *cell = (ChooseIPCellView *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+        [[NSBundle mainBundle] loadNibNamed:@"ChooseIPCellView" owner:self options:nil];
+        cell = customCell;
+	}
     
     //Retrieve data for this cell
     NSMutableDictionary * cellData = [self getDataAtIndex:[indexPath row]];
@@ -177,13 +201,20 @@ NSString * const myUniqueChooseIPControllerKey = @"NeTV??????";
     NSString *ip = [cellData objectForKey:@"ip"];
     NSString *guid = [cellData objectForKey:@"guid"];
     NSString *devicename = [cellData objectForKey:@"devicename"];
+    NSString *mac = [cellData objectForKey:@"mac"];
     
-    if (devicename != nil)      cell.textLabel.text = devicename;
-    else if (ip != nil)         cell.textLabel.text = ip;
-    else if (guid != nil)       cell.textLabel.text = guid;
-    else                        cell.textLabel.text = @"Unconfigured device";
+    if (devicename != nil)      cell.header.text = devicename;
+    else if (ip != nil)         cell.header.text = ip;
+    else if (guid != nil)       cell.header.text = guid;
+    else                        cell.header.text = @"Unconfigured device";
+    cell.subHeader.text = [NSString stringWithFormat:@"%@\n%@", ip, mac];
+   
+    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundView.backgroundColor = [UIColor clearColor];
     
-    cell.textLabel.text = [cell.textLabel.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    //Remove white spaces
+    cell.header.text = [cell.header.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    cell.subHeader.text = [cell.subHeader.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     return cell;
 }
 
