@@ -202,13 +202,20 @@ NSString * const myUniqueChooseIPControllerKey = @"NeTV??????";
     NSString *guid = [cellData objectForKey:@"guid"];
     NSString *devicename = [cellData objectForKey:@"devicename"];
     NSString *mac = [cellData objectForKey:@"mac"];
+    NSString *fwver = [cellData objectForKey:@"fwver"];
     
-    if (devicename != nil)      cell.header.text = devicename;
-    else if (ip != nil)         cell.header.text = ip;
-    else if (guid != nil)       cell.header.text = guid;
-    else                        cell.header.text = @"Unconfigured device";
-    cell.subHeader.text = [NSString stringWithFormat:@"%@\n%@", ip, mac];
-   
+    if (devicename != nil && [devicename length] > 0)   cell.header.text = devicename;
+    else if (ip != nil && [ip length] > 0)              cell.header.text = ip;
+    else if (guid != nil  && [guid length] > 0)         cell.header.text = guid;
+    else                                                cell.header.text = @"Unactivated device";
+    
+    if (mac != nil  && [mac length] > 0)                cell.subHeader.text = [NSString stringWithFormat:@"%@ %@", ip, mac];
+    else if (guid != nil  && [guid length] > 0)         cell.subHeader.text = [NSString stringWithFormat:@"%@ %@", ip, guid];
+    else                                                cell.subHeader.text = @"";
+    
+    if (fwver != nil  && [fwver length] > 0)            cell.subHeader2.text = [NSString stringWithFormat:@"ver.%@", fwver];
+    else                                                cell.subHeader2.text = @"";
+       
     cell.backgroundColor = [UIColor clearColor];
     cell.backgroundView.backgroundColor = [UIColor clearColor];
     

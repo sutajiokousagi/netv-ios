@@ -36,6 +36,11 @@
 {
     UIImage *image = [UIImage imageNamed:@"navbar_bg.png"];
     [image drawInRect:CGRectMake(0,0, self.frame.size.width, self.frame.size.height)];
+    
+#ifdef __IPHONE_5_0
+    if ([self respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
+        [self setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+#endif    
 }
 @end
 

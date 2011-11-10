@@ -16,17 +16,13 @@
 ////////////////////////////////////////////Ï/////////////////////////////////////////////
 
 @interface ChooseIPCellView : UITableViewCell
-{
-	UILabel *header;
-	UILabel *subHeader;
-    
-    id<ChooseIPCellViewDelegate> delegate;
-    
-    int tag;	
+{   
+    int tag;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *header;
 @property (nonatomic, retain) IBOutlet UILabel *subHeader;
+@property (nonatomic, retain) IBOutlet UILabel *subHeader2;
 @property (nonatomic, assign) id delegate;
 
 //UI Events

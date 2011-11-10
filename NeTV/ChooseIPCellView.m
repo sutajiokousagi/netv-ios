@@ -6,7 +6,7 @@
 
 @implementation ChooseIPCellView
 
-@synthesize header, subHeader;
+@synthesize header, subHeader, subHeader2;
 @synthesize delegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
