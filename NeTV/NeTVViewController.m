@@ -154,7 +154,7 @@
     
     if (_deviceList == nil)
         _deviceList = [[NSMutableDictionary alloc] initWithCapacity:10];
-    [_deviceList removeAllObjects];
+//    [_deviceList removeAllObjects];
     
     [self initializeSequence];
 }
@@ -166,21 +166,12 @@
 -(IBAction)onNavbarBack:(id)sender
 {
     [self hideDeviceList];
+    [self reset];
 }
+
 
 
 #pragma mark - Helpers
-
-- (void)showDeviceListDialog
-{
-    [self setStatusText:@"Select a device to control"];
-    
-    //Create the UI for selecting a device
-    ChooseIPController *listIP = [[ChooseIPController alloc] initWithDelegate:self];
-    [listIP setData:_deviceList];
-    
-    [self.navigationController pushViewController:listIP animated:YES];
-}
 
 - (void)showDeviceList
 {
@@ -195,6 +186,7 @@
     [UIView beginAnimations:nil context:nil];
 	[UIView setAnimationBeginsFromCurrentState:YES];
 	[UIView setAnimationDuration:0.6];
+    lblInstruction.alpha = 0;
     lblVersion.alpha = 0;
     lblStatus.alpha = 0;
     imgLogo.alpha = 0;
@@ -228,6 +220,7 @@
 	[UIView setAnimationDuration:0.6];
     [UIView setAnimationDelay:0.2];
     [UIView setAnimationDidStopSelector: @selector(clearDeviceList)];
+    lblInstruction.alpha = 1;
     lblVersion.alpha = 1;
     lblStatus.alpha = 1;
     imgLogo.alpha = 1;
@@ -631,7 +624,6 @@
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
         
         //Display a list, stop device discovery
-        //[self showDeviceListDialog];
         [self showDeviceList];
         return;
     }
