@@ -111,14 +111,10 @@
     _sentHandshake = NO;
     _receiveHandshake = NO;
     _hasMoreHandshake = NO;
-
-    if (_ipListForUI == nil)
-        _ipListForUI = [[NSMutableArray alloc] init];
-    [_ipListForUI removeAllObjects];
     
     if (_deviceList == nil)
         _deviceList = [[NSMutableDictionary alloc] initWithCapacity:10];
-//    [_deviceList removeAllObjects];
+    [_deviceList removeAllObjects];
     
     [self initializeSequence];
 }

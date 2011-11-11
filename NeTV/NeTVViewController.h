@@ -3,8 +3,8 @@
 //  NeTV
 //
 
-#import "BaseController.h"
 #import <Foundation/NSNetServices.h>
+#import "BaseController.h"
 #import "ChooseIPController.h"
 
 @interface NeTVViewController : BaseController <NSNetServiceBrowserDelegate, NSNetServiceDelegate, ChooseIPControllerDelegate>
@@ -35,7 +35,6 @@
     
     //Multiple device
     NSMutableDictionary *_deviceList;
-    NSMutableArray *_ipListForUI;
 }
 
 //UI Events
@@ -53,7 +52,7 @@
 //Bonjour helper functions
 - (BOOL)searchForServicesOfType:(NSString *)type inDomain:(NSString *)domain;
 
-//Copy from Android app
+//Application logic
 - (void)reset;
 - (void)initializeSequence;
 

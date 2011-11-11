@@ -28,7 +28,8 @@ NSString * const myUniqueChooseIPControllerKey = @"NeTV??????";
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
@@ -138,7 +139,10 @@ NSString * const myUniqueChooseIPControllerKey = @"NeTV??????";
 {
     if (self.tableData != nil)
         [self clearData];
-    self.tableData = dict;
+    self.tableData = nil;
+    
+    //This won't work the 2nd time if we don't create a copy. Funny.
+    self.tableData = [NSMutableDictionary dictionaryWithDictionary:dict];
     [self.tableView reloadData];
 }
 
