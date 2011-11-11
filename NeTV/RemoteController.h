@@ -2,21 +2,19 @@
 //  RemoteController.h
 //  NeTV
 //
-//  Created by Sidwyn Koh on 8/8/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
-#import "CommService.h"
+#import "BaseController.h"
 
-@interface RemoteController : UIViewController <AsyncUdpSocketDelegate>{
-    CommService *mainComm;
+@interface RemoteController : BaseController
+{
+
 }
-@property (nonatomic, retain) NSString *theMainIP;
-
 @property (nonatomic, retain) IBOutlet UILabel *ipAddr;
 
+// Custom Initialization
 - (id)initWithIP:(NSString *)theIP;
 
+// UI Events
 - (IBAction)pressChumby:(id)sender;
 - (IBAction)pressSettings:(id)sender;
 - (IBAction)pressUp:(id)sender;
@@ -26,7 +24,5 @@
 - (IBAction)pressCenter:(id)sender;
 - (IBAction)pressBrowser:(id)sender;
 - (IBAction)pressPhoto:(id)sender;
-
-- (void)sendRemoteControlCommand:(NSString*) buttonName;
 
 @end

@@ -2,31 +2,27 @@
 //  RemoteController.m
 //  NeTV
 //
-//  Created by Sidwyn Koh on 8/8/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
-
-#define UDP_TAG     1
-#define HELLO_MSG   1
 
 #import "RemoteController.h"
-#import "UIDevice-Hardware.h"
-#import "XMLReader.h"
-#import "VTPG_Common.h"
 #import "SVWebViewController.h"
+
+@interface RemoteController()
+- (void)onRemoteControlButton:(NSString*) buttonName;
+    @property (nonatomic, retain) NSString *theMainIP;
+@end
 
 @implementation RemoteController
 
 @synthesize theMainIP;
 @synthesize ipAddr;
 
-
 #pragma mark - Custom Initialization
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
@@ -34,7 +30,8 @@
 
 - (id)initWithIP:(NSString *)theIP{
     self = [super init];
-    if (self){
+    if (self)
+    {
         self.theMainIP = theIP;
     }
     return self;
@@ -47,19 +44,11 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //Clear background color
-    self.view.backgroundColor = [UIColor clearColor];
-    
-    //Hide the default navbar
-    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidUnload
@@ -69,20 +58,13 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //Init communication object
-    if (mainComm == nil)
-        mainComm = [[CommService alloc] initWithDelegate:self andIP:self.theMainIP];
-    
-    //Say hello
-    [mainComm sendUDPCommand:@"Hello" andParameters:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                     [[UIDevice currentDevice] platformString],@"type",
-                                                     [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"], @"version", nil] andIP:self.theMainIP andTag:UDP_TAG];
+    [super viewWillAppear:animated];
     
     //UI
-    ipAddr.text = [@"Controlling " stringByAppendingString:theMainIP];
-	    
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
+    if (self.theMainIP != nil)
+        ipAddr.text = [NSString stringWithFormat:@"Controlling %@", self.theMainIP];
+    else
+        ipAddr.text = @"";
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -91,14 +73,8 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated
-{
-    if (mainComm != nil)
-        [mainComm release];
-    mainComm = nil;
-    
-	[super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
-    
+{  
+	[super viewWillDisappear:animated];    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -113,15 +89,21 @@
 }
 
 
-#pragma mark - Buttons
+#pragma mark - UI Events
 
-- (IBAction)pressSettings:(id)sender{   [self sendRemoteControlCommand:@"cpanel"];  }
-- (IBAction)pressChumby:(id)sender  {   [self sendRemoteControlCommand:@"widget"];  }
-- (IBAction)pressUp:(id)sender      {   [self sendRemoteControlCommand:@"up"];      }
-- (IBAction)pressDown:(id)sender    {   [self sendRemoteControlCommand:@"down"];    }
-- (IBAction)pressLeft:(id)sender    {   [self sendRemoteControlCommand:@"left"];    }
-- (IBAction)pressRight:(id)sender   {   [self sendRemoteControlCommand:@"right"];   }
-- (IBAction)pressCenter:(id)sender  {   [self sendRemoteControlCommand:@"center"];  }
+- (IBAction)pressSettings:(id)sender{   [self onRemoteControlButton:@"cpanel"];  }
+- (IBAction)pressChumby:(id)sender  {   [self onRemoteControlButton:@"widget"];  }
+- (IBAction)pressUp:(id)sender      {   [self onRemoteControlButton:@"up"];      }
+- (IBAction)pressDown:(id)sender    {   [self onRemoteControlButton:@"down"];    }
+- (IBAction)pressLeft:(id)sender    {   [self onRemoteControlButton:@"left"];    }
+- (IBAction)pressRight:(id)sender   {   [self onRemoteControlButton:@"right"];   }
+- (IBAction)pressCenter:(id)sender  {   [self onRemoteControlButton:@"center"];  }
+
+//Common function to handle all remote control button events
+- (void)onRemoteControlButton:(NSString*) buttonName
+{
+    [self sendRemoteControl:buttonName];
+}
 
 //Open a browser view to use iPhone control NeTV
 - (IBAction)pressBrowser:(id)sender
@@ -137,14 +119,6 @@
     //TODO
 }
 
-//Common function to send a remote control button
-- (void)sendRemoteControlCommand:(NSString*) buttonName
-{
-    [mainComm sendUDPCommand:@"RemoteControl" 
-               andParameters:[NSDictionary dictionaryWithObjectsAndKeys:buttonName, @"value", nil] 
-                       andIP:self.theMainIP 
-                      andTag:UDP_TAG];
-}
 
 
 #pragma mark - AsyncUdpSocket delegate
@@ -156,16 +130,18 @@
     
     NSLog(@"RECEIVED SOMETHING IN REMOTECONTROLLER: %@", theLine);
     
-    NSDictionary *tempParsedDict = [XMLReader dictionaryForXMLString:theLine error:nil];
-    
-    LOG_EXPR(tempParsedDict);
+    //NSDictionary *tempParsedDict = [XMLReader dictionaryForXMLString:theLine error:nil];
     
     return YES;
 }
 
-//Listening timeout
-- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error{
-    NSLog(@"Timeout");
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error
+{
+    
+}
+
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
+{
     
 }
 
