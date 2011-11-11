@@ -7,7 +7,7 @@
 #import "SVWebViewController.h"
 
 @interface RemoteController()
-- (void)onRemoteControlButton:(NSString*) buttonName;
+    - (void)onRemoteControlButton:(NSString*) buttonName;
     @property (nonatomic, retain) NSString *theMainIP;
 @end
 

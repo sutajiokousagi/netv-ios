@@ -7,7 +7,7 @@
 
 @interface RemoteController : BaseController
 {
-
+    IBOutlet UIButton *btnNavbarBack;
 }
 @property (nonatomic, retain) IBOutlet UILabel *ipAddr;
 
