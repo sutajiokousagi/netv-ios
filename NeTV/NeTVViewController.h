@@ -10,14 +10,16 @@
 @interface NeTVViewController : BaseController <NSNetServiceBrowserDelegate, NSNetServiceDelegate, ChooseIPControllerDelegate>
 {
     //UI
-    IBOutlet UITextField *SSIDName;
-    IBOutlet UITextField *SSIDPassword;
     IBOutlet UILabel *lblVersion;
     IBOutlet UILabel *lblStatus;
     IBOutlet UILabel *lblInstruction;
     IBOutlet UIImageView *imgLogo;
     IBOutlet UIImageView *imgNavbar;
     IBOutlet UIButton *btnNavbarBack;
+    
+    IBOutlet UIView *viewStatusBar;
+    IBOutlet UILabel *lblStatusFull;
+    IBOutlet UIImageView *imgStatusBar;
     UIAlertView *alertView;
     ChooseIPController *chooseIPController;
 	
@@ -27,8 +29,9 @@
 	NSNetService *_currentResolve;
     
     //Flag
-    BOOL _checkedReachability;
     int _retryCounter;
+    time_t _startDiscoveryTime;
+    BOOL _checkedReachability;
     BOOL _sentHandshake;
     BOOL _receiveHandshake;
     BOOL _hasMoreHandshake;
@@ -45,6 +48,13 @@
 - (void)hideDeviceList;
 - (void)clearDeviceList;
 - (void)setStatusText:(NSString*)text;
+- (void)showStatusBar:(NSString*)text;
+- (void)showStatusBarError:(NSString*)text;
+- (void)showStatusBarInfo:(NSString*)text;
+- (void)hideStatusBar;
+- (BOOL)isDeviceListVisible;
+- (BOOL)isStatusBarVisible;
+- (int)numberOfDevices;
 - (void)restartInitSequenceWithDelay:(float)second;
 - (void)showSimpleMessageDialog:(NSString*)message;
 - (void)showSimpleMessageDialog:(NSString*)message withButton:(NSString*)btnName;
@@ -54,6 +64,7 @@
 
 //Application logic
 - (void)reset;
+- (void)gotoRemoteControl:(NSMutableDictionary*)deviceData;
 - (void)initializeSequence;
 
 @end

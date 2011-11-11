@@ -39,6 +39,15 @@
        
     //Hide the custom navbar back button
     btnNavbarBack.alpha = 0;
+    
+    //Setup custom bottom bar
+    CGRect statusBarRect;
+    statusBarRect.origin.x = 0;
+    statusBarRect.origin.y = self.view.frame.size.height;
+    statusBarRect.size.width = self.view.frame.size.width;
+    statusBarRect.size.height = viewStatusBar.frame.size.height;
+    [self.view insertSubview:chooseIPController.view aboveSubview:imgLogo];
+    viewStatusBar.frame = statusBarRect;
         
     //Setup SearchResultTableView
     if (chooseIPController == nil)
@@ -55,7 +64,6 @@
         [self.view insertSubview:chooseIPController.view belowSubview:imgNavbar];
         chooseIPController.delegate = self;
     }
-
 }
 
 - (void)viewDidUnload
@@ -99,24 +107,6 @@
     } else {
         return YES;
     }
-}
-
-
-#pragma mark - Initialization
-
-- (void)reset
-{
-    _checkedReachability = NO;
-    _retryCounter = 0;
-    _sentHandshake = NO;
-    _receiveHandshake = NO;
-    _hasMoreHandshake = NO;
-    
-    if (_deviceList == nil)
-        _deviceList = [[NSMutableDictionary alloc] initWithCapacity:10];
-    [_deviceList removeAllObjects];
-    
-    [self initializeSequence];
 }
 
 
@@ -195,6 +185,69 @@
 - (void)setStatusText:(NSString *)text
 {
     lblStatus.text = text;
+    lblStatusFull.text = text;
+}
+
+- (void)showStatusBar:(NSString*)text
+{
+    if (text != nil)
+        [self setStatusText:text];
+    
+    CGRect statusBarRect;
+    statusBarRect.origin.x = 0;
+    statusBarRect.origin.y = self.view.frame.size.height;
+    statusBarRect.size.width = self.view.frame.size.width;
+    statusBarRect.size.height = viewStatusBar.frame.size.height;
+    
+    [UIView beginAnimations:nil context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:0.6];
+	viewStatusBar.frame = statusBarRect;
+	[UIView commitAnimations];
+}
+
+- (void)showStatusBarError:(NSString*)text
+{
+    [imgStatusBar setImage:[UIImage imageNamed:@"bottombar_error.png"]];
+    [self showStatusBar:text];
+}
+
+- (void)showStatusBarInfo:(NSString*)text
+{
+    [imgStatusBar setImage:[UIImage imageNamed:@"bottombar_info.png"]];
+    [self showStatusBar:text];
+}
+
+- (void)hideStatusBar
+{
+    CGRect statusBarRect;
+    statusBarRect.origin.x = 0;
+    statusBarRect.origin.y = self.view.frame.size.height;
+    statusBarRect.size.width = self.view.frame.size.width;
+    statusBarRect.size.height = viewStatusBar.frame.size.height;
+    
+    [UIView beginAnimations:nil context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:0.6];
+	viewStatusBar.frame = statusBarRect;
+	[UIView commitAnimations];
+}
+
+- (BOOL)isDeviceListVisible
+{
+    return (chooseIPController.view.frame.origin.y + chooseIPController.view.frame.size.height > 10) ? YES : NO;
+}
+
+- (BOOL)isStatusBarVisible
+{
+    return (viewStatusBar.frame.origin.y < self.view.frame.size.height) ? YES : NO;
+}
+
+- (int)numberOfDevices
+{
+    if (_deviceList == nil)
+        return 0;
+    return [_deviceList count];
 }
 
 - (void)restartInitSequenceWithDelay:(float)second
@@ -340,6 +393,7 @@
                     [dict setObject:deviceName forKey:@"devicename"];
                 [_deviceList setObject:dict forKey:addressString];
                 
+                [self hideStatusBar];
                 NSLog(@"Found %@ %@, %@", addressString, deviceName, guid);
             }
         }
@@ -388,23 +442,12 @@
 }
 
 
+
 #pragma mark - ChooseIPController delegate
 
 - (void) chooseIPController:(ChooseIPController *)chooseIPController didSelect:(NSMutableDictionary*)selectedData
 {   
-    [self dismissModalViewControllerAnimated:YES];
-    
-    NSString *ipString = [selectedData objectForKey:@"ip"];
-    if (ipString == nil || [ipString length] < 7)
-        return;
-    
-    //Not sure why there is a leading space character (due to XML parser?)
-    ipString = [ipString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    [self hideDeviceList];
-        
-    RemoteController *remoteController = [[RemoteController alloc] initWithIP:ipString];
-    [self.navigationController pushViewController:remoteController animated:YES];
+    [self gotoRemoteControl:selectedData];
 }
 
 
@@ -460,7 +503,42 @@
     //NSLog(@"Bonjour a device: %@", [service addresses]);
 }
 
+
+
 #pragma mark - Application Logic
+
+- (void)reset
+{
+    _retryCounter = 0;
+    _checkedReachability = NO;
+    _startDiscoveryTime = (time_t)[[NSDate date] timeIntervalSince1970];
+    _sentHandshake = NO;
+    _receiveHandshake = NO;
+    _hasMoreHandshake = NO;
+    
+    //UI
+    if (_deviceList == nil)
+        _deviceList = [[NSMutableDictionary alloc] initWithCapacity:10];
+    [_deviceList removeAllObjects];
+    [self hideStatusBar];
+    
+    [self initializeSequence];
+}
+
+- (void)gotoRemoteControl:(NSMutableDictionary*)deviceData
+{
+    NSString *ipString = [deviceData objectForKey:@"ip"];
+    if (ipString == nil || [ipString length] < 7)
+        return;
+    
+    //Not sure why there is a leading space character (due to XML parser?)
+    ipString = [ipString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    [self hideDeviceList];
+    
+    RemoteController *remoteController = [[RemoteController alloc] initWithIP:ipString];
+    [self.navigationController pushViewController:remoteController animated:YES];
+}
 
 - (void)initializeSequence
 {
@@ -471,7 +549,7 @@
         _checkedReachability = YES;
         if (![self isReachableWifi])
         {
-            [self setStatusText:@"Please turn on WiFi"];
+            [self showStatusBarError:@"Please turn on WiFi"];
             return;
         }
     }
@@ -506,10 +584,25 @@
         if (alertView != nil)
             [alertView dismissWithClickedButtonIndex:0 animated:YES];
         
+        //Found only 1 device
+        if ([self numberOfDevices] == 1)
+        {
+            NSMutableDictionary *deviceData = [[_deviceList allValues] objectAtIndex:0];
+            [self showStatusBarInfo:[deviceData objectForKey:@"ip"]];
+            [self gotoRemoteControl:deviceData];
+            return;
+        }
+        
         //Display a list, stop device discovery
         [self showDeviceList];
+        [self hideStatusBar];
         return;
     }
+    
+    //If too long without a response
+    time_t secondLapsed = (time_t)[[NSDate date] timeIntervalSince1970] - _startDiscoveryTime;
+    if (secondLapsed > 8 && secondLapsed < 11)
+        [self showStatusBarError:@"No device found.\nPlease ensure NeTV is powered up."];
     
     [self sendHandshake];
     [self restartInitSequenceWithDelay: 1.0];
