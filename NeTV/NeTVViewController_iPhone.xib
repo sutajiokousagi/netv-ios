@@ -241,7 +241,7 @@
 						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string type="base64-UTF8" key="IBUIText">Tm8gZGV2aWNlIGZvdW5kLg1QbGVhc2UgZW5zdXJlIE5lVFYgaXMgcG93ZXJlZCB1cC4</string>
+						<string key="IBUIText">192.168.1.123</string>
 						<reference key="IBUIFont" ref="472012988"/>
 						<reference key="IBUITextColor" ref="208312599"/>
 						<nil key="IBUIHighlightedColor"/>

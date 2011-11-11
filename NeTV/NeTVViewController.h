@@ -41,7 +41,7 @@
 }
 
 //UI Events
--(IBAction)onNavbarBack:(id)sender;
+
 
 //Helpers
 - (void)showDeviceList;
@@ -54,8 +54,6 @@
 - (void)hideStatusBar;
 - (BOOL)isDeviceListVisible;
 - (BOOL)isStatusBarVisible;
-- (int)numberOfDevices;
-- (void)restartInitSequenceWithDelay:(float)second;
 - (void)showSimpleMessageDialog:(NSString*)message;
 - (void)showSimpleMessageDialog:(NSString*)message withButton:(NSString*)btnName;
 
@@ -64,6 +62,9 @@
 
 //Application logic
 - (void)reset;
+- (void)restartInitSequenceWithDelay:(float)second;
+- (int)numberOfDevices;
+- (void)gotoRemoteControlSingleDevice;
 - (void)gotoRemoteControl:(NSMutableDictionary*)deviceData;
 - (void)initializeSequence;
 

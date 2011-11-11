@@ -46,7 +46,7 @@
     statusBarRect.origin.y = self.view.frame.size.height;
     statusBarRect.size.width = self.view.frame.size.width;
     statusBarRect.size.height = viewStatusBar.frame.size.height;
-    [self.view insertSubview:chooseIPController.view aboveSubview:imgLogo];
+    [self.view insertSubview:viewStatusBar aboveSubview:lblStatus];
     viewStatusBar.frame = statusBarRect;
         
     //Setup SearchResultTableView
@@ -113,11 +113,6 @@
 
 #pragma mark - UI Events
 
--(IBAction)onNavbarBack:(id)sender
-{
-    [self hideDeviceList];
-    [self reset];
-}
 
 
 
@@ -195,13 +190,13 @@
     
     CGRect statusBarRect;
     statusBarRect.origin.x = 0;
-    statusBarRect.origin.y = self.view.frame.size.height;
+    statusBarRect.origin.y = self.view.frame.size.height - viewStatusBar.frame.size.height;
     statusBarRect.size.width = self.view.frame.size.width;
     statusBarRect.size.height = viewStatusBar.frame.size.height;
     
     [UIView beginAnimations:nil context:nil];
 	[UIView setAnimationBeginsFromCurrentState:YES];
-	[UIView setAnimationDuration:0.6];
+	[UIView setAnimationDuration:0.3];
 	viewStatusBar.frame = statusBarRect;
 	[UIView commitAnimations];
 }
@@ -222,13 +217,13 @@
 {
     CGRect statusBarRect;
     statusBarRect.origin.x = 0;
-    statusBarRect.origin.y = self.view.frame.size.height;
+    statusBarRect.origin.y = self.view.frame.size.height + 5;
     statusBarRect.size.width = self.view.frame.size.width;
     statusBarRect.size.height = viewStatusBar.frame.size.height;
     
     [UIView beginAnimations:nil context:nil];
 	[UIView setAnimationBeginsFromCurrentState:YES];
-	[UIView setAnimationDuration:0.6];
+	[UIView setAnimationDuration:0.3];
 	viewStatusBar.frame = statusBarRect;
 	[UIView commitAnimations];
 }
@@ -241,18 +236,6 @@
 - (BOOL)isStatusBarVisible
 {
     return (viewStatusBar.frame.origin.y < self.view.frame.size.height) ? YES : NO;
-}
-
-- (int)numberOfDevices
-{
-    if (_deviceList == nil)
-        return 0;
-    return [_deviceList count];
-}
-
-- (void)restartInitSequenceWithDelay:(float)second
-{
-    [self performSelector:@selector(initializeSequence) withObject:nil afterDelay:second];
 }
 
 - (void)showSimpleMessageDialog:(NSString*)message
@@ -509,6 +492,7 @@
 
 - (void)reset
 {
+    NSLog(@"NeTVViewController reseting...");
     _retryCounter = 0;
     _checkedReachability = NO;
     _startDiscoveryTime = (time_t)[[NSDate date] timeIntervalSince1970];
@@ -522,7 +506,25 @@
     [_deviceList removeAllObjects];
     [self hideStatusBar];
     
-    [self initializeSequence];
+    [self restartInitSequenceWithDelay:0.3];
+}
+
+- (void)restartInitSequenceWithDelay:(float)second
+{
+    [self performSelector:@selector(initializeSequence) withObject:nil afterDelay:second];
+}
+
+- (int)numberOfDevices
+{
+    if (_deviceList == nil)
+        return 0;
+    return [_deviceList count];
+}
+
+- (void)gotoRemoteControlSingleDevice
+{
+    NSMutableDictionary *deviceData = [[_deviceList allValues] objectAtIndex:0];
+    [self gotoRemoteControl:deviceData];
 }
 
 - (void)gotoRemoteControl:(NSMutableDictionary*)deviceData
@@ -588,8 +590,11 @@
         if ([self numberOfDevices] == 1)
         {
             NSMutableDictionary *deviceData = [[_deviceList allValues] objectAtIndex:0];
-            [self showStatusBarInfo:[deviceData objectForKey:@"ip"]];
-            [self gotoRemoteControl:deviceData];
+            NSString * ipString = [deviceData objectForKey:@"ip"];
+            ipString = [ipString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            [self showStatusBarInfo:ipString];
+            
+            [self performSelector:@selector(gotoRemoteControlSingleDevice) withObject:nil afterDelay:1.2];
             return;
         }
         
