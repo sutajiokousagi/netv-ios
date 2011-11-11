@@ -2,20 +2,12 @@
 //  NeTVViewController.h
 //  NeTV
 //
-//  Created by Sidwyn Koh on 8/8/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
-#import <UIKit/UIKit.h>
+#import "BaseController.h"
 #import <Foundation/NSNetServices.h>
-#import "AsyncUdpSocket.h"
-#import "CommService.h"
 #import "ChooseIPController.h"
-#import "ChooseHomeNetworkController.h"
-#import "ASIHTTPRequest.h"
 
-
-@interface NeTVViewController : UIViewController <AsyncUdpSocketDelegate, ChooseHomeNetworkControllerDelegate, NSNetServiceBrowserDelegate, NSNetServiceDelegate, ChooseIPControllerDelegate>
+@interface NeTVViewController : BaseController <NSNetServiceBrowserDelegate, NSNetServiceDelegate, ChooseIPControllerDelegate>
 {
     //UI
     IBOutlet UITextField *SSIDName;
@@ -28,9 +20,6 @@
     IBOutlet UIButton *btnNavbarBack;
     UIAlertView *alertView;
     ChooseIPController *chooseIPController;
-
-    //Communication
-    CommService *mainComm;
 	
 	//Bonjour stuff
 	NSMutableArray *_services;
@@ -53,7 +42,6 @@
 -(IBAction)onNavbarBack:(id)sender;
 
 //Helpers
-- (void)showDeviceListDialog;
 - (void)showDeviceList;
 - (void)hideDeviceList;
 - (void)clearDeviceList;
@@ -61,12 +49,6 @@
 - (void)restartInitSequenceWithDelay:(float)second;
 - (void)showSimpleMessageDialog:(NSString*)message;
 - (void)showSimpleMessageDialog:(NSString*)message withButton:(NSString*)btnName;
-
-//To be moved to a base class
-- (void)sendHandshake;
-- (void)sendNetworkConfig;
-- (void)sendWifiScan;
-- (NSString*)getGUIDDeviceName:(NSString*)guid;
 
 //Bonjour helper functions
 - (BOOL)searchForServicesOfType:(NSString *)type inDomain:(NSString *)domain;

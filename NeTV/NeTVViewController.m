@@ -2,32 +2,15 @@
 //  NeTVViewController.m
 //  NeTV
 //
-//  Created by Sidwyn Koh on 8/8/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import "NeTVViewController.h"
 #import "RemoteController.h"
-#import "UIDevice-Hardware.h"
-#import "VTPG_Common.h"
-#import "XMLReader.h"
-#import "Reachability.h"
 #import <sys/socket.h>
 #import <netinet/in.h>
 #import <arpa/inet.h>
 #import <sys/ioctl.h>
 #import <net/if.h>
 #import <netdb.h>
-
-#define DEFAULTPORT         8082
-#define MULTICASTGROUP      @"225.0.0.37"
-#define DEFAULTIP           @"192.168.100.1"
-
-#define HELLO_MSG           01
-#define HELLOSPAM_MSG       02
-
-#define SETWIFI_MSG         11
-#define GETWIFI_MSG         12
 
 // Private extension
 @interface NeTVViewController()
@@ -50,17 +33,10 @@
 {
     [super viewDidLoad];
     
-    //Get the version number
-    NSString *versionStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-    NSLog(@"Version %@", versionStr);
-    lblVersion.text = versionStr;
-    
-    //Clear background color
-    self.view.backgroundColor = [UIColor clearColor];
-    
-    //Hide the default navbar
-    self.navigationController.navigationBarHidden = YES;
-    
+    //Show app version number
+    NSLog(@"Version %@", self.appVersion);
+    lblVersion.text = self.appVersion;
+       
     //Hide the custom navbar back button
     btnNavbarBack.alpha = 0;
         
@@ -89,11 +65,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //Init communication object (should be a singleton class to be correct)
-    NSLog(@"mainComm object for NeTVViewController created");
-    if (mainComm == nil)
-        mainComm = [[CommService alloc] initWithDelegate:self];
-	
+    [super viewWillAppear:animated];
+    
 	//Bonjour stuff
     if (_services == nil)
         _services = [[NSMutableArray alloc] init];
@@ -101,8 +74,6 @@
     
     //Rescan
     [self reset];
-    
-    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -112,14 +83,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"mainComm object for NeTVViewController released");
-    if (mainComm != nil)
-        [mainComm release];
-    mainComm = nil;
-
-	[super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
-    
+	[super viewWillDisappear:animated];   
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -257,65 +221,6 @@
     [alertView show];
 }
 
-#pragma mark - DataComm Utilites (to be move to a base class)
-
-- (void)sendHandshake
-{
-    if (mainComm == nil)    
-        mainComm = [[CommService alloc] initWithDelegate:self];
-    [mainComm sendUDPCommandWithBroadcast:@"Hello" andParameters:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                  [[UIDevice currentDevice] platformString],@"type",
-                                                                  [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"], @"version",                                                                 nil] andTag:HELLOSPAM_MSG];
-}
-
-- (void)sendNetworkConfig
-{
-    
-    NSString *selectedIndex = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedHomeNetworkIndex"];
-    NSDictionary *selectedNetworkDictionary = [[[NSUserDefaults standardUserDefaults] objectForKey:@"homeNetworkArray"] objectAtIndex:[selectedIndex intValue]];
-    NSString *networkAuth = [[selectedNetworkDictionary objectForKey:@"auth"] objectForKey:@"text"];
-    NSString *networkEncryption = [[selectedNetworkDictionary objectForKey:@"encryption"] objectForKey:@"text"];
-    
-    [mainComm sendUDPCommand:@"SetNetwork" andParameters:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                          SSIDName.text, @"wifi_ssid",
-                                                          networkEncryption,@"wifi_encryption",
-                                                          networkAuth,@"wifi_authentication",
-                                                          SSIDPassword.text, @"wifi_password",
-                                                          nil] andTag:SETWIFI_MSG];
-    //NeTV wil change to Access Point mode after 500ms
-    //iPhone disconnects and revert to home network
-}
-
-- (void)sendWifiScan
-{
-    if (mainComm == nil)
-        mainComm = [[CommService alloc] initWithDelegate:self];
-    [mainComm sendUDPCommand:@"WifiScan" andParameters:nil andTag:5];
-}
-
-- (NSString*)getGUIDDeviceName:(NSString*)guid
-{
-    NSString * urlString = [NSString stringWithFormat:@"http://www.chumby.com/xapis/device/authorize/%@", guid];
-    NSURL *url = [NSURL URLWithString:urlString];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDelegate:self];
-    [request startSynchronous];
-    
-    NSError * error = [request error];
-    if (error)
-        return nil;
-    NSString * responseString = [request responseString];
-    NSRange unauthRange = [responseString rangeOfString:@"unauthorized" options: NSCaseInsensitiveSearch];
-    if (unauthRange.location > 0 && unauthRange.length > 0)
-        return nil;
-    
-    NSRange range1 = [responseString rangeOfString:@"<name>" options: NSCaseInsensitiveSearch];
-    NSRange range2 = [responseString rangeOfString:@"</name>" options: NSCaseInsensitiveSearch];
-    if (range1.location <= 0 || range2.location <= 0)
-        return nil;
-    return [responseString substringWithRange:NSMakeRange(range1.location+6, range2.location-range1.location-6)];
-}
-
 
 #pragma mark - Bonjour helper functions
 
@@ -443,6 +348,7 @@
             }
         }
     }
+    /*
     else if ([commandString isEqualToString:@"WIFISCAN"])
     {
         NSMutableArray *homeNetworkArray = [[NSMutableArray alloc] init];
@@ -462,6 +368,7 @@
             [noHomeNetworks show];
         }
     }
+    */
     else
     {
         NSLog(@"Unknown command received");
@@ -474,20 +381,14 @@
     return YES;
 }
 
-//Listening timeout
 - (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error
 {
-    if (tag == HELLO_MSG)
-    {
-        UIAlertView *firstAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please ensure that you have connected to your NeTV network." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [firstAlert show];
-    }
+
 }
 
-//Sending Timeout
 - (void)onUdpSocket:(AsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
 {
-    //Open up settings, start from scratch
+    
 }
 
 
@@ -505,25 +406,11 @@
     ipString = [ipString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     [self hideDeviceList];
-    
+        
     RemoteController *remoteController = [[RemoteController alloc] initWithIP:ipString];
     [self.navigationController pushViewController:remoteController animated:YES];
 }
 
-
-#pragma mark - ChooseHomeNetworkController delegate
-
-- (void)userFinish
-{   
-    [self dismissModalViewControllerAnimated:YES];
-    /*
-    NSString *selectedIndex = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedHomeNetworkIndex"];
-    NSDictionary *selectedNetworkDictionary = [[[NSUserDefaults standardUserDefaults] objectForKey:@"homeNetworkArray"] objectAtIndex:[selectedIndex intValue]];
-    SSIDName.text = [[selectedNetworkDictionary objectForKey:@"ssid"] objectForKey:@"text"];
-    [self setStatusText:@"Please enter password"];
-    */
-    [self reset];
-}
 
 
 #pragma mark - NSNetServiceBrowser delegate
@@ -586,7 +473,7 @@
     if (!_checkedReachability)
     {
         _checkedReachability = YES;
-        if ([[Reachability reachabilityForLocalWiFi] currentReachabilityStatus] != ReachableViaWiFi)
+        if (![self isReachableWifi])
         {
             [self setStatusText:@"Please turn on WiFi"];
             return;
