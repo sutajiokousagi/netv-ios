@@ -54,6 +54,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Clear background color
+    self.view.backgroundColor = [UIColor clearColor];
+    
+    //Hide the default navbar
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidUnload

@@ -61,7 +61,7 @@
     //Hide the default navbar
     self.navigationController.navigationBarHidden = YES;
     
-    //Hide the custom navbar
+    //Hide the custom navbar back button
     btnNavbarBack.alpha = 0;
         
     //Setup SearchResultTableView
