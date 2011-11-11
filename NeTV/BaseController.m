@@ -137,17 +137,17 @@
     [self sendUDPCommandParamsBroadcast:@"Hello" withParams:params andTag:HELLO_TAG];
 }
 
-- (void)sendWifiScan
+- (void)sendWifiScan:(NSString*)toIP
 {
-    [self sendUDPCommandSimple:@"WifiScan" withValue:nil toIP:nil andTag:WIFISCAN_TAG];
+    [self sendUDPCommandSimple:@"WifiScan" withValue:nil toIP:toIP andTag:WIFISCAN_TAG];
 }
 
-- (void)sendRemoteControl:(NSString*) buttonName
+- (void)sendRemoteControl:(NSString*)buttonName toIP:(NSString*)toIP
 {
-    [self sendUDPCommandSimple:@"RemoteControl" withValue:buttonName toIP:nil andTag:REMOTECONTROL_TAG];
+    [self sendUDPCommandSimple:@"RemoteControl" withValue:buttonName toIP:toIP andTag:REMOTECONTROL_TAG];
 }
 
-- (void)sendNetworkConfig
+- (void)sendNetworkConfig:(NSString*)toIP
 {
     /*
     NSString *selectedIndex = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedHomeNetworkIndex"];

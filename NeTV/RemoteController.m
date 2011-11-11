@@ -102,7 +102,7 @@
 //Common function to handle all remote control button events
 - (void)onRemoteControlButton:(NSString*) buttonName
 {
-    [self sendRemoteControl:buttonName];
+    [self sendRemoteControl:buttonName toIP:self.theMainIP];
 }
 
 //Open a browser view to use iPhone control NeTV
