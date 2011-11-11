@@ -16,6 +16,9 @@
 
 @property (nonatomic, copy) NSString* appVersion;
 
+//UI Events
+- (IBAction)onNavbarBack:(id)sender;
+
 //SharedPreferences
 
 

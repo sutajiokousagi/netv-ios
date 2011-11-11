@@ -118,6 +118,15 @@
 
 
 
+#pragma mark - UI Events
+
+-(IBAction)onNavbarBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
 #pragma mark - Reachability
 
 -(BOOL)isReachableWifi
