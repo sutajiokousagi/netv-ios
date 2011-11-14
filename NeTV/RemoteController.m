@@ -5,12 +5,15 @@
 
 #import "RemoteController.h"
 #import "SVWebViewController.h"
+#import "ELCImagePickerController.h"
+#import "ELCAlbumPickerController.h"
 
-@interface RemoteController()
+@interface RemoteController() <ELCImagePickerControllerDelegate>
     - (void)onRemoteControlButton:(NSString*) buttonName;
     - (void)onShowCenterDeco;
     - (void)onHideCenterDeco;
-    @property (nonatomic, retain) NSString *theMainIP;
+    - (void)launchImagePicker: (id)inView;
+    @property (nonatomic, copy) NSString *theMainIP;
 @end
 
 @implementation RemoteController
@@ -91,6 +94,68 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - UI Helpers
+
+- (void)onShowCenterDeco
+{
+    [UIView beginAnimations:nil context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:1.0];
+    [UIView setAnimationDidStopSelector: @selector(onHideCenterDeco)];
+    imgCenterDeco.alpha = 1;
+	[UIView commitAnimations];
+}
+- (void)onHideCenterDeco
+{
+    [UIView beginAnimations:nil context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:1.0];
+    [UIView setAnimationDidStopSelector: @selector(onShowCenterDeco)];
+    imgCenterDeco.alpha = 0;
+	[UIView commitAnimations];
+}
+
+//
+// Just show a custom (ELC) image picker
+//
+-(void)launchImagePicker: (id)inView
+{
+    //Popover frame
+    CGRect frame = self.view.frame;
+    frame.size.width /= 2;
+
+    ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] initWithNibName:@"ELCAlbumPickerController" bundle:[NSBundle mainBundle]];
+    ELCImagePickerController *imagePicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
+    [albumController setParent:imagePicker];
+    [imagePicker setDelegate:self];
+    [self presentModalViewController:imagePicker animated:YES];
+    [imagePicker release];
+    [albumController release];
+
+    //Lazy setup image picker
+    /* For iPad
+    if (popover == nil)
+    {
+        //Show photo picker
+        ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] initWithNibName:@"ELCAlbumPickerController" bundle:[NSBundle mainBundle]];
+        ELCImagePickerController *imagePicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
+        [albumController setParent:imagePicker];
+        [imagePicker setDelegate:self];
+        
+        //        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.contentSizeForViewInPopover = frame.size;
+        //      imagePicker.allowsEditing = NO;
+        
+        popover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+        [imagePicker release];
+        [albumController release];
+    }
+    
+    [popover presentPopoverFromRect:frame inView:inView
+           permittedArrowDirections:UIPopoverArrowDirectionRight 
+                           animated:YES];
+     */
+}
 
 #pragma mark - UI Events
 
@@ -119,28 +184,9 @@
 //Open a photo picker to send a photo to NeTV
 - (IBAction)pressPhoto:(id)sender
 {
-    //TODO
+    [self launchImagePicker:sender];
 }
 
-
-- (void)onShowCenterDeco
-{
-    [UIView beginAnimations:nil context:nil];
-	[UIView setAnimationBeginsFromCurrentState:YES];
-	[UIView setAnimationDuration:1.0];
-    [UIView setAnimationDidStopSelector: @selector(onHideCenterDeco)];
-    imgCenterDeco.alpha = 1;
-	[UIView commitAnimations];
-}
-- (void)onHideCenterDeco
-{
-    [UIView beginAnimations:nil context:nil];
-	[UIView setAnimationBeginsFromCurrentState:YES];
-	[UIView setAnimationDuration:1.0];
-    [UIView setAnimationDidStopSelector: @selector(onShowCenterDeco)];
-    imgCenterDeco.alpha = 0;
-	[UIView commitAnimations];
-}
 
 
 #pragma mark - AsyncUdpSocket delegate
@@ -166,5 +212,106 @@
 {
     
 }
+
+
+#pragma mark - ELCImagePickerController delegate
+
+- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
+{
+    //Dismiss the popup dialog
+    /*
+    if (popover != nil) {
+        [popover dismissPopoverAnimated:YES];
+        [popover release];
+        popover = nil;
+    }
+     */
+    
+    //For each image selected
+	for(NSDictionary *dict in info)
+    {   
+        NSString *mediaType = [dict objectForKey:UIImagePickerControllerMediaType];
+        
+        //ignore videos
+        if ( [mediaType isEqualToString:@"public.movie"] )
+            continue;
+        
+        //Upload it to NeTV
+        [self uploadPhoto:(self.theMainIP) withPath:@"/tmp/iphone_photo.jpg" media:dict];
+        
+        break;
+	}
+    
+    //Show progress bar
+    /*
+    lblUploadingProgress.hidden = NO;       lblUploadingProgress.alpha = 0.0;
+    prsUploadingProgress.hidden = NO;       prsUploadingProgress.alpha = 0.0;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.4f];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    lblUploadingProgress.alpha = 1.0;
+    prsUploadingProgress.alpha = 1.0;
+    [UIView commitAnimations];
+     */
+}
+
+- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+
+#pragma mark - ASIHTTPRequest delegate
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    //Sanity checks
+    NSDictionary *returnDict = [self convertXMLResponseToNSDictionary:[request responseString]];
+    if (returnDict == nil)
+        return;
+    
+    //Most frequently used
+    int returnStatus = [[returnDict objectForKey:@"status"] intValue];
+    NSString* commandString = [returnDict objectForKey:@"cmd"];
+    commandString = [commandString uppercaseString];
+    //NSString* dataString = [returnDict objectForKey:@"value"];        //might be nil
+    
+    if ([commandString isEqualToString:@"UPLOADFILE"])
+    {
+        if (returnStatus != 1)
+            return;
+        NSString* remotePath = [returnDict objectForKey:@"path"];
+        if (remotePath == nil || [remotePath length] < 3)
+            return;
+        
+        //Show the just uploaded image
+        NSLog(@"Showing photo: %@", remotePath);
+        [self sendMultitabImageCommand:(self.theMainIP) tabIndex:1 remotePath:remotePath];
+        return;
+    }
+    
+    //[self handleResponseData: [request responseData]];
+    NSLog(@"Finish: %@, %@", commandString, [request responseString]);
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSLog(@"Failed: %@", [request responseString]);
+    
+    //Sanity checks
+    NSDictionary *userInfo = [request userInfo];
+    if (userInfo == nil || [userInfo objectForKey:@"cmd"] == nil)
+        return;
+    
+    //Most frequently used
+    NSString* commandString = [userInfo objectForKey:@"cmd"];
+    commandString = [commandString uppercaseString];
+    
+    if ([commandString isEqualToString:@"UPLOADFILE"])
+    {
+        //retry?
+    }
+}
+
 
 @end
