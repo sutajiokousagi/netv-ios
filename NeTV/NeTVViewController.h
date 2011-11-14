@@ -15,6 +15,7 @@
     IBOutlet UILabel *lblInstruction;
     IBOutlet UIImageView *imgLogo;
     IBOutlet UIImageView *imgNavbar;
+    IBOutlet UIImageView *imgLoading;
     IBOutlet UIButton *btnNavbarBack;
     
     IBOutlet UIView *viewStatusBar;
@@ -52,6 +53,8 @@
 - (void)showStatusBarError:(NSString*)text;
 - (void)showStatusBarInfo:(NSString*)text;
 - (void)hideStatusBar;
+- (void)showLoadingIcon;
+- (void)hideLoadingIcon;
 - (BOOL)isDeviceListVisible;
 - (BOOL)isStatusBarVisible;
 - (void)showSimpleMessageDialog:(NSString*)message;

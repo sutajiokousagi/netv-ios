@@ -56,6 +56,9 @@
 		4207DCE7143D9F2F00FAD4AA /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE6143D9F2F00FAD4AA /* Icon@2x.png */; };
 		4207DCE9143D9F4700FAD4AA /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE8143D9F4700FAD4AA /* Icon-72.png */; };
 		421FD08C143EC819001CF8E7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 421FD08B143EC819001CF8E7 /* libz.dylib */; };
+		4244FB28146E352A00AFA378 /* loading_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4244FB26146E352A00AFA378 /* loading_icon.png */; };
+		4244FB29146E352A00AFA378 /* loading_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4244FB27146E352A00AFA378 /* loading_icon@2x.png */; };
+		4244FB2C146E3A4E00AFA378 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4244FB2B146E3A4E00AFA378 /* QuartzCore.framework */; };
 		42669015146A613B00E91493 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 42669002146A613B00E91493 /* ASIAuthenticationDialog.m */; };
 		42669016146A613B00E91493 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42669005146A613B00E91493 /* ASIDataCompressor.m */; };
 		42669017146A613B00E91493 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42669007146A613B00E91493 /* ASIDataDecompressor.m */; };
@@ -141,6 +144,9 @@
 		4207DCE6143D9F2F00FAD4AA /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4207DCE8143D9F4700FAD4AA /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		421FD08B143EC819001CF8E7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		4244FB26146E352A00AFA378 /* loading_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading_icon.png; sourceTree = "<group>"; };
+		4244FB27146E352A00AFA378 /* loading_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading_icon@2x.png"; sourceTree = "<group>"; };
+		4244FB2B146E3A4E00AFA378 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		42669001146A613B00E91493 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		42669002146A613B00E91493 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		42669003146A613B00E91493 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4244FB2C146E3A4E00AFA378 /* QuartzCore.framework in Frameworks */,
 				421FD08C143EC819001CF8E7 /* libz.dylib in Frameworks */,
 				42669023146A61AD00E91493 /* MobileCoreServices.framework in Frameworks */,
 				F24DC786144C50F300AB3BA1 /* MessageUI.framework in Frameworks */,
@@ -231,6 +238,8 @@
 		4207DC89143D9A9F00FAD4AA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4244FB26146E352A00AFA378 /* loading_icon.png */,
+				4244FB27146E352A00AFA378 /* loading_icon@2x.png */,
 				42B36E5C146D231900F6B358 /* bottombar_info.png */,
 				42B36E5D146D231900F6B358 /* bottombar_info@2x.png */,
 				4201DD7E146D15210080FF33 /* bottombar_error.png */,
@@ -340,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				421FD08B143EC819001CF8E7 /* libz.dylib */,
+				4244FB2B146E3A4E00AFA378 /* QuartzCore.framework */,
 				42669022146A61AD00E91493 /* MobileCoreServices.framework */,
 				F24DC785144C50F300AB3BA1 /* MessageUI.framework */,
 				8FF36FA114165B7D00A91FC0 /* CFNetwork.framework */,
@@ -444,6 +454,8 @@
 				4201DD81146D15210080FF33 /* bottombar_error@2x.png in Resources */,
 				42B36E5E146D231900F6B358 /* bottombar_info.png in Resources */,
 				42B36E5F146D231900F6B358 /* bottombar_info@2x.png in Resources */,
+				4244FB28146E352A00AFA378 /* loading_icon.png in Resources */,
+				4244FB29146E352A00AFA378 /* loading_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

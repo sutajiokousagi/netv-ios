@@ -5,12 +5,15 @@
 
 #import "NeTVViewController.h"
 #import "RemoteController.h"
+#import <QuartzCore/QuartzCore.h>
 #import <sys/socket.h>
 #import <netinet/in.h>
 #import <arpa/inet.h>
 #import <sys/ioctl.h>
 #import <net/if.h>
 #import <netdb.h>
+
+#define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 
 // Private extension
 @interface NeTVViewController()
@@ -64,6 +67,9 @@
         [self.view insertSubview:chooseIPController.view belowSubview:imgNavbar];
         chooseIPController.delegate = self;
     }
+    
+    //Hide loading icon initially
+    imgLoading.alpha = 0;
 }
 
 - (void)viewDidUnload
@@ -135,6 +141,7 @@
     lblVersion.alpha = 0;
     lblStatus.alpha = 0;
     imgLogo.alpha = 0;
+    imgLoading.alpha = 0;
 	[UIView commitAnimations];
     
 	[UIView beginAnimations:nil context:nil];
@@ -225,6 +232,35 @@
 	[UIView setAnimationBeginsFromCurrentState:YES];
 	[UIView setAnimationDuration:0.3];
 	viewStatusBar.frame = statusBarRect;
+	[UIView commitAnimations];
+}
+
+- (void)showLoadingIcon
+{
+    [UIView beginAnimations:nil context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:0.7];
+	[UIView setAnimationDelay:0.5];
+	imgLoading.alpha = 0.5;
+	[UIView commitAnimations];
+    
+    //Setup spining loading icon
+    CATransform3D rotationTransform = CATransform3DMakeRotation(0.9999f * M_PI, 0, 0, 1.0);
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];    
+    rotationAnimation.toValue = [NSValue valueWithCATransform3D:rotationTransform];
+    rotationAnimation.duration = 1.25f;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = 999; 
+    [imgLoading.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+}
+
+- (void)hideLoadingIcon
+{
+    [UIView beginAnimations:nil context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:0.5];
+	imgLoading.alpha = 0;
 	[UIView commitAnimations];
 }
 
@@ -505,6 +541,7 @@
         _deviceList = [[NSMutableDictionary alloc] initWithCapacity:10];
     [_deviceList removeAllObjects];
     [self hideStatusBar];
+    [self showLoadingIcon];
     
     [self restartInitSequenceWithDelay:0.3];
 }
@@ -560,11 +597,12 @@
     //Send handshake and wait to receive all handshakes
     if (!_sentHandshake)
     {
+
         [self sendHandshake];
         [self sendHandshake];
         [self sendHandshake];
-        [self setStatusText:@"Searching for NeTV..."];
         _sentHandshake = YES;
+        [self setStatusText:@"Searching for NeTV..."];
         [self restartInitSequenceWithDelay: 2.0];
         return;
     }
@@ -593,6 +631,7 @@
             NSString * ipString = [deviceData objectForKey:@"ip"];
             ipString = [ipString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             [self showStatusBarInfo:ipString];
+            [self hideLoadingIcon];
             
             [self performSelector:@selector(gotoRemoteControlSingleDevice) withObject:nil afterDelay:1.2];
             return;
@@ -607,7 +646,7 @@
     //If too long without a response
     time_t secondLapsed = (time_t)[[NSDate date] timeIntervalSince1970] - _startDiscoveryTime;
     if (secondLapsed > 8 && secondLapsed < 11)
-        [self showStatusBarError:@"No device found.\nPlease ensure NeTV is powered up."];
+        [self showStatusBarError:@"No device found.\nPlease ensure your NeTV is powered up."];
     
     [self sendHandshake];
     [self restartInitSequenceWithDelay: 1.0];
