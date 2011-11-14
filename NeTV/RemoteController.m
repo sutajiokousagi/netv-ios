@@ -8,6 +8,8 @@
 
 @interface RemoteController()
     - (void)onRemoteControlButton:(NSString*) buttonName;
+    - (void)onShowCenterDeco;
+    - (void)onHideCenterDeco;
     @property (nonatomic, retain) NSString *theMainIP;
 @end
 
@@ -49,6 +51,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self onShowCenterDeco];
 }
 
 - (void)viewDidUnload
@@ -59,7 +62,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+        
     //UI
     if (self.theMainIP != nil)
         ipAddr.text = [NSString stringWithFormat:@"Controlling %@", self.theMainIP];
@@ -119,6 +122,25 @@
     //TODO
 }
 
+
+- (void)onShowCenterDeco
+{
+    [UIView beginAnimations:nil context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:1.0];
+    [UIView setAnimationDidStopSelector: @selector(onHideCenterDeco)];
+    imgCenterDeco.alpha = 1;
+	[UIView commitAnimations];
+}
+- (void)onHideCenterDeco
+{
+    [UIView beginAnimations:nil context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:1.0];
+    [UIView setAnimationDidStopSelector: @selector(onShowCenterDeco)];
+    imgCenterDeco.alpha = 0;
+	[UIView commitAnimations];
+}
 
 
 #pragma mark - AsyncUdpSocket delegate

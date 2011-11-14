@@ -8,6 +8,7 @@
 @interface RemoteController : BaseController
 {
     IBOutlet UIButton *btnNavbarBack;
+    IBOutlet UIImageView *imgCenterDeco;
 }
 @property (nonatomic, retain) IBOutlet UILabel *ipAddr;
 
