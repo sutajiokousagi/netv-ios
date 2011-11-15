@@ -11,6 +11,7 @@
     - (void)onShowCenterDeco;
     - (void)onHideCenterDeco;
     - (void)launchImagePicker: (id)inView;
+    - (void)launchCameraPicker: (id)inView;
     @property (nonatomic, copy) NSString *theMainIP;
 @end
 
@@ -55,6 +56,9 @@
 {
     [super viewDidLoad];
     [self onShowCenterDeco];
+    
+    //Hide Camera button if device doesn't have a camera
+    btnCamera.hidden = ![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
 }
 
 - (void)viewDidUnload
@@ -115,25 +119,26 @@
 	[UIView commitAnimations];
 }
 
-//
-// Just show a custom (ELC) image picker
-//
 -(void)launchImagePicker: (id)inView
 {
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+        return;
+    
     UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
     [imagePicker setSourceType: UIImagePickerControllerSourceTypePhotoLibrary];
     [imagePicker setDelegate: self];
     [self presentModalViewController:imagePicker animated:YES];
+}
+
+-(void)launchCameraPicker: (id)inView
+{
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+        return;
     
-    /*
-    ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] initWithNibName:@"ELCAlbumPickerController" bundle:[NSBundle mainBundle]];
-    ELCImagePickerController *imagePicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
-    [albumController setParent:imagePicker];
-    [imagePicker setDelegate:self];
+    UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
+    [imagePicker setSourceType: UIImagePickerControllerSourceTypeCamera];
+    [imagePicker setDelegate: self];
     [self presentModalViewController:imagePicker animated:YES];
-    [imagePicker release];
-    [albumController release];
-     */
 }
 
 #pragma mark - UI Events
@@ -164,6 +169,12 @@
 - (IBAction)pressPhoto:(id)sender
 {
     [self launchImagePicker:sender];
+}
+
+//Take a photo from camera & send to NeTV
+- (IBAction)pressCamera:(id)sender
+{
+    [self launchCameraPicker:sender];
 }
 
 
@@ -205,13 +216,19 @@
     
     //ignore videos
     if ( [mediaType isEqualToString:@"public.movie"] )
-        return;
+        return;    
     
     //Upload it to NeTV
     [self uploadPhoto:(self.theMainIP) withPath:TMP_UPLOAD_PHOTO media:info];
     
-    //Get the image & do something about it (show it in UI)
+    //Get the image data & do something about it (show it in UI)
     //UIImage* image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    //picture taken from a camera
+    if ( [info objectForKey:UIImagePickerControllerMediaMetadata] != nil ) {
+        [self dismissModalViewControllerAnimated:YES];
+        return;
+    }
     
     //Note: we don't want to dismiss the picker for user might want to pick another image
 }
