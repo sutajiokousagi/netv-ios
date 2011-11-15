@@ -285,8 +285,10 @@
             return;
         
         //Show the just uploaded image
-        NSLog(@"Showing photo: %@", remotePath);
-        [self sendMultitabImageCommand:(self.theMainIP) tabIndex:1 remotePath:remotePath];
+        NSMutableString *httpPath = [NSMutableString stringWithString:remotePath];
+        [httpPath replaceOccurrencesOfString:@"/tmp" withString:@"http://localhost/tmp/netvserver" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [httpPath length])];
+        NSLog(@"Showing photo: %@", httpPath);
+        [self sendMultitabImageCommand:(self.theMainIP) tabIndex:1 remotePath:httpPath];
         return;
     }
     
