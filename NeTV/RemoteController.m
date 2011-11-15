@@ -5,10 +5,8 @@
 
 #import "RemoteController.h"
 #import "SVWebViewController.h"
-#import "ELCImagePickerController.h"
-#import "ELCAlbumPickerController.h"
 
-@interface RemoteController() <ELCImagePickerControllerDelegate>
+@interface RemoteController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
     - (void)onRemoteControlButton:(NSString*) buttonName;
     - (void)onShowCenterDeco;
     - (void)onHideCenterDeco;
@@ -17,6 +15,8 @@
 @end
 
 @implementation RemoteController
+
+#define TMP_UPLOAD_PHOTO    @"/tmp/iphone_photo.jpg"
 
 @synthesize theMainIP;
 @synthesize ipAddr;
@@ -120,10 +120,12 @@
 //
 -(void)launchImagePicker: (id)inView
 {
-    //Popover frame
-    CGRect frame = self.view.frame;
-    frame.size.width /= 2;
-
+    UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
+    [imagePicker setSourceType: UIImagePickerControllerSourceTypePhotoLibrary];
+    [imagePicker setDelegate: self];
+    [self presentModalViewController:imagePicker animated:YES];
+    
+    /*
     ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] initWithNibName:@"ELCAlbumPickerController" bundle:[NSBundle mainBundle]];
     ELCImagePickerController *imagePicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
     [albumController setParent:imagePicker];
@@ -131,29 +133,6 @@
     [self presentModalViewController:imagePicker animated:YES];
     [imagePicker release];
     [albumController release];
-
-    //Lazy setup image picker
-    /* For iPad
-    if (popover == nil)
-    {
-        //Show photo picker
-        ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] initWithNibName:@"ELCAlbumPickerController" bundle:[NSBundle mainBundle]];
-        ELCImagePickerController *imagePicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
-        [albumController setParent:imagePicker];
-        [imagePicker setDelegate:self];
-        
-        //        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.contentSizeForViewInPopover = frame.size;
-        //      imagePicker.allowsEditing = NO;
-        
-        popover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
-        [imagePicker release];
-        [albumController release];
-    }
-    
-    [popover presentPopoverFromRect:frame inView:inView
-           permittedArrowDirections:UIPopoverArrowDirectionRight 
-                           animated:YES];
      */
 }
 
@@ -214,51 +193,41 @@
 }
 
 
-#pragma mark - ELCImagePickerController delegate
 
-- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
-{
-    //Dismiss the popup dialog
-    /*
-    if (popover != nil) {
-        [popover dismissPopoverAnimated:YES];
-        [popover release];
-        popover = nil;
-    }
-     */
+#pragma mark --
+#pragma mark UIImagePickerControllerDelegate
+
+// this get called when an image has been chosen from the library or taken from the camera
+//
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{      
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
     
-    //For each image selected
-	for(NSDictionary *dict in info)
-    {   
-        NSString *mediaType = [dict objectForKey:UIImagePickerControllerMediaType];
-        
-        //ignore videos
-        if ( [mediaType isEqualToString:@"public.movie"] )
-            continue;
-        
-        //Upload it to NeTV
-        [self uploadPhoto:(self.theMainIP) withPath:@"/tmp/iphone_photo.jpg" media:dict];
-        
-        break;
-	}
+    //ignore videos
+    if ( [mediaType isEqualToString:@"public.movie"] )
+        return;
     
-    //Show progress bar
-    /*
-    lblUploadingProgress.hidden = NO;       lblUploadingProgress.alpha = 0.0;
-    prsUploadingProgress.hidden = NO;       prsUploadingProgress.alpha = 0.0;
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.4f];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    lblUploadingProgress.alpha = 1.0;
-    prsUploadingProgress.alpha = 1.0;
-    [UIView commitAnimations];
-     */
+    //Upload it to NeTV
+    [self uploadPhoto:(self.theMainIP) withPath:TMP_UPLOAD_PHOTO media:info];
+    
+    //Get the image & do something about it (show it in UI)
+    //UIImage* image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    //Note: we don't want to dismiss the picker for user might want to pick another image
 }
 
-- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
+    //Delete the temp file in NeTV
+    [self sendUnlinkCommand:(self.theMainIP) path:TMP_UPLOAD_PHOTO];
+    
+    //Return to Control Panel tab
+    [self sendMultitabCloseAll:(self.theMainIP)];
+
+    //Cancel image picker
     [self dismissModalViewControllerAnimated:YES];
 }
+
 
 
 #pragma mark - ASIHTTPRequest delegate
