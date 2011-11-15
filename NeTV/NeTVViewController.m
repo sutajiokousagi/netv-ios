@@ -119,6 +119,11 @@
 
 #pragma mark - UI Events
 
+-(IBAction)onNavbarBack:(id)sender
+{
+    [self hideDeviceList];
+    [self reset];
+}
 
 
 
@@ -543,7 +548,7 @@
     [self hideStatusBar];
     [self showLoadingIcon];
     
-    [self restartInitSequenceWithDelay:0.3];
+    [self restartInitSequenceWithDelay:0.4];
 }
 
 - (void)restartInitSequenceWithDelay:(float)second
