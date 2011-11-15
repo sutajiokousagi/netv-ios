@@ -62,39 +62,6 @@
 		4266901B146A613B00E91493 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 42669011146A613B00E91493 /* ASIInputStream.m */; };
 		4266901C146A613B00E91493 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 42669013146A613B00E91493 /* ASINetworkQueue.m */; };
 		42669023146A61AD00E91493 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42669022146A61AD00E91493 /* MobileCoreServices.framework */; };
-		42AD80271470D2F4003763F7 /* EGOPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7FE31470D2F4003763F7 /* EGOPhotoViewController.m */; };
-		42AD80281470D2F4003763F7 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7FE81470D2F4003763F7 /* EGOCache.m */; };
-		42AD80291470D2F4003763F7 /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7FEB1470D2F4003763F7 /* EGOImageLoadConnection.m */; };
-		42AD802A1470D2F4003763F7 /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7FED1470D2F4003763F7 /* EGOImageLoader.m */; };
-		42AD802B1470D2F4003763F7 /* EGOQuickPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7FF21470D2F4003763F7 /* EGOQuickPhoto.m */; };
-		42AD802C1470D2F4003763F7 /* EGOQuickPhotoSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7FF41470D2F4003763F7 /* EGOQuickPhotoSource.m */; };
-		42AD802D1470D2F4003763F7 /* MyPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7FF61470D2F4003763F7 /* MyPhoto.m */; };
-		42AD802E1470D2F4003763F7 /* MyPhotoSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7FF81470D2F4003763F7 /* MyPhotoSource.m */; };
-		42AD802F1470D2F4003763F7 /* egopv_error_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7FFA1470D2F4003763F7 /* egopv_error_placeholder.png */; };
-		42AD80301470D2F4003763F7 /* egopv_error_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7FFB1470D2F4003763F7 /* egopv_error_placeholder@2x.png */; };
-		42AD80311470D2F4003763F7 /* egopv_fullscreen_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7FFC1470D2F4003763F7 /* egopv_fullscreen_button.png */; };
-		42AD80321470D2F4003763F7 /* egopv_fullscreen_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7FFD1470D2F4003763F7 /* egopv_fullscreen_button@2x.png */; };
-		42AD80331470D2F4003763F7 /* egopv_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7FFE1470D2F4003763F7 /* egopv_left.png */; };
-		42AD80341470D2F4003763F7 /* egopv_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7FFF1470D2F4003763F7 /* egopv_left@2x.png */; };
-		42AD80351470D2F4003763F7 /* egopv_minimize_fullscreen_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD80001470D2F4003763F7 /* egopv_minimize_fullscreen_button.png */; };
-		42AD80361470D2F4003763F7 /* egopv_photo_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD80011470D2F4003763F7 /* egopv_photo_placeholder.png */; };
-		42AD80371470D2F4003763F7 /* egopv_photo_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD80021470D2F4003763F7 /* egopv_photo_placeholder@2x.png */; };
-		42AD80381470D2F4003763F7 /* egopv_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD80031470D2F4003763F7 /* egopv_right.png */; };
-		42AD80391470D2F4003763F7 /* egopv_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD80041470D2F4003763F7 /* egopv_right@2x.png */; };
-		42AD803A1470D2F4003763F7 /* EGOPhotoCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD80081470D2F4003763F7 /* EGOPhotoCaptionView.m */; };
-		42AD803B1470D2F4003763F7 /* EGOPhotoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD800B1470D2F4003763F7 /* EGOPhotoImageView.m */; };
-		42AD803C1470D2F4003763F7 /* EGOPhotoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD800E1470D2F4003763F7 /* EGOPhotoScrollView.m */; };
-		42AD803D1470D2F4003763F7 /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD80111470D2F4003763F7 /* ELCAlbumPickerController.m */; };
-		42AD803E1470D2F4003763F7 /* ELCAlbumPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42AD80121470D2F4003763F7 /* ELCAlbumPickerController.xib */; };
-		42AD803F1470D2F4003763F7 /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD80141470D2F4003763F7 /* ELCAsset.m */; };
-		42AD80401470D2F4003763F7 /* ELCAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD80161470D2F4003763F7 /* ELCAssetCell.m */; };
-		42AD80411470D2F4003763F7 /* ELCAssetPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42AD80171470D2F4003763F7 /* ELCAssetPicker.xib */; };
-		42AD80421470D2F4003763F7 /* ELCAssetTablePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD80191470D2F4003763F7 /* ELCAssetTablePicker.m */; };
-		42AD80431470D2F4003763F7 /* ELCAssetTablePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42AD801A1470D2F4003763F7 /* ELCAssetTablePicker.xib */; };
-		42AD80441470D2F4003763F7 /* ELCImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD801C1470D2F4003763F7 /* ELCImagePickerController.m */; };
-		42AD80451470D2F4003763F7 /* ELCImagePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42AD801D1470D2F4003763F7 /* ELCImagePickerController.xib */; };
-		42AD80461470D2F4003763F7 /* Overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD801E1470D2F4003763F7 /* Overlay.png */; };
-		42AD80471470D2F4003763F7 /* Overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AD801F1470D2F4003763F7 /* Overlay@2x.png */; };
 		42AD80481470D2F4003763F7 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD80221470D2F4003763F7 /* UIImage+Alpha.m */; };
 		42AD80491470D2F4003763F7 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD80241470D2F4003763F7 /* UIImage+Resize.m */; };
 		42AD804A1470D2F4003763F7 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD80261470D2F4003763F7 /* UIImage+RoundedCorner.m */; };
@@ -204,57 +171,6 @@
 		42669013146A613B00E91493 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
 		42669014146A613B00E91493 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		42669022146A61AD00E91493 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		42AD7FE21470D2F4003763F7 /* EGOPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOPhotoViewController.h; sourceTree = "<group>"; };
-		42AD7FE31470D2F4003763F7 /* EGOPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOPhotoViewController.m; sourceTree = "<group>"; };
-		42AD7FE41470D2F4003763F7 /* EGOPhotoGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOPhotoGlobal.h; sourceTree = "<group>"; };
-		42AD7FE71470D2F4003763F7 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
-		42AD7FE81470D2F4003763F7 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
-		42AD7FEA1470D2F4003763F7 /* EGOImageLoadConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoadConnection.h; sourceTree = "<group>"; };
-		42AD7FEB1470D2F4003763F7 /* EGOImageLoadConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoadConnection.m; sourceTree = "<group>"; };
-		42AD7FEC1470D2F4003763F7 /* EGOImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoader.h; sourceTree = "<group>"; };
-		42AD7FED1470D2F4003763F7 /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoader.m; sourceTree = "<group>"; };
-		42AD7FEF1470D2F4003763F7 /* EGOPhotoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOPhotoSource.h; sourceTree = "<group>"; };
-		42AD7FF11470D2F4003763F7 /* EGOQuickPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOQuickPhoto.h; sourceTree = "<group>"; };
-		42AD7FF21470D2F4003763F7 /* EGOQuickPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOQuickPhoto.m; sourceTree = "<group>"; };
-		42AD7FF31470D2F4003763F7 /* EGOQuickPhotoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOQuickPhotoSource.h; sourceTree = "<group>"; };
-		42AD7FF41470D2F4003763F7 /* EGOQuickPhotoSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOQuickPhotoSource.m; sourceTree = "<group>"; };
-		42AD7FF51470D2F4003763F7 /* MyPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPhoto.h; sourceTree = "<group>"; };
-		42AD7FF61470D2F4003763F7 /* MyPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPhoto.m; sourceTree = "<group>"; };
-		42AD7FF71470D2F4003763F7 /* MyPhotoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPhotoSource.h; sourceTree = "<group>"; };
-		42AD7FF81470D2F4003763F7 /* MyPhotoSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPhotoSource.m; sourceTree = "<group>"; };
-		42AD7FFA1470D2F4003763F7 /* egopv_error_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egopv_error_placeholder.png; sourceTree = "<group>"; };
-		42AD7FFB1470D2F4003763F7 /* egopv_error_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "egopv_error_placeholder@2x.png"; sourceTree = "<group>"; };
-		42AD7FFC1470D2F4003763F7 /* egopv_fullscreen_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egopv_fullscreen_button.png; sourceTree = "<group>"; };
-		42AD7FFD1470D2F4003763F7 /* egopv_fullscreen_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "egopv_fullscreen_button@2x.png"; sourceTree = "<group>"; };
-		42AD7FFE1470D2F4003763F7 /* egopv_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egopv_left.png; sourceTree = "<group>"; };
-		42AD7FFF1470D2F4003763F7 /* egopv_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "egopv_left@2x.png"; sourceTree = "<group>"; };
-		42AD80001470D2F4003763F7 /* egopv_minimize_fullscreen_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egopv_minimize_fullscreen_button.png; sourceTree = "<group>"; };
-		42AD80011470D2F4003763F7 /* egopv_photo_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egopv_photo_placeholder.png; sourceTree = "<group>"; };
-		42AD80021470D2F4003763F7 /* egopv_photo_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "egopv_photo_placeholder@2x.png"; sourceTree = "<group>"; };
-		42AD80031470D2F4003763F7 /* egopv_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egopv_right.png; sourceTree = "<group>"; };
-		42AD80041470D2F4003763F7 /* egopv_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "egopv_right@2x.png"; sourceTree = "<group>"; };
-		42AD80071470D2F4003763F7 /* EGOPhotoCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOPhotoCaptionView.h; sourceTree = "<group>"; };
-		42AD80081470D2F4003763F7 /* EGOPhotoCaptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOPhotoCaptionView.m; sourceTree = "<group>"; };
-		42AD800A1470D2F4003763F7 /* EGOPhotoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOPhotoImageView.h; sourceTree = "<group>"; };
-		42AD800B1470D2F4003763F7 /* EGOPhotoImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOPhotoImageView.m; sourceTree = "<group>"; };
-		42AD800D1470D2F4003763F7 /* EGOPhotoScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOPhotoScrollView.h; sourceTree = "<group>"; };
-		42AD800E1470D2F4003763F7 /* EGOPhotoScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOPhotoScrollView.m; sourceTree = "<group>"; };
-		42AD80101470D2F4003763F7 /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
-		42AD80111470D2F4003763F7 /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
-		42AD80121470D2F4003763F7 /* ELCAlbumPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAlbumPickerController.xib; sourceTree = "<group>"; };
-		42AD80131470D2F4003763F7 /* ELCAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAsset.h; sourceTree = "<group>"; };
-		42AD80141470D2F4003763F7 /* ELCAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAsset.m; sourceTree = "<group>"; };
-		42AD80151470D2F4003763F7 /* ELCAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetCell.h; sourceTree = "<group>"; };
-		42AD80161470D2F4003763F7 /* ELCAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetCell.m; sourceTree = "<group>"; };
-		42AD80171470D2F4003763F7 /* ELCAssetPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetPicker.xib; sourceTree = "<group>"; };
-		42AD80181470D2F4003763F7 /* ELCAssetTablePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetTablePicker.h; sourceTree = "<group>"; };
-		42AD80191470D2F4003763F7 /* ELCAssetTablePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetTablePicker.m; sourceTree = "<group>"; };
-		42AD801A1470D2F4003763F7 /* ELCAssetTablePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetTablePicker.xib; sourceTree = "<group>"; };
-		42AD801B1470D2F4003763F7 /* ELCImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerController.h; sourceTree = "<group>"; };
-		42AD801C1470D2F4003763F7 /* ELCImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCImagePickerController.m; sourceTree = "<group>"; };
-		42AD801D1470D2F4003763F7 /* ELCImagePickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCImagePickerController.xib; sourceTree = "<group>"; };
-		42AD801E1470D2F4003763F7 /* Overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Overlay.png; sourceTree = "<group>"; };
-		42AD801F1470D2F4003763F7 /* Overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Overlay@2x.png"; sourceTree = "<group>"; };
 		42AD80211470D2F4003763F7 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		42AD80221470D2F4003763F7 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
 		42AD80231470D2F4003763F7 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
@@ -390,8 +306,6 @@
 		4207DCCE143D9CF300FAD4AA /* SharedClasses */ = {
 			isa = PBXGroup;
 			children = (
-				42AD7FDF1470D2F4003763F7 /* EGOPhotoViewer */,
-				42AD800F1470D2F4003763F7 /* ELCImagePicker */,
 				42AD80201470D2F4003763F7 /* UIImage-extensions */,
 				42669000146A613B00E91493 /* ASIHTTPRequest */,
 				4207DCCF143D9CF300FAD4AA /* AsyncSocket.h */,
@@ -437,167 +351,6 @@
 				42669014146A613B00E91493 /* ASIProgressDelegate.h */,
 			);
 			path = ASIHTTPRequest;
-			sourceTree = "<group>";
-		};
-		42AD7FDF1470D2F4003763F7 /* EGOPhotoViewer */ = {
-			isa = PBXGroup;
-			children = (
-				42AD7FE01470D2F4003763F7 /* Controller */,
-				42AD7FE41470D2F4003763F7 /* EGOPhotoGlobal.h */,
-				42AD7FE51470D2F4003763F7 /* Model */,
-				42AD7FF91470D2F4003763F7 /* Resources */,
-				42AD80051470D2F4003763F7 /* Views */,
-			);
-			path = EGOPhotoViewer;
-			sourceTree = "<group>";
-		};
-		42AD7FE01470D2F4003763F7 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				42AD7FE11470D2F4003763F7 /* EGOPhotoViewController */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		42AD7FE11470D2F4003763F7 /* EGOPhotoViewController */ = {
-			isa = PBXGroup;
-			children = (
-				42AD7FE21470D2F4003763F7 /* EGOPhotoViewController.h */,
-				42AD7FE31470D2F4003763F7 /* EGOPhotoViewController.m */,
-			);
-			path = EGOPhotoViewController;
-			sourceTree = "<group>";
-		};
-		42AD7FE51470D2F4003763F7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				42AD7FE61470D2F4003763F7 /* EGOCache */,
-				42AD7FE91470D2F4003763F7 /* EGOImageLoader */,
-				42AD7FEE1470D2F4003763F7 /* EGOPhotoSource */,
-				42AD7FF01470D2F4003763F7 /* EGOQuickPhoto */,
-				42AD7FF51470D2F4003763F7 /* MyPhoto.h */,
-				42AD7FF61470D2F4003763F7 /* MyPhoto.m */,
-				42AD7FF71470D2F4003763F7 /* MyPhotoSource.h */,
-				42AD7FF81470D2F4003763F7 /* MyPhotoSource.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		42AD7FE61470D2F4003763F7 /* EGOCache */ = {
-			isa = PBXGroup;
-			children = (
-				42AD7FE71470D2F4003763F7 /* EGOCache.h */,
-				42AD7FE81470D2F4003763F7 /* EGOCache.m */,
-			);
-			path = EGOCache;
-			sourceTree = "<group>";
-		};
-		42AD7FE91470D2F4003763F7 /* EGOImageLoader */ = {
-			isa = PBXGroup;
-			children = (
-				42AD7FEA1470D2F4003763F7 /* EGOImageLoadConnection.h */,
-				42AD7FEB1470D2F4003763F7 /* EGOImageLoadConnection.m */,
-				42AD7FEC1470D2F4003763F7 /* EGOImageLoader.h */,
-				42AD7FED1470D2F4003763F7 /* EGOImageLoader.m */,
-			);
-			path = EGOImageLoader;
-			sourceTree = "<group>";
-		};
-		42AD7FEE1470D2F4003763F7 /* EGOPhotoSource */ = {
-			isa = PBXGroup;
-			children = (
-				42AD7FEF1470D2F4003763F7 /* EGOPhotoSource.h */,
-			);
-			path = EGOPhotoSource;
-			sourceTree = "<group>";
-		};
-		42AD7FF01470D2F4003763F7 /* EGOQuickPhoto */ = {
-			isa = PBXGroup;
-			children = (
-				42AD7FF11470D2F4003763F7 /* EGOQuickPhoto.h */,
-				42AD7FF21470D2F4003763F7 /* EGOQuickPhoto.m */,
-				42AD7FF31470D2F4003763F7 /* EGOQuickPhotoSource.h */,
-				42AD7FF41470D2F4003763F7 /* EGOQuickPhotoSource.m */,
-			);
-			path = EGOQuickPhoto;
-			sourceTree = "<group>";
-		};
-		42AD7FF91470D2F4003763F7 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				42AD7FFA1470D2F4003763F7 /* egopv_error_placeholder.png */,
-				42AD7FFB1470D2F4003763F7 /* egopv_error_placeholder@2x.png */,
-				42AD7FFC1470D2F4003763F7 /* egopv_fullscreen_button.png */,
-				42AD7FFD1470D2F4003763F7 /* egopv_fullscreen_button@2x.png */,
-				42AD7FFE1470D2F4003763F7 /* egopv_left.png */,
-				42AD7FFF1470D2F4003763F7 /* egopv_left@2x.png */,
-				42AD80001470D2F4003763F7 /* egopv_minimize_fullscreen_button.png */,
-				42AD80011470D2F4003763F7 /* egopv_photo_placeholder.png */,
-				42AD80021470D2F4003763F7 /* egopv_photo_placeholder@2x.png */,
-				42AD80031470D2F4003763F7 /* egopv_right.png */,
-				42AD80041470D2F4003763F7 /* egopv_right@2x.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		42AD80051470D2F4003763F7 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				42AD80061470D2F4003763F7 /* EGOPhotoCaptionView */,
-				42AD80091470D2F4003763F7 /* EGOPhotoImageView */,
-				42AD800C1470D2F4003763F7 /* EGOPhotoScrollView */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		42AD80061470D2F4003763F7 /* EGOPhotoCaptionView */ = {
-			isa = PBXGroup;
-			children = (
-				42AD80071470D2F4003763F7 /* EGOPhotoCaptionView.h */,
-				42AD80081470D2F4003763F7 /* EGOPhotoCaptionView.m */,
-			);
-			path = EGOPhotoCaptionView;
-			sourceTree = "<group>";
-		};
-		42AD80091470D2F4003763F7 /* EGOPhotoImageView */ = {
-			isa = PBXGroup;
-			children = (
-				42AD800A1470D2F4003763F7 /* EGOPhotoImageView.h */,
-				42AD800B1470D2F4003763F7 /* EGOPhotoImageView.m */,
-			);
-			path = EGOPhotoImageView;
-			sourceTree = "<group>";
-		};
-		42AD800C1470D2F4003763F7 /* EGOPhotoScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				42AD800D1470D2F4003763F7 /* EGOPhotoScrollView.h */,
-				42AD800E1470D2F4003763F7 /* EGOPhotoScrollView.m */,
-			);
-			path = EGOPhotoScrollView;
-			sourceTree = "<group>";
-		};
-		42AD800F1470D2F4003763F7 /* ELCImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-				42AD80101470D2F4003763F7 /* ELCAlbumPickerController.h */,
-				42AD80111470D2F4003763F7 /* ELCAlbumPickerController.m */,
-				42AD80121470D2F4003763F7 /* ELCAlbumPickerController.xib */,
-				42AD80131470D2F4003763F7 /* ELCAsset.h */,
-				42AD80141470D2F4003763F7 /* ELCAsset.m */,
-				42AD80151470D2F4003763F7 /* ELCAssetCell.h */,
-				42AD80161470D2F4003763F7 /* ELCAssetCell.m */,
-				42AD80171470D2F4003763F7 /* ELCAssetPicker.xib */,
-				42AD80181470D2F4003763F7 /* ELCAssetTablePicker.h */,
-				42AD80191470D2F4003763F7 /* ELCAssetTablePicker.m */,
-				42AD801A1470D2F4003763F7 /* ELCAssetTablePicker.xib */,
-				42AD801B1470D2F4003763F7 /* ELCImagePickerController.h */,
-				42AD801C1470D2F4003763F7 /* ELCImagePickerController.m */,
-				42AD801D1470D2F4003763F7 /* ELCImagePickerController.xib */,
-				42AD801E1470D2F4003763F7 /* Overlay.png */,
-				42AD801F1470D2F4003763F7 /* Overlay@2x.png */,
-			);
-			path = ELCImagePicker;
 			sourceTree = "<group>";
 		};
 		42AD80201470D2F4003763F7 /* UIImage-extensions */ = {
@@ -750,23 +503,6 @@
 				42BA3CD41470C42A000A855B /* btn_right_normal.png in Resources */,
 				42BA3CD51470C42A000A855B /* btn_up_down.png in Resources */,
 				42BA3CD61470C42A000A855B /* btn_up_normal.png in Resources */,
-				42AD802F1470D2F4003763F7 /* egopv_error_placeholder.png in Resources */,
-				42AD80301470D2F4003763F7 /* egopv_error_placeholder@2x.png in Resources */,
-				42AD80311470D2F4003763F7 /* egopv_fullscreen_button.png in Resources */,
-				42AD80321470D2F4003763F7 /* egopv_fullscreen_button@2x.png in Resources */,
-				42AD80331470D2F4003763F7 /* egopv_left.png in Resources */,
-				42AD80341470D2F4003763F7 /* egopv_left@2x.png in Resources */,
-				42AD80351470D2F4003763F7 /* egopv_minimize_fullscreen_button.png in Resources */,
-				42AD80361470D2F4003763F7 /* egopv_photo_placeholder.png in Resources */,
-				42AD80371470D2F4003763F7 /* egopv_photo_placeholder@2x.png in Resources */,
-				42AD80381470D2F4003763F7 /* egopv_right.png in Resources */,
-				42AD80391470D2F4003763F7 /* egopv_right@2x.png in Resources */,
-				42AD803E1470D2F4003763F7 /* ELCAlbumPickerController.xib in Resources */,
-				42AD80411470D2F4003763F7 /* ELCAssetPicker.xib in Resources */,
-				42AD80431470D2F4003763F7 /* ELCAssetTablePicker.xib in Resources */,
-				42AD80451470D2F4003763F7 /* ELCImagePickerController.xib in Resources */,
-				42AD80461470D2F4003763F7 /* Overlay.png in Resources */,
-				42AD80471470D2F4003763F7 /* Overlay@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,22 +537,6 @@
 				4266901C146A613B00E91493 /* ASINetworkQueue.m in Sources */,
 				4201DD6A146B9A0B0080FF33 /* ChooseIPCellView.m in Sources */,
 				4201DD7D146CDAF90080FF33 /* BaseController.m in Sources */,
-				42AD80271470D2F4003763F7 /* EGOPhotoViewController.m in Sources */,
-				42AD80281470D2F4003763F7 /* EGOCache.m in Sources */,
-				42AD80291470D2F4003763F7 /* EGOImageLoadConnection.m in Sources */,
-				42AD802A1470D2F4003763F7 /* EGOImageLoader.m in Sources */,
-				42AD802B1470D2F4003763F7 /* EGOQuickPhoto.m in Sources */,
-				42AD802C1470D2F4003763F7 /* EGOQuickPhotoSource.m in Sources */,
-				42AD802D1470D2F4003763F7 /* MyPhoto.m in Sources */,
-				42AD802E1470D2F4003763F7 /* MyPhotoSource.m in Sources */,
-				42AD803A1470D2F4003763F7 /* EGOPhotoCaptionView.m in Sources */,
-				42AD803B1470D2F4003763F7 /* EGOPhotoImageView.m in Sources */,
-				42AD803C1470D2F4003763F7 /* EGOPhotoScrollView.m in Sources */,
-				42AD803D1470D2F4003763F7 /* ELCAlbumPickerController.m in Sources */,
-				42AD803F1470D2F4003763F7 /* ELCAsset.m in Sources */,
-				42AD80401470D2F4003763F7 /* ELCAssetCell.m in Sources */,
-				42AD80421470D2F4003763F7 /* ELCAssetTablePicker.m in Sources */,
-				42AD80441470D2F4003763F7 /* ELCImagePickerController.m in Sources */,
 				42AD80481470D2F4003763F7 /* UIImage+Alpha.m in Sources */,
 				42AD80491470D2F4003763F7 /* UIImage+Resize.m in Sources */,
 				42AD804A1470D2F4003763F7 /* UIImage+RoundedCorner.m in Sources */,
