@@ -7,20 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseController.h"
 
-@interface NeTVWebViewController : UIViewController <UIWebViewDelegate>
+@interface NeTVWebViewController : BaseController <UIWebViewDelegate>
 {
     IBOutlet UIWebView *webView;
     IBOutlet UITextField *addressBar;
     IBOutlet UIActivityIndicatorView *activityIndicator;
+    
+    IBOutlet UIButton *btnNavbarBack;
+
 }
 
 @property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) UITextField *addressBar;
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain) UIButton *btnNavbarBack;
 
--(id)initWithAddress:(NSString*)string;
+// Custom Initialization
+- (id)initWithAddress:(NSString *)string;
 
--(IBAction)gotoAddress:(id)sender;
+// UI Evants
+- (IBAction)gotoAddress:(id)sender;
+
 
 @end

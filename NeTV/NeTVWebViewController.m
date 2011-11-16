@@ -10,7 +10,7 @@
 
 @implementation NeTVWebViewController
 
-@synthesize webView, addressBar, activityIndicator;
+@synthesize webView, addressBar, activityIndicator, btnNavbarBack;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -21,21 +21,21 @@
     return self;
 }
 
-//- (id)initWithAddress:(NSString *)string
-//{
-//    self = [super initWithNibName:nil bundle:[NSBundle mainBundle]];
-//    
-//    NSString *urlAddress = string;
-//    
-//    NSURL *url = [NSURL URLWithString:urlAddress];
-//    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];    
-//    [webView loadRequest:requestObj];
-//    
-//    [addressBar setText:urlAddress];
-//    [addressBar setKeyboardType:UIKeyboardTypeURL];
-//    
-//    return self;
-//}
+- (id)initWithAddress:(NSString *)string
+{
+    self = [super initWithNibName:nil bundle:[NSBundle mainBundle]];
+    
+    NSString *urlAddress = string;
+    
+    NSURL *url = [NSURL URLWithString:urlAddress];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];    
+    [webView loadRequest:requestObj];
+    
+    [addressBar setText:urlAddress];
+    [addressBar setKeyboardType:UIKeyboardTypeURL];
+    
+    return self;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -52,13 +52,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    NSString *urlAddress = @"http://www.google.com";
-    
-    NSURL *url = [NSURL URLWithString:urlAddress];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];    
-    [webView loadRequest:requestObj];
-    
-    [addressBar setText:urlAddress];
+//    NSString *urlAddress = @"http://www.google.com";
+//    
+//    NSURL *url = [NSURL URLWithString:urlAddress];
+//    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];    
+//    [webView loadRequest:requestObj];
+//    
+//    [addressBar setText:urlAddress];
     [addressBar setKeyboardType:UIKeyboardTypeURL];
 }
 
