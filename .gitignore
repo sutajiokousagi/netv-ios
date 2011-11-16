@@ -2,3 +2,4 @@
 *.xcuserstate
 *.xcbkptlist
 *.xcsettings
+/NeTV.xcodeproj/xcuserdata/
