@@ -9,6 +9,7 @@
 {
     IBOutlet UIButton *btnNavbarBack;
     IBOutlet UIImageView *imgCenterDeco;
+    IBOutlet UIButton *btnCamera;
 }
 @property (nonatomic, retain) IBOutlet UILabel *ipAddr;
 
@@ -25,5 +26,6 @@
 - (IBAction)pressCenter:(id)sender;
 - (IBAction)pressBrowser:(id)sender;
 - (IBAction)pressPhoto:(id)sender;
+- (IBAction)pressCamera:(id)sender;
 
 @end
