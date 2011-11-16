@@ -87,6 +87,8 @@
 		F24DC786144C50F300AB3BA1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24DC785144C50F300AB3BA1 /* MessageUI.framework */; };
 		F24DC78B144C516200AB3BA1 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F24DC788144C516200AB3BA1 /* SVWebViewController.bundle */; };
 		F24DC78C144C516200AB3BA1 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DC78A144C516200AB3BA1 /* SVWebViewController.m */; };
+		F2E608971473773F00F16991 /* NeTVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E608951473773F00F16991 /* NeTVWebViewController.m */; };
+		F2E608981473773F00F16991 /* NeTVWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E608961473773F00F16991 /* NeTVWebViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,6 +203,9 @@
 		F24DC788144C516200AB3BA1 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
 		F24DC789144C516200AB3BA1 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
 		F24DC78A144C516200AB3BA1 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
+		F2E608941473773F00F16991 /* NeTVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeTVWebViewController.h; sourceTree = "<group>"; };
+		F2E608951473773F00F16991 /* NeTVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeTVWebViewController.m; sourceTree = "<group>"; };
+		F2E608961473773F00F16991 /* NeTVWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeTVWebViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +258,9 @@
 				4207DCA0143D9A9F00FAD4AA /* RemoteController.h */,
 				4207DCA1143D9A9F00FAD4AA /* RemoteController.m */,
 				4207DCA2143D9A9F00FAD4AA /* RemoteController.xib */,
+				F2E608941473773F00F16991 /* NeTVWebViewController.h */,
+				F2E608951473773F00F16991 /* NeTVWebViewController.m */,
+				F2E608961473773F00F16991 /* NeTVWebViewController.xib */,
 			);
 			path = NeTV;
 			sourceTree = "<group>";
@@ -503,6 +511,7 @@
 				42BA3CD41470C42A000A855B /* btn_right_normal.png in Resources */,
 				42BA3CD51470C42A000A855B /* btn_up_down.png in Resources */,
 				42BA3CD61470C42A000A855B /* btn_up_normal.png in Resources */,
+				F2E608981473773F00F16991 /* NeTVWebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +549,7 @@
 				42AD80481470D2F4003763F7 /* UIImage+Alpha.m in Sources */,
 				42AD80491470D2F4003763F7 /* UIImage+Resize.m in Sources */,
 				42AD804A1470D2F4003763F7 /* UIImage+RoundedCorner.m in Sources */,
+				F2E608971473773F00F16991 /* NeTVWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
