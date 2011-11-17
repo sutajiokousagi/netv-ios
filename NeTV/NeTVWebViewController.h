@@ -11,24 +11,30 @@
 
 @interface NeTVWebViewController : BaseController <UIWebViewDelegate>
 {
-    IBOutlet UIWebView *webView;
-    IBOutlet UITextField *addressBar;
-    IBOutlet UIActivityIndicatorView *activityIndicator;
-    
-    IBOutlet UIButton *btnNavbarBack;
-
+    UIWebView* mWebView;
+    UIToolbar* mToolbar;
+    UIBarButtonItem* mBack;
+    UIBarButtonItem* mForward;
+    UIBarButtonItem* mRefresh;
+    UIBarButtonItem* mStop;
+    UITextField* mAddressField;
 }
 
-@property (nonatomic, retain) UIWebView *webView;
-@property (nonatomic, retain) UITextField *addressBar;
-@property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
-@property (nonatomic, retain) UIButton *btnNavbarBack;
+@property (nonatomic, retain) IBOutlet UIWebView* webView;
+@property (nonatomic, retain) IBOutlet UIToolbar* toolbar;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem* back;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem* forward;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem* refresh;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem* stop;
+@property (nonatomic, retain) IBOutlet UITextField* addressField;
 
-// Custom Initialization
-- (id)initWithAddress:(NSString *)string;
+- (void)updateButtons;
 
-// UI Evants
-- (IBAction)gotoAddress:(id)sender;
+- (void)loadAddress:(id)sender event:(UIEvent *)event;
+
+- (void)updateAddress:(NSURLRequest*)request;
+
+- (void)informError:(NSError*)error;
 
 
 @end

@@ -85,8 +85,6 @@
 		8FF36FA014165B7700A91FC0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F9F14165B7600A91FC0 /* SystemConfiguration.framework */; };
 		8FF36FA214165B7D00A91FC0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36FA114165B7D00A91FC0 /* CFNetwork.framework */; };
 		F24DC786144C50F300AB3BA1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24DC785144C50F300AB3BA1 /* MessageUI.framework */; };
-		F24DC78B144C516200AB3BA1 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F24DC788144C516200AB3BA1 /* SVWebViewController.bundle */; };
-		F24DC78C144C516200AB3BA1 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DC78A144C516200AB3BA1 /* SVWebViewController.m */; };
 		F2E608971473773F00F16991 /* NeTVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E608951473773F00F16991 /* NeTVWebViewController.m */; };
 		F2E608981473773F00F16991 /* NeTVWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E608961473773F00F16991 /* NeTVWebViewController.xib */; };
 /* End PBXBuildFile section */
@@ -200,9 +198,6 @@
 		8FF36F9F14165B7600A91FC0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8FF36FA114165B7D00A91FC0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F24DC785144C50F300AB3BA1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		F24DC788144C516200AB3BA1 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
-		F24DC789144C516200AB3BA1 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
-		F24DC78A144C516200AB3BA1 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
 		F2E608941473773F00F16991 /* NeTVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeTVWebViewController.h; sourceTree = "<group>"; };
 		F2E608951473773F00F16991 /* NeTVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeTVWebViewController.m; sourceTree = "<group>"; };
 		F2E608961473773F00F16991 /* NeTVWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeTVWebViewController.xib; sourceTree = "<group>"; };
@@ -232,7 +227,6 @@
 		4207DC77143D9A9F00FAD4AA /* NeTV */ = {
 			isa = PBXGroup;
 			children = (
-				F24DC787144C516200AB3BA1 /* SVWebViewController */,
 				4207DCCE143D9CF300FAD4AA /* SharedClasses */,
 				4207DCCA143D9B1600FAD4AA /* iPad */,
 				4207DC89143D9A9F00FAD4AA /* Images */,
@@ -411,16 +405,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F24DC787144C516200AB3BA1 /* SVWebViewController */ = {
-			isa = PBXGroup;
-			children = (
-				F24DC788144C516200AB3BA1 /* SVWebViewController.bundle */,
-				F24DC789144C516200AB3BA1 /* SVWebViewController.h */,
-				F24DC78A144C516200AB3BA1 /* SVWebViewController.m */,
-			);
-			path = SVWebViewController;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -482,7 +466,6 @@
 				4207DCE5143D9F2A00FAD4AA /* Icon.png in Resources */,
 				4207DCE7143D9F2F00FAD4AA /* Icon@2x.png in Resources */,
 				4207DCE9143D9F4700FAD4AA /* Icon-72.png in Resources */,
-				F24DC78B144C516200AB3BA1 /* SVWebViewController.bundle in Resources */,
 				4201DD63146B8EFF0080FF33 /* navbar_back.png in Resources */,
 				4201DD64146B8EFF0080FF33 /* navbar_bg.png in Resources */,
 				4201DD67146B95B90080FF33 /* device_list_bg.png in Resources */,
@@ -535,7 +518,6 @@
 				4207DCE1143D9CF300FAD4AA /* UIDevice-Hardware.m in Sources */,
 				4207DCE2143D9CF300FAD4AA /* VTPG_Common.m in Sources */,
 				4207DCE3143D9CF300FAD4AA /* XMLReader.m in Sources */,
-				F24DC78C144C516200AB3BA1 /* SVWebViewController.m in Sources */,
 				42669015146A613B00E91493 /* ASIAuthenticationDialog.m in Sources */,
 				42669016146A613B00E91493 /* ASIDataCompressor.m in Sources */,
 				42669017146A613B00E91493 /* ASIDataDecompressor.m in Sources */,

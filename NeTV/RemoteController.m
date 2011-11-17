@@ -4,7 +4,7 @@
 //
 
 #import "RemoteController.h"
-#import "SVWebViewController.h"
+#import "NeTVWebViewController.h"
 
 @interface RemoteController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
     - (void)onRemoteControlButton:(NSString*) buttonName;
@@ -160,7 +160,7 @@
 //Open a browser view to use iPhone control NeTV
 - (IBAction)pressBrowser:(id)sender
 {
-    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
+    NeTVWebViewController *webViewController = [[NeTVWebViewController alloc] init];
     [self.navigationController pushViewController:webViewController animated:YES];
     [webViewController release];        
 }
