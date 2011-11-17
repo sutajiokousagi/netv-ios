@@ -22,8 +22,9 @@
 //UI Events
 - (IBAction)onNavbarBack:(id)sender;
 
-//SharedPreferences
-
+//UserPreferences
+- (void)setDeviceIP:(NSString*)newIP;
+- (NSString *)getDeviceIP;
 
 //Reachability
 - (BOOL)isReachableWifi;

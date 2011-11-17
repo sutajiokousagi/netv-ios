@@ -577,6 +577,7 @@
     
     //Not sure why there is a leading space character (due to XML parser?)
     ipString = [ipString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [self setDeviceIP:ipString];
     
     [self hideDeviceList];
     

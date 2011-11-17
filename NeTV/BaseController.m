@@ -142,6 +142,20 @@
 
 
 
+#pragma mark - User Preferences
+
+- (void)setDeviceIP:(NSString*)newIP
+{
+    if (newIP == nil)   [prefs setValue:@"" forKey:PREFS_IP_ADDRESS];
+    else                [prefs setValue:newIP forKey:PREFS_IP_ADDRESS];
+}
+
+- (NSString *)getDeviceIP
+{
+    return [prefs stringForKey:PREFS_IP_ADDRESS];
+}
+
+
 #pragma mark - Reachability
 
 -(BOOL)isReachableWifi
@@ -302,8 +316,8 @@
 - (void)sendSimpleHTTPCommand:(NSString*)ip command:(NSString*)command value:(NSString*)value
 {
     NSString * targetIP = ip;
-    if (targetIP == nil)
-        targetIP = [prefs stringForKey:PREFS_IP_ADDRESS];
+    if (targetIP == nil || [targetIP length] < 1)
+        targetIP = [self getDeviceIP];
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/bridge", targetIP]];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
@@ -321,8 +335,8 @@
 - (void)sendComplexHTTPCommand:(NSString*)ip command:(NSString*)command parameters:(NSDictionary*)parameters
 {
     NSString * targetIP = ip;
-    if (targetIP == nil)
-        targetIP = [prefs stringForKey:PREFS_IP_ADDRESS];
+    if (targetIP == nil || [targetIP length] < 1)
+        targetIP = [self getDeviceIP];
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/bridge", targetIP]];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
