@@ -36,5 +36,7 @@
 
 - (void)informError:(NSError*)error;
 
+- (void)netvLoadURL:(NSString*)url;
+
 
 @end

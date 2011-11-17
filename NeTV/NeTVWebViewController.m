@@ -64,6 +64,9 @@ static const CGFloat kAddressHeight = 26.0f;
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
     [self updateButtons];
+//    [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"load" param:@"http://www.google.com"];
+    //[self sendMultitabCloseAll:[self getDeviceIP]];
+    [self netvLoadURL:@"http://www.google.com"];
 }
 
 - (void)dealloc
@@ -87,6 +90,7 @@ static const CGFloat kAddressHeight = 26.0f;
     self.refresh = nil;
     self.stop = nil;
     self.addressField = nil;
+        
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -104,11 +108,14 @@ static const CGFloat kAddressHeight = 26.0f;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [self sendMultitabCloseAll:[self getDeviceIP]];
+    
 	[super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+
 	[super viewDidDisappear:animated];
 }
 
@@ -142,7 +149,6 @@ static const CGFloat kAddressHeight = 26.0f;
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [self updateButtons];
-//    [self updateTitle:webView];
     NSURLRequest* request = [webView request];
     [self updateAddress:request];
 }
@@ -155,7 +161,7 @@ static const CGFloat kAddressHeight = 26.0f;
 }
 
 // MARK: -
-// MARK: Helper Functionsring 
+// MARK: Functions of the browser 
 
 - (void)updateButtons
 {
@@ -171,10 +177,13 @@ static const CGFloat kAddressHeight = 26.0f;
     if (!url.scheme) {
         NSString* modifiedURLString = [NSString stringWithFormat:@"http://%@",
                                        urlString];
+        urlString = modifiedURLString;
         url = [NSURL URLWithString:modifiedURLString];
     }
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
+
+    [self netvLoadURL:urlString];
 }
 
 - (void)updateAddress:(NSURLRequest *)request
@@ -182,6 +191,7 @@ static const CGFloat kAddressHeight = 26.0f;
     NSURL* url = [request mainDocumentURL];
     NSString* absoluteString = [url absoluteString];
     self.addressField.text = absoluteString;
+    [self netvLoadURL:absoluteString];
 }
 
 - (void)informError:(NSError*)error
@@ -196,5 +206,11 @@ static const CGFloat kAddressHeight = 26.0f;
     [alertView show];
     [alertView release];
 }
+
+- (void)netvLoadURL:(NSString*)url
+{
+    [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"load" param:url];
+}
+
 
 @end
