@@ -38,5 +38,6 @@
 
 - (void)netvLoadURL:(NSString*)url;
 
+- (UIScrollView*) addScrollViewListener;
 
 @end

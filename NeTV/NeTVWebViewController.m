@@ -60,12 +60,13 @@ static const CGFloat kAddressHeight = 26.0f;
     self.webView.delegate = self;
     self.webView.scalesPageToFit = YES;
     
-    NSURL* url = [NSURL URLWithString:@"http://www.google.com"];
-    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    NSURL* url = [NSURL URLWithString:@"http://www.newburghschools.org/testfolder/dump.php"];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    //[request setValue:[NSString stringWithFormat:@"%@ Safari/528.16", [request valueForHTTPHeaderField:@"User-Agent"]] forHTTPHeaderField:@"User_Agent"];
+    [request setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.8 (KHTML, like Gecko) Chrome/17.0.938.0 Safari/535.8" forHTTPHeaderField:@"User_Agent"];
     [self.webView loadRequest:request];
     [self updateButtons];
-//    [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"load" param:@"http://www.google.com"];
-    //[self sendMultitabCloseAll:[self getDeviceIP]];
+     
     [self netvLoadURL:@"http://www.google.com"];
 }
 
@@ -132,7 +133,7 @@ static const CGFloat kAddressHeight = 26.0f;
 }
 
 // MARK: -
-// MARK: UIWebViewDelegate protocol
+// MARK: UIWebViewDelegate protocols
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     [self updateAddress:request];
@@ -161,6 +162,16 @@ static const CGFloat kAddressHeight = 26.0f;
 }
 
 // MARK: -
+// MARK: UIScorllViewDelegate protocals
+
+// any offset changes
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"awu");
+}
+
+
+// MARK: -
 // MARK: Functions of the browser 
 
 - (void)updateButtons
@@ -180,7 +191,8 @@ static const CGFloat kAddressHeight = 26.0f;
         urlString = modifiedURLString;
         url = [NSURL URLWithString:modifiedURLString];
     }
-    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.8 (KHTML, like Gecko) Chrome/17.0.938.0 Safari/535.8" forHTTPHeaderField:@"User_Agent"];
     [self.webView loadRequest:request];
 
     [self netvLoadURL:urlString];
@@ -210,6 +222,18 @@ static const CGFloat kAddressHeight = 26.0f;
 - (void)netvLoadURL:(NSString*)url
 {
     [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"load" param:url];
+}
+
+- (UIScrollView*) addScrollViewListener
+{
+    UIScrollView* currentScrollView;
+    for (UIView* subView in self.webView.subviews) {
+        if ([subView isKindOfClass:[UIScrollView class]]) {
+            currentScrollView = (UIScrollView*)subView;
+            currentScrollView.delegate = self;
+        }
+    }
+    return currentScrollView;
 }
 
 
