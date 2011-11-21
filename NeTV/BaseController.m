@@ -85,8 +85,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     //Init communication object
-    if (self.commService == nil)
+    if (self.commService == nil) {
         self.commService = [[CommService alloc] initWithDelegate:self];
+        NSLog(@"commService object created");
+    }
 
     [super viewWillAppear:animated];
 }
@@ -98,7 +100,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"commService object for BaseController released");
+    NSLog(@"commService object released");
     if (self.commService != nil)
         [self.commService release];
     self.commService = nil;

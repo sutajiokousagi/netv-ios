@@ -7,10 +7,11 @@
 
 @interface RemoteController : BaseController
 {
-    IBOutlet UIButton *btnNavbarBack;
-    IBOutlet UIImageView *imgCenterDeco;
-    IBOutlet UIButton *btnCamera;
+    
 }
+@property (nonatomic, retain) IBOutlet UIButton *btnNavbarBack;
+@property (nonatomic, retain) IBOutlet UIImageView *imgCenterDeco;
+@property (nonatomic, retain) IBOutlet UIButton *btnCamera;
 @property (nonatomic, retain) IBOutlet UILabel *ipAddr;
 
 // Custom Initialization

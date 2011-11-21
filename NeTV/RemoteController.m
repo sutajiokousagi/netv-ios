@@ -19,8 +19,11 @@
 
 #define TMP_UPLOAD_PHOTO    @"/tmp/iphone_photo.jpg"
 
-@synthesize theMainIP;
+@synthesize btnNavbarBack;
+@synthesize imgCenterDeco;
+@synthesize btnCamera;
 @synthesize ipAddr;
+@synthesize theMainIP;
 
 #pragma mark - Custom Initialization
 
@@ -64,6 +67,11 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    self.btnNavbarBack = nil;
+    self.imgCenterDeco = nil;
+    self.btnCamera = nil;
+    self.ipAddr = nil;
+    self.theMainIP = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
