@@ -27,6 +27,7 @@
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* refresh;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* stop;
 @property (nonatomic, retain) IBOutlet UITextField* addressField;
+@property (nonatomic, retain) IBOutlet UIImageView* loadingBar;
 
 - (void)updateButtons;
 

@@ -2,9 +2,6 @@
 //  NeTVWebViewController.m
 //  NeTV
 //
-//  Created by erain on 15/11/11.
-//  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
-//
 
 #import "NeTVWebViewController.h"
 
