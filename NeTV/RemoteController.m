@@ -185,6 +185,10 @@
     [self launchCameraPicker:sender];
 }
 
+- (void)applicationDidEnterBackground:(NSNotification *)notification
+{
+    [self sendMultitabCloseAll:(self.theMainIP)];
+}
 
 
 #pragma mark - AsyncUdpSocket delegate

@@ -89,6 +89,12 @@
         self.commService = [[CommService alloc] initWithDelegate:self];
         NSLog(@"commService object created");
     }
+    
+    //Observe app terminate event
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidEnterBackground:)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:[UIApplication sharedApplication]];
 
     [super viewWillAppear:animated];
 }
@@ -100,10 +106,16 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    //Delete the commService
     NSLog(@"commService object released");
     if (self.commService != nil)
         [self.commService release];
     self.commService = nil;
+    
+    //Unregister app enter background event
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationDidEnterBackgroundNotification
+                                                  object:[UIApplication sharedApplication]];
 
 	[super viewWillDisappear:animated];    
 }
@@ -140,6 +152,11 @@
 -(IBAction)onNavbarBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)applicationDidEnterBackground:(NSNotification *)notification
+{
+    NSLog(@"applicationDidEnterBackground in BaseController");
 }
 
 

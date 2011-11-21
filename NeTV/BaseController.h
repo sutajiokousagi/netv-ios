@@ -21,6 +21,7 @@
 
 //UI Events
 - (IBAction)onNavbarBack:(id)sender;
+- (void)applicationDidEnterBackground:(NSNotification *)notification;
 
 //UserPreferences
 - (void)setDeviceIP:(NSString*)newIP;
