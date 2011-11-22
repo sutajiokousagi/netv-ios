@@ -22,6 +22,7 @@ static const CGFloat kAddressHeight = 26.0f;
 @synthesize stop = mStop;
 //@synthesize pageTitle = mPageTitle;
 @synthesize addressField = mAddressField;
+@synthesize loadingBar;
 
 - (void)didReceiveMemoryWarning
 {
