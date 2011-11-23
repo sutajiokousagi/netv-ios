@@ -44,7 +44,7 @@
 - (void)sendWifiScan:(NSString*)toIP;
 - (void)sendRemoteControl:(NSString*)buttonName toIP:(NSString*)toIP;
 - (void)sendMultitabCommandUDP:(NSString*)ip tabIndex:(int)tabIndex options:(NSString*)option param:(NSString*)param;
-- (void)sendMultitabScroll:(NSString*)ip tabIndex:(int)tabIndex scrollfX:(float)x scrollfY:(float)y;
+- (void)sendMultitabScrollF:(NSString*)ip tabIndex:(int)tabIndex scrollfX:(float)x scrollfY:(float)y;
 - (void)sendMultitabScroll:(NSString*)ip tabIndex:(int)tabIndex scrollX:(int)x scrollY:(int)y;
 
 //Basic HTTP support
