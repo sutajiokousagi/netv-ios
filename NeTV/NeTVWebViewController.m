@@ -5,12 +5,6 @@
 
 #import "NeTVWebViewController.h"
 
-static const CGFloat kNavBarHeight = 52.0f;
-static const CGFloat kLabelHeight = 14.0f;
-static const CGFloat kMargin = 10.0f;
-static const CGFloat kSpacer = 2.0f;
-static const CGFloat kLabelFontSize = 12.0f;
-static const CGFloat kAddressHeight = 26.0f;
 
 @implementation NeTVWebViewController
 
@@ -20,9 +14,9 @@ static const CGFloat kAddressHeight = 26.0f;
 @synthesize forward = mForward;
 @synthesize refresh = mRefresh;
 @synthesize stop = mStop;
-//@synthesize pageTitle = mPageTitle;
 @synthesize addressField = mAddressField;
 @synthesize loadingBar;
+@synthesize scrollView = mScrollView;
 
 - (void)didReceiveMemoryWarning
 {
@@ -58,14 +52,17 @@ static const CGFloat kAddressHeight = 26.0f;
     self.webView.delegate = self;
     self.webView.scalesPageToFit = YES;
     
-    NSURL* url = [NSURL URLWithString:@"http://www.newburghschools.org/testfolder/dump.php"];
+    // http dump http://www.newburghschools.org/testfolder/dump.php
+    NSURL* url = [NSURL URLWithString:@"http://www.sina.com.cn"];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     //[request setValue:[NSString stringWithFormat:@"%@ Safari/528.16", [request valueForHTTPHeaderField:@"User-Agent"]] forHTTPHeaderField:@"User_Agent"];
     [request setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.8 (KHTML, like Gecko) Chrome/17.0.938.0 Safari/535.8" forHTTPHeaderField:@"User_Agent"];
     [self.webView loadRequest:request];
     [self updateButtons];
      
-    [self netvLoadURL:@"http://www.google.com"];
+    //[self netvLoadURL:@"http://www.google.com"];
+    
+    self.scrollView = [self addScrollViewListener];
 }
 
 - (void)dealloc
@@ -159,13 +156,39 @@ static const CGFloat kAddressHeight = 26.0f;
     [self informError:error];
 }
 
+
 // MARK: -
 // MARK: UIScorllViewDelegate protocals
 
-// any offset changes
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+// This function get the scrollView out of the UIWebView
+- (UIScrollView*) addScrollViewListener
 {
-    NSLog(@"awu");
+    UIScrollView* currentScrollView;
+    for (UIView* subView in self.webView.subviews) {
+        if ([subView isKindOfClass:[UIScrollView class]]) {
+            currentScrollView = (UIScrollView*)subView;
+            currentScrollView.delegate = self;
+        }
+    }
+    return currentScrollView;
+}
+
+// This is the currect delegating function to use
+// when the UIScrollView stop scrolling!
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView 
+//{    
+//    NSLog(@"%@", scrollView);
+//    
+//    int offset = scrollView.contentOffset.y;
+//    
+//    [self netvScrollOffset:offset];
+//}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView;                                               // any offset changes
+{
+    int offset = scrollView.contentOffset.y;
+    [self netvScrollOffset:offset];
 }
 
 
@@ -222,17 +245,13 @@ static const CGFloat kAddressHeight = 26.0f;
     [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"load" param:url];
 }
 
-- (UIScrollView*) addScrollViewListener
+- (void)netvScrollOffset:(int)offset
 {
-    UIScrollView* currentScrollView;
-    for (UIView* subView in self.webView.subviews) {
-        if ([subView isKindOfClass:[UIScrollView class]]) {
-            currentScrollView = (UIScrollView*)subView;
-            currentScrollView.delegate = self;
-        }
-    }
-    return currentScrollView;
+    NSString *strOffset = [NSString stringWithFormat:@"0,%d",offset];
+    
+    [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"scroll" param:strOffset];
 }
+
 
 
 @end

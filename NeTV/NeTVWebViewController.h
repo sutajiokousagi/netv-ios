@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseController.h"
 
-@interface NeTVWebViewController : BaseController <UIWebViewDelegate>
+@interface NeTVWebViewController : BaseController <UIWebViewDelegate, UIScrollViewDelegate>
 {
     UIWebView* mWebView;
     UIToolbar* mToolbar;
@@ -18,6 +18,8 @@
     UIBarButtonItem* mRefresh;
     UIBarButtonItem* mStop;
     UITextField* mAddressField;
+    
+    UIScrollView* mScrollView;
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView* webView;
@@ -29,6 +31,8 @@
 @property (nonatomic, retain) IBOutlet UITextField* addressField;
 @property (nonatomic, retain) IBOutlet UIImageView* loadingBar;
 
+@property (nonatomic, retain) UIScrollView* scrollView;
+
 - (void)updateButtons;
 
 - (void)loadAddress:(id)sender event:(UIEvent *)event;
@@ -38,6 +42,8 @@
 - (void)informError:(NSError*)error;
 
 - (void)netvLoadURL:(NSString*)url;
+
+- (void)netvScrollOffset:(int)offset;
 
 - (UIScrollView*) addScrollViewListener;
 

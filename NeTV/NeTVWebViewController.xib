@@ -74,7 +74,7 @@
 					<object class="IBUIImageView" id="148344596">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 37}, {123, 37}}</string>
+						<string key="NSFrame">{{0, 37}, {0, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="717093037"/>
@@ -523,68 +523,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/BaseController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NeTVViewController</string>
-					<string key="superclassName">BaseController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="btnNavbarBack">UIButton</string>
-						<string key="imgLoading">UIImageView</string>
-						<string key="imgLogo">UIImageView</string>
-						<string key="imgNavbar">UIImageView</string>
-						<string key="imgStatusBar">UIImageView</string>
-						<string key="lblInstruction">UILabel</string>
-						<string key="lblStatus">UILabel</string>
-						<string key="lblStatusFull">UILabel</string>
-						<string key="lblVersion">UILabel</string>
-						<string key="viewStatusBar">UIView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="btnNavbarBack">
-							<string key="name">btnNavbarBack</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="imgLoading">
-							<string key="name">imgLoading</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="imgLogo">
-							<string key="name">imgLogo</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="imgNavbar">
-							<string key="name">imgNavbar</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="imgStatusBar">
-							<string key="name">imgStatusBar</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="lblInstruction">
-							<string key="name">lblInstruction</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="lblStatus">
-							<string key="name">lblStatus</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="lblStatusFull">
-							<string key="name">lblStatusFull</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="lblVersion">
-							<string key="name">lblVersion</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="viewStatusBar">
-							<string key="name">viewStatusBar</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NeTVViewController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
