@@ -20,6 +20,8 @@
     UITextField* mAddressField;
     
     UIScrollView* mScrollView;
+    
+    float pageLength;
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView* webView;
@@ -43,7 +45,7 @@
 
 - (void)netvLoadURL:(NSString*)url;
 
-- (void)netvScrollOffset:(int)offset;
+- (void)netvScrollOffset:(float)offset;
 
 - (UIScrollView*) addScrollViewListener;
 

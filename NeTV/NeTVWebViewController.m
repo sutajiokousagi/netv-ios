@@ -63,6 +63,7 @@
     //[self netvLoadURL:@"http://www.google.com"];
     
     self.scrollView = [self addScrollViewListener];
+    
 }
 
 - (void)dealloc
@@ -147,6 +148,10 @@
     [self updateButtons];
     NSURLRequest* request = [webView request];
     [self updateAddress:request];
+    
+    // The following code determine the height of a web page. 
+    CGSize fittingSize = [webView sizeThatFits:CGSizeZero];
+    pageLength = fittingSize.height;
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
@@ -173,22 +178,19 @@
     return currentScrollView;
 }
 
-// This is the currect delegating function to use
-// when the UIScrollView stop scrolling!
-//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView 
-//{    
-//    NSLog(@"%@", scrollView);
-//    
-//    int offset = scrollView.contentOffset.y;
-//    
-//    [self netvScrollOffset:offset];
-//}
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;                                               // any offset changes
 {
-    int offset = scrollView.contentOffset.y;
-    [self netvScrollOffset:offset];
+    float offset = scrollView.contentOffset.y;
+    
+    NSLog(@"Offset: %f", offset);
+    
+    NSLog(@"Page length: %f", pageLength);
+    
+    float perOffset = offset/pageLength;
+    
+    [self netvScrollOffset:perOffset];
 }
 
 
@@ -245,11 +247,11 @@
     [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"load" param:url];
 }
 
-- (void)netvScrollOffset:(int)offset
+- (void)netvScrollOffset:(float)offset
 {
-    NSString *strOffset = [NSString stringWithFormat:@"0,%d",offset];
+    NSString *strOffset = [NSString stringWithFormat:@"0.0,%f",offset];
     
-    [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"scroll" param:strOffset];
+    [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"scrollf" param:strOffset];
 }
 
 
