@@ -303,7 +303,23 @@
      */
 }
 
+- (void)sendMultitabCommandUDP:(NSString*)ip tabIndex:(int)tabIndex options:(NSString*)option param:(NSString*)param
+{
+    NSDictionary* parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",tabIndex], @"tab", option, @"options", param, @"param", nil];
+    [self sendUDPCommandParams:@"Multitab" withParams:parameters toIP:ip andTag:MULTITAB_TAG];
+}
 
+- (void)sendMultitabScrollF:(NSString*)ip tabIndex:(int)tabIndex scrollfX:(float)x scrollfY:(float)y
+{
+    NSString *param = [NSString stringWithFormat:@"%f,%f", x, y];
+    [self sendMultitabCommandUDP:ip tabIndex:tabIndex options:@"scrollf" param:param];
+}
+
+- (void)sendMultitabScroll:(NSString*)ip tabIndex:(int)tabIndex scrollX:(int)x scrollY:(int)y
+{
+    NSString *param = [NSString stringWithFormat:@"%d,%d", x, y];
+    [self sendMultitabCommandUDP:ip tabIndex:tabIndex options:@"scroll" param:param];
+}
 
 
 

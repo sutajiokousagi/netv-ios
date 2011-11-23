@@ -40,9 +40,12 @@
 
 //UDP API
 - (void)sendHandshake;
-- (void)sendNetworkConfig: (NSString*)toIP;
-- (void)sendWifiScan: (NSString*)toIP;
+- (void)sendNetworkConfig:(NSString*)toIP;
+- (void)sendWifiScan:(NSString*)toIP;
 - (void)sendRemoteControl:(NSString*)buttonName toIP:(NSString*)toIP;
+- (void)sendMultitabCommandUDP:(NSString*)ip tabIndex:(int)tabIndex options:(NSString*)option param:(NSString*)param;
+- (void)sendMultitabScroll:(NSString*)ip tabIndex:(int)tabIndex scrollfX:(float)x scrollfY:(float)y;
+- (void)sendMultitabScroll:(NSString*)ip tabIndex:(int)tabIndex scrollX:(int)x scrollY:(int)y;
 
 //Basic HTTP support
 - (NSString*)getGUIDDeviceName:(NSString*)guid;
