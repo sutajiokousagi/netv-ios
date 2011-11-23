@@ -249,9 +249,11 @@
 
 - (void)netvScrollOffset:(float)offset
 {
-    NSString *strOffset = [NSString stringWithFormat:@"0.0,%f",offset];
+//    NSString *strOffset = [NSString stringWithFormat:@"0.0,%f",offset];
     
-    [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"scrollf" param:strOffset];
+    [self sendMultitabScrollF:[self getDeviceIP] tabIndex:1 scrollfX:0.0 scrollfY:offset];
+    
+//    [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"scrollf" param:strOffset];
 }
 
 
