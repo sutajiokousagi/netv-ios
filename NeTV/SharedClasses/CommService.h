@@ -1,7 +1,11 @@
-//
-//  CommService.h
-//  NeTV
-//
+/*
+ 
+ File: CommService.h
+ Abstract: A class to handle basic UDP communication to NeTV.
+
+ For full documentation and source code, please visit: http://wiki.chumby.com/index.php/NeTV_developer_info
+*/
+
 
 #import <Foundation/Foundation.h>
 #import "AsyncUdpSocket.h"

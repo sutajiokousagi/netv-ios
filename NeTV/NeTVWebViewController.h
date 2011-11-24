@@ -1,10 +1,10 @@
-//
-//  NeTVWebViewController.h
-//  NeTV
-//
-//  Created by erain on 15/11/11.
-//  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
-//
+/*
+ 
+ File: NeTVWebViewController.h
+ Abstract: This is the browser UI, sending URLs to NeTV & scrolling of webpage
+ 
+ For full documentation and source code, please visit: http://wiki.chumby.com/index.php/NeTV_developer_info
+ */
 
 #import <UIKit/UIKit.h>
 #import "BaseController.h"

@@ -1,7 +1,10 @@
-//
-//  ChooseIPController.h
-//  NeTV
-//
+/*
+ 
+ File: ChooseIPController.h
+ Abstract: An UITableViewController subclass for device list/table UI
+ 
+ For full documentation and source code, please visit: http://wiki.chumby.com/index.php/NeTV_developer_info
+ */
 
 #import <UIKit/UIKit.h>
 

@@ -1,6 +1,10 @@
-//
-//  ChooseIPCellView.h
-//
+/*
+ 
+ File: ChooseIPCellView.h
+ Abstract: An UITableViewCell subclass for device list/table UI
+ 
+ For full documentation and source code, please visit: http://wiki.chumby.com/index.php/NeTV_developer_info
+ */
 
 #import <UIKit/UIKit.h>
 @class ChooseIPCellView;

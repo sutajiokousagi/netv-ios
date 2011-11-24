@@ -1,7 +1,10 @@
-//
-//  BaseController.h
-//  NeTV
-//
+/*
+ 
+ File: BaseController.h
+ Abstract: An UIViewController subclass to handle all neccessary UDP & HTTP API used by the app.
+ 
+ For full documentation and source code, please visit: http://wiki.chumby.com/index.php/NeTV_developer_info
+ */
 
 #import <UIKit/UIKit.h>
 #import "AsyncUdpSocket.h"

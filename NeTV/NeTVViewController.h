@@ -1,7 +1,10 @@
-//
-//  NeTVViewController.h
-//  NeTV
-//
+/*
+ 
+ File: NeTVViewController.h
+ Abstract: This is the Splash screen UI, starting point of the app. Handles device discovery and device selection list
+ 
+ For full documentation and source code, please visit: http://wiki.chumby.com/index.php/NeTV_developer_info
+ */
 
 #import <Foundation/NSNetServices.h>
 #import "BaseController.h"

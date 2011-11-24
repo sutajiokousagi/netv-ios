@@ -1,6 +1,6 @@
 //
 //  NeTV_RemoteAppDelegate.h
-//  NeTV Remote
+//  NeTV
 //
 
 #import <UIKit/UIKit.h>

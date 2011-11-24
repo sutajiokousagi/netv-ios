@@ -1,7 +1,10 @@
-//
-//  RemoteController.h
-//  NeTV
-//
+/*
+ 
+ File: RemoteController.h
+ Abstract: This is the remote control UI. Handles simple remote control button presses and photo sharing
+ 
+ For full documentation and source code, please visit: http://wiki.chumby.com/index.php/NeTV_developer_info
+ */
 
 #import "BaseController.h"
 

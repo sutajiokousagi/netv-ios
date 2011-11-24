@@ -1,10 +1,10 @@
-//
-//  ChooseHomeNetworkController.h
-//  NeTV
-//
-//  Created by Sidwyn Koh on 28/8/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
-//
+/*
+ 
+ File: ChooseHomeNetworkController.h
+ Abstract: Undone
+ 
+ For full documentation and source code, please visit: http://wiki.chumby.com/index.php/NeTV_developer_info
+ */
 
 #import <UIKit/UIKit.h>
 
