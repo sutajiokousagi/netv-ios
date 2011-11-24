@@ -52,6 +52,8 @@
     NSAssert(self.lblStatus, @"Unconnected IBOutlet lblStatus");
     NSAssert(self.imgLoading, @"Unconnected IBOutlet imgLoading");
     
+    [self netvLoadURL:DEFAULT_URL];
+    
     self.scrollView = [self getScrollView];
     self.theMainIP = [self getDeviceIP];
     self.addressField.text = DEFAULT_URL;
@@ -59,6 +61,7 @@
     NSURL* url = [NSURL URLWithString:DEFAULT_URL];
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
     [self updateWebButtons];
+    [self netvLoadURL:DEFAULT_URL];
 }
 
 - (void)dealloc
@@ -101,6 +104,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    NSLog(@"hahaha!");
+    
     [self sendMultitabCloseAll:self.theMainIP];
     
 	[super viewWillDisappear:animated];
@@ -122,6 +127,10 @@
     }
 }
 
+- (void)applicationDidEnterBackground:(NSNotification *)notification
+{
+    [self sendMultitabCloseAll:(self.theMainIP)];
+}
 
 
 #pragma mark - UIWebViewDelegate protocols
