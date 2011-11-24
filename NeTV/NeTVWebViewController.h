@@ -15,14 +15,15 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView* webView;
-@property (nonatomic, retain) IBOutlet UIToolbar* toolbar;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* back;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* forward;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* refresh;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* stop;
+@property (nonatomic, retain) IBOutlet UIButton* backward;
+@property (nonatomic, retain) IBOutlet UIButton* forward;
 @property (nonatomic, retain) IBOutlet UITextField* addressField;
 @property (nonatomic, retain) IBOutlet UIImageView* loadingBar;
+@property (nonatomic, retain) IBOutlet UILabel *lblStatus;
+@property (nonatomic, retain) IBOutlet UIImageView *imgLoading;
 
 - (IBAction)loadAddress:(id)sender;
+- (IBAction)goBackward:(id)sender;
+- (IBAction)goForward:(id)sender;
 
 @end
