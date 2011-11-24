@@ -618,7 +618,7 @@
     if (_hasMoreHandshake)
     {
         _hasMoreHandshake = NO;
-        [self restartInitSequenceWithDelay:0.6];
+        [self restartInitSequenceWithDelay:1.0];
         return;
     }
 
