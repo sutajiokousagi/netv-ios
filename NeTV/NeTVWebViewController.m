@@ -6,17 +6,31 @@
 #import "NeTVWebViewController.h"
 
 
+@interface NeTVWebViewController() <UIWebViewDelegate, UIScrollViewDelegate>
+    - (void)updateWebButtons;
+    - (void)updateAddress:(NSURLRequest*)request;
+    - (void)showError:(NSError*)error;
+    - (void)netvLoadURL:(NSString*)url;
+    - (UIScrollView*) getScrollView;
+    @property (nonatomic, retain) UIScrollView* scrollView;
+    @property (nonatomic, copy) NSString *theMainIP;
+@end
+
 @implementation NeTVWebViewController
 
-@synthesize webView = mWebView;
-@synthesize toolbar = mToolbar;
-@synthesize back = mBack;
-@synthesize forward = mForward;
-@synthesize refresh = mRefresh;
-@synthesize stop = mStop;
-@synthesize addressField = mAddressField;
+@synthesize webView;
+@synthesize toolbar;
+@synthesize back;
+@synthesize forward;
+@synthesize refresh;
+@synthesize stop;
+@synthesize addressField;
 @synthesize loadingBar;
-@synthesize scrollView = mScrollView;
+
+@synthesize scrollView;
+@synthesize theMainIP;
+
+#define DEFAULT_URL @"http://www.chumby.com"
 
 - (void)didReceiveMemoryWarning
 {
@@ -29,19 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
-    // Setting the address bar  
-    self.addressField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.addressField.borderStyle = UITextBorderStyleRoundedRect;
-    self.addressField.font = [UIFont systemFontOfSize:17];
-    self.addressField.keyboardType = UIKeyboardTypeURL;
-    self.addressField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.addressField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.addressField addTarget:self 
-                action:@selector(loadAddress:event:) 
-      forControlEvents:UIControlEventEditingDidEndOnExit];
-    
+	
     NSAssert(self.back, @"Unconnected IBOutlet 'back'.");
     NSAssert(self.forward, @"Unconnected IBOutlet 'forward'.");
     NSAssert(self.refresh, @"Unconnected IBOutlet 'refresh'.");
@@ -49,32 +51,17 @@
     NSAssert(self.webView, @"Unconnected IBOutlet 'webView'.");
     NSAssert(self.addressField, @"Unconnected IBOutlet addressField");
     
-    self.webView.delegate = self;
-    self.webView.scalesPageToFit = YES;
+    self.scrollView = [self getScrollView];
+    self.theMainIP = [self getDeviceIP];
+    self.addressField.text = DEFAULT_URL;
     
-    // http dump http://www.newburghschools.org/testfolder/dump.php
-    NSURL* url = [NSURL URLWithString:@"http://www.sina.com.cn"];
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
-    //[request setValue:[NSString stringWithFormat:@"%@ Safari/528.16", [request valueForHTTPHeaderField:@"User-Agent"]] forHTTPHeaderField:@"User_Agent"];
-    [request setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.8 (KHTML, like Gecko) Chrome/17.0.938.0 Safari/535.8" forHTTPHeaderField:@"User_Agent"];
-    [self.webView loadRequest:request];
-    [self updateButtons];
-     
-    //[self netvLoadURL:@"http://www.google.com"];
-    
-    self.scrollView = [self addScrollViewListener];
-    
+    NSURL* url = [NSURL URLWithString:DEFAULT_URL];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    [self updateWebButtons];
 }
 
 - (void)dealloc
 {
-    [mWebView release];
-    [mToolbar release];
-    [mBack release];
-    [mForward release];
-    [mRefresh release];
-    [mStop release];
-    [mAddressField release];
     [super dealloc];
 }
 
@@ -87,10 +74,11 @@
     self.refresh = nil;
     self.stop = nil;
     self.addressField = nil;
+    
+    self.theMainIP = nil;
+    self.scrollView = nil;
         
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -105,7 +93,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self sendMultitabCloseAll:[self getDeviceIP]];
+    [self sendMultitabCloseAll:self.theMainIP];
     
 	[super viewWillDisappear:animated];
 }
@@ -115,8 +103,6 @@
 
 	[super viewDidDisappear:animated];
 }
-
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -128,45 +114,46 @@
     }
 }
 
-// MARK: -
-// MARK: UIWebViewDelegate protocols
+
+
+#pragma mark - UIWebViewDelegate protocols
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    [self updateAddress:request];
     return YES;
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView
+- (void)webViewDidStartLoad:(UIWebView *)webview
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [self updateButtons];
+    [self updateAddress:[webview request]];
+    [self updateWebButtons];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
+- (void)webViewDidFinishLoad:(UIWebView *)webview
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    [self updateButtons];
-    NSURLRequest* request = [webView request];
-    [self updateAddress:request];
+    [self updateAddress:[webview request]];
+    [self updateWebButtons];
     
     // The following code determine the height of a web page. 
-    CGSize fittingSize = [webView sizeThatFits:CGSizeZero];
+    CGSize fittingSize = [self.webView sizeThatFits:CGSizeZero];
     pageLength = fittingSize.height;
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    [self updateButtons];
-    [self informError:error];
+    [self updateWebButtons];
+    [self showError:error];
 }
 
 
-// MARK: -
-// MARK: UIScorllViewDelegate protocals
+
+#pragma mark - UIScrollViewDelegate protocols
 
 // This function get the scrollView out of the UIWebView
-- (UIScrollView*) addScrollViewListener
+- (UIScrollView*) getScrollView
 {
     UIScrollView* currentScrollView;
     for (UIView* subView in self.webView.subviews) {
@@ -178,58 +165,50 @@
     return currentScrollView;
 }
 
-
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView;                                               // any offset changes
+- (void)scrollViewDidScroll:(UIScrollView *)scrollview;                                               // any offset changes
 {
-    float offset = scrollView.contentOffset.y;
-    
-    NSLog(@"Offset: %f", offset);
-    
-    NSLog(@"Page length: %f", pageLength);
-    
-    float perOffset = offset/pageLength;
-    
-    [self netvScrollOffset:perOffset];
+    float offset = scrollview.contentOffset.y /pageLength;   
+    [self sendMultitabScrollF:self.theMainIP tabIndex:1 scrollfX:0.0 scrollfY:offset];
 }
 
 
-// MARK: -
-// MARK: Functions of the browser 
 
-- (void)updateButtons
+#pragma mark - Implementation details
+
+- (void)updateWebButtons
 {
-    self.forward.enabled = self.webView.canGoBack;
+    self.forward.enabled = self.webView.canGoForward;
     self.back.enabled = self.webView.canGoBack;
     self.stop.enabled = self.webView.loading;
-}
-
-- (void)loadAddress:(id)sender event:(UIEvent *)event
-{
-    NSString* urlString = self.addressField.text;
-    NSURL* url = [NSURL URLWithString:urlString];
-    if (!url.scheme) {
-        NSString* modifiedURLString = [NSString stringWithFormat:@"http://%@",
-                                       urlString];
-        urlString = modifiedURLString;
-        url = [NSURL URLWithString:modifiedURLString];
-    }
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
-    [request setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.8 (KHTML, like Gecko) Chrome/17.0.938.0 Safari/535.8" forHTTPHeaderField:@"User_Agent"];
-    [self.webView loadRequest:request];
-
-    [self netvLoadURL:urlString];
 }
 
 - (void)updateAddress:(NSURLRequest *)request
 {
     NSURL* url = [request mainDocumentURL];
     NSString* absoluteString = [url absoluteString];
+    if ([absoluteString length] < 3)
+        return;
     self.addressField.text = absoluteString;
-    [self netvLoadURL:absoluteString];
 }
 
-- (void)informError:(NSError*)error
+- (IBAction)loadAddress:(id)sender
+{
+    NSString* urlString = self.addressField.text;
+    NSURL* url = [NSURL URLWithString:urlString];
+    
+    if (!url.scheme)
+    {
+        NSString* modifiedURLString = [NSString stringWithFormat:@"http://%@", urlString];
+        urlString = modifiedURLString;
+        url = [NSURL URLWithString:modifiedURLString];
+    }
+    
+    [self netvLoadURL:urlString];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    self.addressField.text = urlString;
+}
+
+- (void)showError:(NSError*)error
 {
     NSString* localizedDescription = [error localizedDescription];
     UIAlertView* alertView = [[UIAlertView alloc]
@@ -244,18 +223,7 @@
 
 - (void)netvLoadURL:(NSString*)url
 {
-    [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"load" param:url];
+    [self sendMultitabCommand:self.theMainIP tabIndex:1 options:@"load" param:url];
 }
-
-- (void)netvScrollOffset:(float)offset
-{
-//    NSString *strOffset = [NSString stringWithFormat:@"0.0,%f",offset];
-    
-    [self sendMultitabScrollF:[self getDeviceIP] tabIndex:1 scrollfX:0.0 scrollfY:offset];
-    
-//    [self sendMultitabCommand:[self getDeviceIP] tabIndex:1 options:@"scrollf" param:strOffset];
-}
-
-
 
 @end
