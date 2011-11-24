@@ -80,6 +80,15 @@
 		4266901B146A613B00E91493 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 42669011146A613B00E91493 /* ASIInputStream.m */; };
 		4266901C146A613B00E91493 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 42669013146A613B00E91493 /* ASINetworkQueue.m */; };
 		42669023146A61AD00E91493 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42669022146A61AD00E91493 /* MobileCoreServices.framework */; };
+		4282374E147E143700BBBB27 /* bottombar.png in Resources */ = {isa = PBXBuildFile; fileRef = 42823745147E143600BBBB27 /* bottombar.png */; };
+		4282374F147E143700BBBB27 /* btn_backward.png in Resources */ = {isa = PBXBuildFile; fileRef = 42823746147E143600BBBB27 /* btn_backward.png */; };
+		42823750147E143700BBBB27 /* btn_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 42823747147E143600BBBB27 /* btn_forward.png */; };
+		42823751147E143700BBBB27 /* navbar_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 42823748147E143600BBBB27 /* navbar_next.png */; };
+		42823752147E143700BBBB27 /* navbar_next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42823749147E143600BBBB27 /* navbar_next@2x.png */; };
+		42823753147E143700BBBB27 /* btn_backward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4282374A147E143600BBBB27 /* btn_backward@2x.png */; };
+		42823754147E143700BBBB27 /* btn_forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4282374B147E143600BBBB27 /* btn_forward@2x.png */; };
+		42823755147E143700BBBB27 /* btn_go@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4282374C147E143600BBBB27 /* btn_go@2x.png */; };
+		42823756147E143700BBBB27 /* bottombar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4282374D147E143600BBBB27 /* bottombar@2x.png */; };
 		42AD80481470D2F4003763F7 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD80221470D2F4003763F7 /* UIImage+Alpha.m */; };
 		42AD80491470D2F4003763F7 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD80241470D2F4003763F7 /* UIImage+Resize.m */; };
 		42AD804A1470D2F4003763F7 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD80261470D2F4003763F7 /* UIImage+RoundedCorner.m */; };
@@ -211,6 +220,15 @@
 		42669013146A613B00E91493 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
 		42669014146A613B00E91493 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		42669022146A61AD00E91493 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		42823745147E143600BBBB27 /* bottombar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottombar.png; sourceTree = "<group>"; };
+		42823746147E143600BBBB27 /* btn_backward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_backward.png; sourceTree = "<group>"; };
+		42823747147E143600BBBB27 /* btn_forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_forward.png; sourceTree = "<group>"; };
+		42823748147E143600BBBB27 /* navbar_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar_next.png; sourceTree = "<group>"; };
+		42823749147E143600BBBB27 /* navbar_next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar_next@2x.png"; sourceTree = "<group>"; };
+		4282374A147E143600BBBB27 /* btn_backward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_backward@2x.png"; sourceTree = "<group>"; };
+		4282374B147E143600BBBB27 /* btn_forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_forward@2x.png"; sourceTree = "<group>"; };
+		4282374C147E143600BBBB27 /* btn_go@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_go@2x.png"; sourceTree = "<group>"; };
+		4282374D147E143600BBBB27 /* bottombar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottombar@2x.png"; sourceTree = "<group>"; };
 		42AD80211470D2F4003763F7 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		42AD80221470D2F4003763F7 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
 		42AD80231470D2F4003763F7 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
@@ -306,6 +324,15 @@
 		4207DC89143D9A9F00FAD4AA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				42823745147E143600BBBB27 /* bottombar.png */,
+				42823746147E143600BBBB27 /* btn_backward.png */,
+				42823747147E143600BBBB27 /* btn_forward.png */,
+				42823748147E143600BBBB27 /* navbar_next.png */,
+				42823749147E143600BBBB27 /* navbar_next@2x.png */,
+				4282374A147E143600BBBB27 /* btn_backward@2x.png */,
+				4282374B147E143600BBBB27 /* btn_forward@2x.png */,
+				4282374C147E143600BBBB27 /* btn_go@2x.png */,
+				4282374D147E143600BBBB27 /* bottombar@2x.png */,
 				4200A9D8147B63E000A1D1C4 /* btn_widget_down.png */,
 				4200A9D9147B63E000A1D1C4 /* btn_widget_down@2x.png */,
 				4200A9DA147B63E000A1D1C4 /* btn_settings_down.png */,
@@ -496,6 +523,9 @@
 /* Begin PBXProject section */
 		8FF36F3314165AD900A91FC0 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 8FF36F3614165AD900A91FC0 /* Build configuration list for PBXProject "NeTV" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -583,6 +613,15 @@
 				4200A9E5147B63E000A1D1C4 /* btn_widget_normal@2x.png in Resources */,
 				4200A9E6147B63E000A1D1C4 /* btn_settings_normal.png in Resources */,
 				4200A9E7147B63E000A1D1C4 /* btn_settings_normal@2x.png in Resources */,
+				4282374E147E143700BBBB27 /* bottombar.png in Resources */,
+				4282374F147E143700BBBB27 /* btn_backward.png in Resources */,
+				42823750147E143700BBBB27 /* btn_forward.png in Resources */,
+				42823751147E143700BBBB27 /* navbar_next.png in Resources */,
+				42823752147E143700BBBB27 /* navbar_next@2x.png in Resources */,
+				42823753147E143700BBBB27 /* btn_backward@2x.png in Resources */,
+				42823754147E143700BBBB27 /* btn_forward@2x.png in Resources */,
+				42823755147E143700BBBB27 /* btn_go@2x.png in Resources */,
+				42823756147E143700BBBB27 /* bottombar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +744,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NeTV/NeTV-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "NeTV/NeTV-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = netv;
@@ -718,6 +758,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NeTV/NeTV-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "NeTV/NeTV-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = netv;
