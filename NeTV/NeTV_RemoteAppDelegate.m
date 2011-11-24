@@ -12,9 +12,15 @@
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 
+#define USER_AGENT @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.8 (KHTML, like Gecko) Chrome/17.0.938.0 Safari/535.8"
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    //This needs to be done very early
+    //Set user agent (the only problem is that we can't modify the User-Agent later in the program)
+    NSDictionary *dictionnary = [[NSDictionary alloc] initWithObjectsAndKeys:USER_AGENT, @"UserAgent", nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:dictionnary];
+    [dictionnary release];
     
     //Custom background image
     UIView *backgroundView = [[UIView alloc] initWithFrame: self.window.frame];
