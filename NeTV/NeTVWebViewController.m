@@ -51,9 +51,7 @@
     NSAssert(self.addressField, @"Unconnected IBOutlet addressField");
     NSAssert(self.lblStatus, @"Unconnected IBOutlet lblStatus");
     NSAssert(self.imgLoading, @"Unconnected IBOutlet imgLoading");
-    
-    [self netvLoadURL:DEFAULT_URL];
-    
+        
     self.scrollView = [self getScrollView];
     self.theMainIP = [self getDeviceIP];
     self.addressField.text = DEFAULT_URL;
@@ -61,7 +59,11 @@
     NSURL* url = [NSURL URLWithString:DEFAULT_URL];
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
     [self updateWebButtons];
-    [self netvLoadURL:DEFAULT_URL];
+    
+    //[self netvLoadURL:DEFAULT_URL];
+    // No need to send url to netv here
+    // Sending url to netv all using the function updateAddress
+    // This also make the forward and backward work. 
 }
 
 - (void)dealloc
@@ -143,7 +145,7 @@
 - (void)webViewDidStartLoad:(UIWebView *)webview
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [self updateAddress:[webview request]];
+    //[self updateAddress:[webview request]];
     [self updateWebButtons];
     [self showLoadingIcon];
 }
@@ -269,6 +271,7 @@
     if ([absoluteString length] < 3)
         return;
     self.addressField.text = absoluteString;
+    [self netvLoadURL:absoluteString];
 }
 
 - (void)showError:(NSError*)error
