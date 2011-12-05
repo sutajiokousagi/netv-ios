@@ -72,6 +72,10 @@
 - (int)numberOfDevices;
 - (void)gotoRemoteControlSingleDevice;
 - (void)gotoRemoteControl:(NSMutableDictionary*)deviceData;
+- (void)gotoRemoteControlDemo;
 - (void)initializeSequence;
+
+//Enter the Demo Mode
+- (IBAction)enterDemoMode:(id)sender;
 
 @end

@@ -566,6 +566,7 @@
 - (void)gotoRemoteControlSingleDevice
 {
     NSMutableDictionary *deviceData = [[_deviceList allValues] objectAtIndex:0];
+    NSLog(@"%@", deviceData);
     [self gotoRemoteControl:deviceData];
 }
 
@@ -580,6 +581,15 @@
     [self setDeviceIP:ipString];
     
     [self hideDeviceList];
+    
+    RemoteController *remoteController = [[RemoteController alloc] initWithIP:ipString];
+    [self.navigationController pushViewController:remoteController animated:YES];
+}
+
+- (void)gotoRemoteControlDemo
+{
+    NSString *ipString = @"127.0.0.2";
+    [self setDeviceIP:ipString];
     
     RemoteController *remoteController = [[RemoteController alloc] initWithIP:ipString];
     [self.navigationController pushViewController:remoteController animated:YES];
@@ -656,6 +666,12 @@
     
     [self sendHandshake];
     [self restartInitSequenceWithDelay: 1.0];
+}
+
+#pragma mark - Demo Mode
+- (IBAction)enterDemoMode:(id)sender
+{
+    [self gotoRemoteControlDemo];
 }
 
 @end
