@@ -10,7 +10,7 @@
 
 @interface RemoteController : BaseController
 {
-    
+    BOOL isDemo;
 }
 @property (nonatomic, retain) IBOutlet UIButton *btnNavbarBack;
 @property (nonatomic, retain) IBOutlet UIImageView *imgCenterDeco;

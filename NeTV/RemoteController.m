@@ -10,6 +10,7 @@
     - (void)onRemoteControlButton:(NSString*) buttonName;
     - (void)onShowCenterDeco;
     - (void)onHideCenterDeco;
+    - (void)showDemoMessage;
     - (void)launchImagePicker: (id)inView;
     - (void)launchCameraPicker: (id)inView;
     @property (nonatomic, copy) NSString *theMainIP;
@@ -18,6 +19,7 @@
 @implementation RemoteController
 
 #define TMP_UPLOAD_PHOTO    @"/tmp/iphone_photo.jpg"
+#define DEMO_IP             @"127.0.0.2"
 
 @synthesize btnNavbarBack;
 @synthesize imgCenterDeco;
@@ -77,9 +79,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    isDemo = (self.theMainIP != nil && [self.theMainIP isEqualToString:DEMO_IP]);
         
     //UI
-    if (self.theMainIP != nil && [self.theMainIP isEqualToString:@"127.0.0.2"])
+    if (isDemo)
         ipAddr.text = @"Demo Mode";
     else if (self.theMainIP != nil)
         ipAddr.text = [NSString stringWithFormat:@"Controlling %@", self.theMainIP];
@@ -129,6 +133,17 @@
 	[UIView commitAnimations];
 }
 
+- (void)showDemoMessage
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Demo mode"
+                                                    message:@"Photo will be sent to TV via NeTV on real hardware"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
 -(void)launchImagePicker: (id)inView
 {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
@@ -164,7 +179,8 @@
 //Common function to handle all remote control button events
 - (void)onRemoteControlButton:(NSString*) buttonName
 {
-    [self sendRemoteControl:buttonName toIP:self.theMainIP];
+    if (!isDemo)
+        [self sendRemoteControl:buttonName toIP:self.theMainIP];
 }
 
 //Open a browser view to use iPhone control NeTV
@@ -189,7 +205,8 @@
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification
 {
-    [self sendMultitabCloseAll:(self.theMainIP)];
+    if (!isDemo)
+        [self sendMultitabCloseAll:(self.theMainIP)];
 }
 
 
@@ -230,7 +247,12 @@
     
     //ignore videos
     if ( [mediaType isEqualToString:@"public.movie"] )
-        return;    
+        return;
+    
+    if (isDemo) {
+        [self showDemoMessage];
+        return;
+    }
     
     //Upload it to NeTV
     [self uploadPhoto:(self.theMainIP) withPath:TMP_UPLOAD_PHOTO media:info];
@@ -250,10 +272,12 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     //Delete the temp file in NeTV
-    [self sendUnlinkCommand:(self.theMainIP) path:TMP_UPLOAD_PHOTO];
+    if (!isDemo)
+        [self sendUnlinkCommand:(self.theMainIP) path:TMP_UPLOAD_PHOTO];
     
     //Return to Control Panel tab
-    [self sendMultitabCloseAll:(self.theMainIP)];
+    if (!isDemo)
+        [self sendMultitabCloseAll:(self.theMainIP)];
 
     //Cancel image picker
     [self dismissModalViewControllerAnimated:YES];

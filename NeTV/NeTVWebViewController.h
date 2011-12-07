@@ -12,6 +12,7 @@
 @interface NeTVWebViewController : BaseController
 {   
     float pageLength;
+    BOOL isDemo;
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView* webView;

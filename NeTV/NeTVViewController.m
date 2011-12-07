@@ -407,6 +407,7 @@
         
     if ([commandString isEqualToString:@"HELLO"])
     {
+        /*
         _hasMoreHandshake = YES;
         _receiveHandshake = YES;
         
@@ -443,6 +444,7 @@
                 NSLog(@"Found %@ %@, %@", addressString, deviceName, guid);
             }
         }
+         */
     }
     /*
     else if ([commandString isEqualToString:@"WIFISCAN"])
@@ -683,7 +685,7 @@
     
     //If too long without a response
     time_t secondLapsed = (time_t)[[NSDate date] timeIntervalSince1970] - _startDiscoveryTime;
-    if (secondLapsed > 8 && secondLapsed < 11)
+    if (secondLapsed > 10)
         [self showStatusBarError:@"No device found.\nPlease ensure your NeTV is powered up." showDemoBtn:YES];
     
     [self sendHandshake];

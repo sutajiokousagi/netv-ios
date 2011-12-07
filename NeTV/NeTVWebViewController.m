@@ -14,6 +14,7 @@
     - (void)updateAddress:(NSURLRequest*)request;
     - (void)showError:(NSError*)error;
     - (void)netvLoadURL:(NSString*)url;
+    - (void)showDemoMessage;
     @property (nonatomic, retain) UIScrollView* scrollView;
     @property (nonatomic, copy) NSString *theMainIP;
 @end
@@ -32,6 +33,7 @@
 @synthesize theMainIP;
 
 #define DEFAULT_URL @"http://www.chumby.com"
+#define DEMO_IP @"127.0.0.2"
 
 - (void)didReceiveMemoryWarning
 {
@@ -89,16 +91,22 @@
 {
     [super viewWillAppear:animated];
     
+    isDemo = (self.theMainIP != nil && [self.theMainIP isEqualToString:DEMO_IP]);
+    
     //UI
-    if (self.theMainIP != nil && [self.theMainIP isEqualToString:@"127.0.0.2"])
+    if (isDemo)
         lblStatus.text = @"Demo Mode";
-    if (self.theMainIP != nil)
+    else if (self.theMainIP != nil)
         lblStatus.text = [NSString stringWithFormat:@"Controlling %@", self.theMainIP];
     else
         lblStatus.text = @"";
     
     //Hide loading icon initially
     imgLoading.alpha = 0;
+    
+    //Warning about Demo Mode
+    if (isDemo)
+        [self showDemoMessage];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -108,8 +116,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"hahaha!");
-    
     [self sendMultitabCloseAll:self.theMainIP];
     
 	[super viewWillDisappear:animated];
@@ -178,6 +184,8 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollview
 {
+    if (isDemo)
+        return;
     float offset = scrollview.contentOffset.y /pageLength;   
     [self sendMultitabScrollF:self.theMainIP tabIndex:1 scrollfX:0.0 scrollfY:offset];
 }
@@ -291,7 +299,19 @@
 
 - (void)netvLoadURL:(NSString*)url
 {
-    [self sendMultitabCommand:self.theMainIP tabIndex:1 options:@"load" param:url];
+    if (!isDemo)
+        [self sendMultitabCommand:self.theMainIP tabIndex:1 options:@"load" param:url];
+}
+
+- (void)showDemoMessage
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Demo mode"
+                                                    message:@"Browser view will be synchronized on to TV via NeTV on real hardware"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 @end
