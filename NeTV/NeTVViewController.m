@@ -407,7 +407,6 @@
         
     if ([commandString isEqualToString:@"HELLO"])
     {
-        /*
         _hasMoreHandshake = YES;
         _receiveHandshake = YES;
         
@@ -444,29 +443,7 @@
                 NSLog(@"Found %@ %@, %@", addressString, deviceName, guid);
             }
         }
-         */
     }
-    /*
-    else if ([commandString isEqualToString:@"WIFISCAN"])
-    {
-        NSMutableArray *homeNetworkArray = [[NSMutableArray alloc] init];
-        for (NSDictionary *eachNetwork in [[[tempParsedDict objectForKey:@"xml"] objectForKey:@"data"] objectForKey:@"wifi"]){
-            [homeNetworkArray addObject:eachNetwork];
-        }
-        
-        if (homeNetworkArray.count > 0){
-            NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-            [ud setObject:homeNetworkArray forKey:@"homeNetworkArray"];
-            ChooseHomeNetworkController *chnc = [[ChooseHomeNetworkController alloc] init];
-            chnc.delegate = self;
-            [self presentModalViewController:chnc animated:YES];
-        }
-        else{
-            UIAlertView *noHomeNetworks = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No home networks detected" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-            [noHomeNetworks show];
-        }
-    }
-    */
     else
     {
         NSLog(@"Unknown command received");
