@@ -125,6 +125,11 @@
     [self reset];
 }
 
+- (IBAction)enterDemoMode:(id)sender
+{
+    [self gotoRemoteControlDemo];
+}
+
 
 
 #pragma mark - Helpers
@@ -215,12 +220,29 @@
 
 - (void)showStatusBarError:(NSString*)text
 {
+    [self showStatusBarError:text showDemoBtn:NO];
+}
+
+- (void)showStatusBarError:(NSString*)text showDemoBtn:(BOOL)showDemoBtn
+{
+    CGRect text_frame = lblStatusFull.frame;
+    
+    btnDemo.hidden = !showDemoBtn;
+    if (showDemoBtn)    text_frame.size.width = self.view.frame.size.width - btnDemo.frame.size.width;
+    else                text_frame.size.width = self.view.frame.size.width;
+    lblStatusFull.frame = text_frame;
+    
     [imgStatusBar setImage:[UIImage imageNamed:@"bottombar_error.png"]];
     [self showStatusBar:text];
 }
 
 - (void)showStatusBarInfo:(NSString*)text
 {
+    btnDemo.hidden = YES;
+    CGRect text_frame = lblStatusFull.frame;
+    text_frame.size.width = self.view.frame.size.width;
+    lblStatusFull.frame = text_frame;
+    
     [imgStatusBar setImage:[UIImage imageNamed:@"bottombar_info.png"]];
     [self showStatusBar:text];
 }
@@ -662,16 +684,10 @@
     //If too long without a response
     time_t secondLapsed = (time_t)[[NSDate date] timeIntervalSince1970] - _startDiscoveryTime;
     if (secondLapsed > 8 && secondLapsed < 11)
-        [self showStatusBarError:@"No device found.\nPlease ensure your NeTV is powered up."];
+        [self showStatusBarError:@"No device found.\nPlease ensure your NeTV is powered up." showDemoBtn:YES];
     
     [self sendHandshake];
     [self restartInitSequenceWithDelay: 1.0];
-}
-
-#pragma mark - Demo Mode
-- (IBAction)enterDemoMode:(id)sender
-{
-    [self gotoRemoteControlDemo];
 }
 
 @end

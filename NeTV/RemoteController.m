@@ -79,7 +79,9 @@
     [super viewWillAppear:animated];
         
     //UI
-    if (self.theMainIP != nil)
+    if (self.theMainIP != nil && [self.theMainIP isEqualToString:@"127.0.0.2"])
+        ipAddr.text = @"Demo Mode";
+    else if (self.theMainIP != nil)
         ipAddr.text = [NSString stringWithFormat:@"Controlling %@", self.theMainIP];
     else
         ipAddr.text = @"";

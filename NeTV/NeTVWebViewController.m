@@ -90,6 +90,8 @@
     [super viewWillAppear:animated];
     
     //UI
+    if (self.theMainIP != nil && [self.theMainIP isEqualToString:@"127.0.0.2"])
+        lblStatus.text = @"Demo Mode";
     if (self.theMainIP != nil)
         lblStatus.text = [NSString stringWithFormat:@"Controlling %@", self.theMainIP];
     else

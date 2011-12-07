@@ -20,6 +20,7 @@
     IBOutlet UIImageView *imgNavbar;
     IBOutlet UIImageView *imgLoading;
     IBOutlet UIButton *btnNavbarBack;
+    IBOutlet UIButton *btnDemo;
     
     IBOutlet UIView *viewStatusBar;
     IBOutlet UILabel *lblStatusFull;
@@ -45,7 +46,7 @@
 }
 
 //UI Events
-
+- (IBAction)enterDemoMode:(id)sender;
 
 //Helpers
 - (void)showDeviceList;
@@ -54,6 +55,7 @@
 - (void)setStatusText:(NSString*)text;
 - (void)showStatusBar:(NSString*)text;
 - (void)showStatusBarError:(NSString*)text;
+- (void)showStatusBarError:(NSString*)text showDemoBtn:(BOOL)showDemoBtn;
 - (void)showStatusBarInfo:(NSString*)text;
 - (void)hideStatusBar;
 - (void)showLoadingIcon;
@@ -74,8 +76,5 @@
 - (void)gotoRemoteControl:(NSMutableDictionary*)deviceData;
 - (void)gotoRemoteControlDemo;
 - (void)initializeSequence;
-
-//Enter the Demo Mode
-- (IBAction)enterDemoMode:(id)sender;
 
 @end
