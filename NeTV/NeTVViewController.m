@@ -614,7 +614,6 @@
     //Send handshake and wait to receive all handshakes
     if (!_sentHandshake)
     {
-
         [self sendHandshake];
         [self sendHandshake];
         [self sendHandshake];
@@ -629,7 +628,7 @@
     if (_hasMoreHandshake)
     {
         _hasMoreHandshake = NO;
-        [self restartInitSequenceWithDelay:1.0];
+        [self restartInitSequenceWithDelay: 2.0];
         return;
     }
 
@@ -662,11 +661,14 @@
     
     //If too long without a response
     time_t secondLapsed = (time_t)[[NSDate date] timeIntervalSince1970] - _startDiscoveryTime;
+    NSLog(@"%d", (int)secondLapsed);
     if (secondLapsed > 10)
+    {
         [self showStatusBarError:@"No device found.\nPlease ensure your NeTV is powered up." showDemoBtn:YES];
+    }
     
-    [self sendHandshake];
-    [self restartInitSequenceWithDelay: 1.0];
+    //[self sendHandshake];
+    [self restartInitSequenceWithDelay:3.0];
 }
 
 @end
