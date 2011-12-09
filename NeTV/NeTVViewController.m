@@ -39,10 +39,7 @@
     //Show app version number
     NSLog(@"Version %@", self.appVersion);
     lblVersion.text = self.appVersion;
-       
-    //Hide the custom navbar back button
-    btnNavbarBack.alpha = 0;
-    
+        
     //Setup custom bottom bar
     CGRect statusBarRect;
     statusBarRect.origin.x = 0;
@@ -119,17 +116,16 @@
 
 #pragma mark - UI Events
 
--(IBAction)onNavbarBack:(id)sender
-{
-    [self hideDeviceList];
-    [self reset];
-}
-
 - (IBAction)enterDemoMode:(id)sender
 {
     [self gotoRemoteControlDemo];
 }
 
+- (IBAction)onBtnRefresh:(id)sender
+{
+    [self hideDeviceList];
+    [self reset];
+}
 
 
 #pragma mark - Helpers
@@ -151,16 +147,17 @@
     lblVersion.alpha = 0;
     lblStatus.alpha = 0;
     imgLogo.alpha = 0;
-    imgLoading.alpha = 0;
 	[UIView commitAnimations];
     
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDelay:0.2];
 	[UIView setAnimationDuration:0.6];
-    btnNavbarBack.alpha = 1;
 	chooseIPController.view.frame = chooseIPRect;
 	[UIView commitAnimations]; 
+    
+    [self stopLoadingIcon];
+    btnRefresh.hidden = NO;
 }
 
 - (void)hideDeviceList
@@ -173,7 +170,6 @@
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationBeginsFromCurrentState:YES];
 	[UIView setAnimationDuration:0.6];
-    btnNavbarBack.alpha = 0;
 	chooseIPController.view.frame = chooseIPRect;
 	[UIView commitAnimations];
     
@@ -272,14 +268,7 @@
 	[UIView commitAnimations];
     
     //Setup spining loading icon
-    CATransform3D rotationTransform = CATransform3DMakeRotation(0.9999f * M_PI, 0, 0, 1.0);
-    CABasicAnimation* rotationAnimation;
-    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];    
-    rotationAnimation.toValue = [NSValue valueWithCATransform3D:rotationTransform];
-    rotationAnimation.duration = 1.25f;
-    rotationAnimation.cumulative = YES;
-    rotationAnimation.repeatCount = 999; 
-    [imgLoading.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    [self startLoadingIcon];
 }
 
 - (void)hideLoadingIcon
@@ -289,6 +278,36 @@
 	[UIView setAnimationDuration:0.5];
 	imgLoading.alpha = 0;
 	[UIView commitAnimations];
+    
+    btnRefresh.hidden = YES;
+}
+
+- (void)stopLoadingIcon
+{
+    CATransform3D rotationTransform = CATransform3DMakeRotation(0.9999f * M_PI, 0, 0, 1.0);
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];    
+    rotationAnimation.toValue = [NSValue valueWithCATransform3D:rotationTransform];
+    rotationAnimation.duration = 0.50f;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = 1; 
+    [imgLoading.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    
+    btnRefresh.hidden = NO;
+}
+
+- (void)startLoadingIcon
+{
+    CATransform3D rotationTransform = CATransform3DMakeRotation(0.9999f * M_PI, 0, 0, 1.0);
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];    
+    rotationAnimation.toValue = [NSValue valueWithCATransform3D:rotationTransform];
+    rotationAnimation.duration = 0.50f;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = 9999; 
+    [imgLoading.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    
+    btnRefresh.hidden = YES;
 }
 
 - (BOOL)isDeviceListVisible
@@ -664,6 +683,7 @@
     NSLog(@"%d", (int)secondLapsed);
     if (secondLapsed > 10)
     {
+        [self stopLoadingIcon];
         [self showStatusBarError:@"No device found.\nPlease ensure your NeTV is powered up." showDemoBtn:YES];
     }
     
