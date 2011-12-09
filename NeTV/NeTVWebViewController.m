@@ -32,7 +32,7 @@
 @synthesize scrollView;
 @synthesize theMainIP;
 
-#define DEFAULT_URL @"http://www.chumby.com"
+#define DEFAULT_URL @"http://www.flickr.com/photos/tags/beach/clusters/"
 #define DEMO_IP @"127.0.0.2"
 
 - (void)didReceiveMemoryWarning
