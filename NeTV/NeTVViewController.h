@@ -19,7 +19,7 @@
     IBOutlet UIImageView *imgLogo;
     IBOutlet UIImageView *imgNavbar;
     IBOutlet UIImageView *imgLoading;
-    IBOutlet UIButton *btnNavbarBack;
+    IBOutlet UIButton *btnRefresh;
     IBOutlet UIButton *btnDemo;
     
     IBOutlet UIView *viewStatusBar;
@@ -47,6 +47,7 @@
 
 //UI Events
 - (IBAction)enterDemoMode:(id)sender;
+- (IBAction)onBtnRefresh:(id)sender;
 
 //Helpers
 - (void)showDeviceList;
@@ -60,6 +61,8 @@
 - (void)hideStatusBar;
 - (void)showLoadingIcon;
 - (void)hideLoadingIcon;
+- (void)stopLoadingIcon;
+- (void)startLoadingIcon;
 - (BOOL)isDeviceListVisible;
 - (BOOL)isStatusBarVisible;
 - (void)showSimpleMessageDialog:(NSString*)message;

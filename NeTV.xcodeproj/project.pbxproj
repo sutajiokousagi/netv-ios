@@ -42,7 +42,6 @@
 		4207DCAE143D9A9F00FAD4AA /* ChooseIPController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC81143D9A9F00FAD4AA /* ChooseIPController.xib */; };
 		4207DCB1143D9A9F00FAD4AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC85143D9A9F00FAD4AA /* InfoPlist.strings */; };
 		4207DCB2143D9A9F00FAD4AA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC87143D9A9F00FAD4AA /* MainWindow.xib */; };
-		4207DCB6143D9A9F00FAD4AA /* chumby.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC8D143D9A9F00FAD4AA /* chumby.png */; };
 		4207DCB9143D9A9F00FAD4AA /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC90143D9A9F00FAD4AA /* icon.png */; };
 		4207DCBE143D9A9F00FAD4AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DC95143D9A9F00FAD4AA /* main.m */; };
 		4207DCC1143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DC9A143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.m */; };
@@ -112,6 +111,10 @@
 		42F7BE54147A0A460011A253 /* address_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F7BE50147A0A460011A253 /* address_bar.png */; };
 		42F7BE55147A0A460011A253 /* address_bar_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F7BE51147A0A460011A253 /* address_bar_blue@2x.png */; };
 		42F7BE56147A0A460011A253 /* address_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F7BE52147A0A460011A253 /* address_bar@2x.png */; };
+		42FABA851491D8D000E51667 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FABA841491D8D000E51667 /* Default@2x.png */; };
+		42FABA871491D8F900E51667 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FABA861491D8F900E51667 /* Default.png */; };
+		42FABA8A1491D95800E51667 /* lineart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FABA881491D95800E51667 /* lineart@2x.png */; };
+		42FABA8B1491D95800E51667 /* lineart.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FABA891491D95800E51667 /* lineart.png */; };
 		8FF36F4114165AD900A91FC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F4014165AD900A91FC0 /* UIKit.framework */; };
 		8FF36F4314165AD900A91FC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F4214165AD900A91FC0 /* Foundation.framework */; };
 		8FF36F4514165AD900A91FC0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F4414165AD900A91FC0 /* CoreGraphics.framework */; };
@@ -162,7 +165,6 @@
 		4207DC81143D9A9F00FAD4AA /* ChooseIPController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseIPController.xib; sourceTree = "<group>"; };
 		4207DC86143D9A9F00FAD4AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4207DC88143D9A9F00FAD4AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		4207DC8D143D9A9F00FAD4AA /* chumby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chumby.png; sourceTree = "<group>"; };
 		4207DC90143D9A9F00FAD4AA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		4207DC95143D9A9F00FAD4AA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4207DC99143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeTV_RemoteAppDelegate.h; sourceTree = "<group>"; };
@@ -257,6 +259,10 @@
 		42F7BE50147A0A460011A253 /* address_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = address_bar.png; sourceTree = "<group>"; };
 		42F7BE51147A0A460011A253 /* address_bar_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "address_bar_blue@2x.png"; sourceTree = "<group>"; };
 		42F7BE52147A0A460011A253 /* address_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "address_bar@2x.png"; sourceTree = "<group>"; };
+		42FABA841491D8D000E51667 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		42FABA861491D8F900E51667 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		42FABA881491D95800E51667 /* lineart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lineart@2x.png"; sourceTree = "<group>"; };
+		42FABA891491D95800E51667 /* lineart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lineart.png; sourceTree = "<group>"; };
 		8FF36F3C14165AD900A91FC0 /* netv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = netv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF36F4014165AD900A91FC0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8FF36F4214165AD900A91FC0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -328,6 +334,8 @@
 		4207DC89143D9A9F00FAD4AA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				42FABA881491D95800E51667 /* lineart@2x.png */,
+				42FABA891491D95800E51667 /* lineart.png */,
 				42823757148F1B1300BBBB27 /* btn_demo@2x.png */,
 				42823758148F1B1300BBBB27 /* btn_demo.png */,
 				42823745147E143600BBBB27 /* bottombar.png */,
@@ -390,7 +398,6 @@
 				4201DD73146BA1780080FF33 /* navbar_back@2x.png */,
 				4201DD62146B8EFF0080FF33 /* navbar_bg.png */,
 				4201DD74146BA1780080FF33 /* navbar_bg@2x.png */,
-				4207DC8D143D9A9F00FAD4AA /* chumby.png */,
 				4207DC90143D9A9F00FAD4AA /* icon.png */,
 			);
 			path = Images;
@@ -470,6 +477,8 @@
 		8FF36F3114165AD900A91FC0 = {
 			isa = PBXGroup;
 			children = (
+				42FABA861491D8F900E51667 /* Default.png */,
+				42FABA841491D8D000E51667 /* Default@2x.png */,
 				4207DCE8143D9F4700FAD4AA /* Icon-72.png */,
 				4207DCE6143D9F2F00FAD4AA /* Icon@2x.png */,
 				4207DCE4143D9F2A00FAD4AA /* Icon.png */,
@@ -558,7 +567,6 @@
 				4207DCAE143D9A9F00FAD4AA /* ChooseIPController.xib in Resources */,
 				4207DCB1143D9A9F00FAD4AA /* InfoPlist.strings in Resources */,
 				4207DCB2143D9A9F00FAD4AA /* MainWindow.xib in Resources */,
-				4207DCB6143D9A9F00FAD4AA /* chumby.png in Resources */,
 				4207DCB9143D9A9F00FAD4AA /* icon.png in Resources */,
 				4207DCC3143D9A9F00FAD4AA /* NeTVViewController_iPhone.xib in Resources */,
 				4207DCC6143D9A9F00FAD4AA /* RemoteController.xib in Resources */,
@@ -630,6 +638,10 @@
 				42823756147E143700BBBB27 /* bottombar@2x.png in Resources */,
 				42823759148F1B1300BBBB27 /* btn_demo@2x.png in Resources */,
 				4282375A148F1B1300BBBB27 /* btn_demo.png in Resources */,
+				42FABA851491D8D000E51667 /* Default@2x.png in Resources */,
+				42FABA871491D8F900E51667 /* Default.png in Resources */,
+				42FABA8A1491D95800E51667 /* lineart@2x.png in Resources */,
+				42FABA8B1491D95800E51667 /* lineart.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,7 +768,7 @@
 				INFOPLIST_FILE = "NeTV/NeTV-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = netv;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -770,7 +782,7 @@
 				INFOPLIST_FILE = "NeTV/NeTV-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = netv;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
