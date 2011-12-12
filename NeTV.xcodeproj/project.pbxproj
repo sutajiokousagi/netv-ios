@@ -42,7 +42,6 @@
 		4207DCAE143D9A9F00FAD4AA /* ChooseIPController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC81143D9A9F00FAD4AA /* ChooseIPController.xib */; };
 		4207DCB1143D9A9F00FAD4AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC85143D9A9F00FAD4AA /* InfoPlist.strings */; };
 		4207DCB2143D9A9F00FAD4AA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC87143D9A9F00FAD4AA /* MainWindow.xib */; };
-		4207DCB9143D9A9F00FAD4AA /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DC90143D9A9F00FAD4AA /* icon.png */; };
 		4207DCBE143D9A9F00FAD4AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DC95143D9A9F00FAD4AA /* main.m */; };
 		4207DCC1143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DC9A143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.m */; };
 		4207DCC2143D9A9F00FAD4AA /* NeTVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DC9C143D9A9F00FAD4AA /* NeTVViewController.m */; };
@@ -57,9 +56,6 @@
 		4207DCE1143D9CF300FAD4AA /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DCD8143D9CF300FAD4AA /* UIDevice-Hardware.m */; };
 		4207DCE2143D9CF300FAD4AA /* VTPG_Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DCDA143D9CF300FAD4AA /* VTPG_Common.m */; };
 		4207DCE3143D9CF300FAD4AA /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207DCDC143D9CF300FAD4AA /* XMLReader.m */; };
-		4207DCE5143D9F2A00FAD4AA /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE4143D9F2A00FAD4AA /* Icon.png */; };
-		4207DCE7143D9F2F00FAD4AA /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE6143D9F2F00FAD4AA /* Icon@2x.png */; };
-		4207DCE9143D9F4700FAD4AA /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE8143D9F4700FAD4AA /* Icon-72.png */; };
 		421FD08C143EC819001CF8E7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 421FD08B143EC819001CF8E7 /* libz.dylib */; };
 		4234776E147A470700606987 /* btn_photo_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4234776B147A470700606987 /* btn_photo_normal@2x.png */; };
 		4234776F147A470700606987 /* btn_camer_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4234776C147A470700606987 /* btn_camer_normal@2x.png */; };
@@ -115,6 +111,8 @@
 		42FABA871491D8F900E51667 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FABA861491D8F900E51667 /* Default.png */; };
 		42FABA8A1491D95800E51667 /* lineart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FABA881491D95800E51667 /* lineart@2x.png */; };
 		42FABA8B1491D95800E51667 /* lineart.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FABA891491D95800E51667 /* lineart.png */; };
+		42FABA991495D02C00E51667 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE4143D9F2A00FAD4AA /* Icon.png */; };
+		42FABA9A1495D03000E51667 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4207DCE6143D9F2F00FAD4AA /* Icon@2x.png */; };
 		8FF36F4114165AD900A91FC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F4014165AD900A91FC0 /* UIKit.framework */; };
 		8FF36F4314165AD900A91FC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F4214165AD900A91FC0 /* Foundation.framework */; };
 		8FF36F4514165AD900A91FC0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF36F4414165AD900A91FC0 /* CoreGraphics.framework */; };
@@ -165,7 +163,6 @@
 		4207DC81143D9A9F00FAD4AA /* ChooseIPController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseIPController.xib; sourceTree = "<group>"; };
 		4207DC86143D9A9F00FAD4AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4207DC88143D9A9F00FAD4AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		4207DC90143D9A9F00FAD4AA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		4207DC95143D9A9F00FAD4AA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4207DC99143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeTV_RemoteAppDelegate.h; sourceTree = "<group>"; };
 		4207DC9A143D9A9F00FAD4AA /* NeTV_RemoteAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeTV_RemoteAppDelegate.m; sourceTree = "<group>"; };
@@ -192,7 +189,6 @@
 		4207DCDC143D9CF300FAD4AA /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		4207DCE4143D9F2A00FAD4AA /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4207DCE6143D9F2F00FAD4AA /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		4207DCE8143D9F4700FAD4AA /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		421FD08B143EC819001CF8E7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4234776B147A470700606987 /* btn_photo_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_photo_normal@2x.png"; sourceTree = "<group>"; };
 		4234776C147A470700606987 /* btn_camer_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_camer_normal@2x.png"; sourceTree = "<group>"; };
@@ -398,7 +394,6 @@
 				4201DD73146BA1780080FF33 /* navbar_back@2x.png */,
 				4201DD62146B8EFF0080FF33 /* navbar_bg.png */,
 				4201DD74146BA1780080FF33 /* navbar_bg@2x.png */,
-				4207DC90143D9A9F00FAD4AA /* icon.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -479,7 +474,6 @@
 			children = (
 				42FABA861491D8F900E51667 /* Default.png */,
 				42FABA841491D8D000E51667 /* Default@2x.png */,
-				4207DCE8143D9F4700FAD4AA /* Icon-72.png */,
 				4207DCE6143D9F2F00FAD4AA /* Icon@2x.png */,
 				4207DCE4143D9F2A00FAD4AA /* Icon.png */,
 				4207DC77143D9A9F00FAD4AA /* NeTV */,
@@ -567,13 +561,9 @@
 				4207DCAE143D9A9F00FAD4AA /* ChooseIPController.xib in Resources */,
 				4207DCB1143D9A9F00FAD4AA /* InfoPlist.strings in Resources */,
 				4207DCB2143D9A9F00FAD4AA /* MainWindow.xib in Resources */,
-				4207DCB9143D9A9F00FAD4AA /* icon.png in Resources */,
 				4207DCC3143D9A9F00FAD4AA /* NeTVViewController_iPhone.xib in Resources */,
 				4207DCC6143D9A9F00FAD4AA /* RemoteController.xib in Resources */,
 				4207DCCD143D9B1600FAD4AA /* MainWindow-iPad.xib in Resources */,
-				4207DCE5143D9F2A00FAD4AA /* Icon.png in Resources */,
-				4207DCE7143D9F2F00FAD4AA /* Icon@2x.png in Resources */,
-				4207DCE9143D9F4700FAD4AA /* Icon-72.png in Resources */,
 				4201DD63146B8EFF0080FF33 /* navbar_back.png in Resources */,
 				4201DD64146B8EFF0080FF33 /* navbar_bg.png in Resources */,
 				4201DD67146B95B90080FF33 /* device_list_bg.png in Resources */,
@@ -642,6 +632,8 @@
 				42FABA871491D8F900E51667 /* Default.png in Resources */,
 				42FABA8A1491D95800E51667 /* lineart@2x.png in Resources */,
 				42FABA8B1491D95800E51667 /* lineart.png in Resources */,
+				42FABA991495D02C00E51667 /* Icon.png in Resources */,
+				42FABA9A1495D03000E51667 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,7 +708,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -742,9 +737,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: chumby industries pte ltd";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -754,6 +752,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1764F1BA-2EF6-4279-8E39-AAE544E74853";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -765,7 +764,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NeTV/NeTV-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "NeTV/NeTV-Info.plist";
+				INFOPLIST_FILE = NeTV/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = netv;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -779,7 +778,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NeTV/NeTV-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "NeTV/NeTV-Info.plist";
+				INFOPLIST_FILE = NeTV/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = netv;
 				TARGETED_DEVICE_FAMILY = 1;
