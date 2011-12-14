@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1024</int>
+		<int key="IBDocument.SystemTarget">1280</int>
 		<string key="IBDocument.SystemVersion">11C74</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1617</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
 		<string key="IBDocument.AppKitVersion">1138.23</string>
 		<string key="IBDocument.HIToolboxVersion">567.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">534</string>
+			<string key="NS.object.0">933</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBUITableViewCell</string>
@@ -19,7 +19,10 @@
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 		</array>
-		<dictionary class="NSMutableDictionary" key="IBDocument.Metadata"/>
+		<object class="NSMutableDictionary" key="IBDocument.Metadata">
+			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
+			<integer value="1" key="NS.object.0"/>
+		</object>
 		<array class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
 			<object class="IBProxyObject" id="372490531">
 				<string key="IBProxiedObjectIdentifier">IBFilesOwner</string>
@@ -39,7 +42,7 @@
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIImageView" id="344912468">
 								<reference key="NSNextResponder" ref="375624474"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">274</int>
 								<string key="NSFrameSize">{320, 70}</string>
 								<reference key="NSSuperview" ref="375624474"/>
 								<reference key="NSWindow"/>
@@ -73,18 +76,24 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<string key="IBUIText">Living room NeTV</string>
-								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">HelveticaNeue-Bold</string>
-									<double key="NSSize">15</double>
-									<int key="NSfFlags">16</int>
-								</object>
-								<object class="NSColor" key="IBUITextColor" id="31720608">
+								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
+									<string key="name">HelveticaNeue-Bold</string>
+									<string key="family">Helvetica Neue</string>
+									<int key="traits">2</int>
+									<double key="pointSize">15</double>
+								</object>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">HelveticaNeue-Bold</string>
+									<double key="NSSize">15</double>
+									<int key="NSfFlags">16</int>
+								</object>
 							</object>
 							<object class="IBUILabel" id="44946242">
 								<reference key="NSNextResponder" ref="375624474"/>
@@ -99,11 +108,6 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<string type="base64-UTF8" key="IBUIText">MTkyLjE2OC4xLjEyMw1BQTo6CEJCOkNDOkREOkVFOkZGA</string>
-								<object class="NSFont" key="IBUIFont" id="846824330">
-									<string key="NSName">HelveticaNeue-Bold</string>
-									<double key="NSSize">13</double>
-									<int key="NSfFlags">16</int>
-								</object>
 								<object class="NSColor" key="IBUITextColor" id="351870818">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
@@ -112,29 +116,40 @@
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUINumberOfLines">2</int>
+								<object class="IBUIFontDescription" key="IBUIFontDescription" id="512248923">
+									<string key="name">HelveticaNeue-Bold</string>
+									<string key="family">Helvetica Neue</string>
+									<int key="traits">2</int>
+									<double key="pointSize">13</double>
+								</object>
+								<object class="NSFont" key="IBUIFont" id="846824330">
+									<string key="NSName">HelveticaNeue-Bold</string>
+									<double key="NSSize">13</double>
+									<int key="NSfFlags">16</int>
+								</object>
 							</object>
 							<object class="IBUILabel" id="614193000">
 								<reference key="NSNextResponder" ref="375624474"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">265</int>
 								<string key="NSFrame">{{224, 43}, {80, 20}}</string>
 								<reference key="NSSuperview" ref="375624474"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<string key="IBUIText">ver.21</string>
-								<reference key="IBUIFont" ref="846824330"/>
 								<reference key="IBUITextColor" ref="351870818"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">2</int>
+								<reference key="IBUIFontDescription" ref="512248923"/>
+								<reference key="IBUIFont" ref="846824330"/>
 							</object>
 						</array>
-						<string key="NSFrameSize">{320, 70}</string>
+						<string key="NSFrameSize">{320, 69}</string>
 						<reference key="NSSuperview" ref="1031579814"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="344912468"/>
@@ -153,9 +168,7 @@
 				<reference key="IBUIBackgroundColor" ref="602142313"/>
 				<bool key="IBUIOpaque">NO</bool>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-				<int key="IBUISeparatorStyle">1</int>
 				<reference key="IBUIContentView" ref="375624474"/>
-				<reference key="IBUITextColor" ref="31720608"/>
 				<string key="IBUIReuseIdentifier">ChooseIPControllerCellIdentifier</string>
 			</object>
 		</array>
@@ -308,16 +321,12 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<integer value="1024" key="NS.object.0"/>
-		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="device_list_cell_bg.png">{320, 70}</string>
 			<string key="device_list_cell_bg_selected.png">{320, 70}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">534</string>
+		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>
 </archive>

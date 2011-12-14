@@ -61,6 +61,14 @@
         //Add to current view, hidden away
         chooseIPController = [[ChooseIPController alloc] initWithNibName:@"ChooseIPController" bundle:[NSBundle mainBundle]];
         [chooseIPController.view setFrame:chooseIPRect];
+        [chooseIPController.view setAutoresizingMask:UIViewAutoresizingNone];
+        [chooseIPController.view setAutoresizingMask:UIViewAutoresizingFlexibleWidth |
+         UIViewAutoresizingFlexibleHeight |
+         UIViewAutoresizingFlexibleBottomMargin |
+         UIViewAutoresizingFlexibleTopMargin |
+         UIViewAutoresizingFlexibleLeftMargin |
+         UIViewAutoresizingFlexibleRightMargin];
+
         [self.view insertSubview:chooseIPController.view belowSubview:imgNavbar];
         chooseIPController.delegate = self;
     }
